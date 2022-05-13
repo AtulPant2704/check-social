@@ -1,10 +1,13 @@
-import { Heading } from "@chakra-ui/react";
+import { Routes, Route } from "react-router-dom";
+import { Landing } from "pages";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Heading>Hello</Heading>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+      </Routes>
     </div>
   );
 }
