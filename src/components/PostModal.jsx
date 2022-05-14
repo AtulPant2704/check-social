@@ -8,7 +8,11 @@ import {
   ModalCloseButton,
   Button,
   Textarea,
+  Flex,
+  FormLabel,
+  Input,
 } from "@chakra-ui/react";
+import { BsCardImage } from "react-icons/bs";
 
 const PostModal = ({ isOpen, onClose }) => {
   return (
@@ -25,7 +29,20 @@ const PostModal = ({ isOpen, onClose }) => {
           />
         </ModalBody>
         <ModalFooter>
-          <Button onClose={onClose}>POST</Button>
+          <Flex justifyContent="space-between" w="100%" alignItems="center">
+            <FormLabel cursor="pointer">
+              <Input
+                type="file"
+                position="absolute"
+                opacity="0"
+                bgColor="red.100"
+                p="0"
+                visibility="hidden"
+              />
+              <BsCardImage fontSize="28px" />
+            </FormLabel>
+            <Button onClose={onClose}>POST</Button>
+          </Flex>
         </ModalFooter>
       </ModalContent>
     </Modal>

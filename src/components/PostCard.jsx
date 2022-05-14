@@ -53,6 +53,14 @@ const PostCard = () => {
               _hover={{
                 bgColor: "transparent",
               }}
+              _active={{
+                bgColor: "transparent",
+                border: "none",
+              }}
+              _focus={{
+                bgColor: "transparent",
+                border: "none",
+              }}
             ></IconButton>
           </PopoverTrigger>
           <PopoverContent maxW="fit-content">
@@ -141,7 +149,7 @@ const PostCard = () => {
             <Heading as="h5" size="sm">
               Atul Pant
             </Heading>
-            <Text>This is first comment.</Text>
+            <Text>This is first .</Text>
           </Box>
         </Flex>
         {/* Edit Comment */}
@@ -155,6 +163,14 @@ const PostCard = () => {
               fontSize="lg"
               _hover={{
                 bgColor: "transparent",
+              }}
+              _active={{
+                bgColor: "transparent",
+                border: "none",
+              }}
+              _focus={{
+                bgColor: "transparent",
+                border: "none",
               }}
             ></IconButton>
           </PopoverTrigger>
@@ -194,6 +210,10 @@ const PostCard = () => {
           fontSize="lg"
           _hover={{
             bgColor: "transparent",
+          }}
+          _active={{
+            bgColor: "transparent",
+            border: "none",
           }}
         >
           {" "}

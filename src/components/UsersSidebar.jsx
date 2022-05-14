@@ -13,6 +13,8 @@ import { AiOutlinePlus } from "react-icons/ai";
 const UsersSidebar = () => {
   return (
     <Box
+      position="sticky"
+      top="16px"
       display={{ base: "none", lg: "block" }}
       bgColor="gray.200"
       h="fit-content"
