@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Landing } from "pages";
+import { Landing, Home } from "pages";
 import "./App.css";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
       </Routes>
     </div>
   );
