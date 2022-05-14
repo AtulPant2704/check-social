@@ -1,4 +1,3 @@
-import { MdOutlineExplore } from "react-icons/md";
 import {
   Heading,
   ListItem,
@@ -9,8 +8,9 @@ import {
 } from "@chakra-ui/react";
 import { FaHome, FaUserCircle } from "react-icons/fa";
 import { BsFillBookmarkFill } from "react-icons/bs";
+import { MdOutlineExplore } from "react-icons/md";
 
-const SideNav = () => {
+const SideNav = ({ onOpen }) => {
   return (
     <Flex flexDirection="column" display={{ base: "none", md: "block" }}>
       <Heading color="brand.500">CheckSocial</Heading>
@@ -32,7 +32,7 @@ const SideNav = () => {
           Profile
         </ListItem>
         <ListItem cursor="pointer" fontSize="20px" fontWeight="bold" my="2">
-          <Button variant="solid" w="100%">
+          <Button variant="solid" w="100%" onClick={onOpen}>
             Post
           </Button>
         </ListItem>
