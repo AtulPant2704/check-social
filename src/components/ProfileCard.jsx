@@ -8,31 +8,20 @@ import {
   Link,
   Button,
   IconButton,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { MdLogout } from "react-icons/md";
-import { EditProfileModal } from "./EditProfileModal";
 
-const ProfileCard = () => {
+const ProfileCard = ({ onOpenProfile }) => {
   const navigate = useNavigate();
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <>
-      <EditProfileModal isOpen={isOpen} onClose={onClose} />
-      <Flex
-        justifyContent="space-between"
-        bgColor="gray.200"
-        mb="8"
-        p="4"
-        borderRadius="8"
-        w="100%"
-      >
+      <Flex bgColor="gray.200" mb="8" p="4" borderRadius="8">
         <Flex gap="2">
           <Avatar
             name="Dan Abrahmov"
             src="https://bit.ly/dan-abramov"
-            size="2xl"
+            size="lg"
           ></Avatar>
           <Box>
             <Heading as="h5" size="md">
@@ -40,7 +29,7 @@ const ProfileCard = () => {
             </Heading>
             <Text>@Atul27</Text>
             <Text>An aspiring web developer</Text>
-            <Flex justifyContent="space-between">
+            <Flex gap="4">
               <Text>2 posts</Text>
               <Text>2 followers</Text>
               <Text>2 following</Text>
@@ -55,7 +44,7 @@ const ProfileCard = () => {
           </Box>
         </Flex>
         <Flex gap="2">
-          <Button variant="solid" onClick={onOpen}>
+          <Button variant="solid" onClick={onOpenProfile}>
             Edit
           </Button>
           <IconButton

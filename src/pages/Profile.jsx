@@ -6,14 +6,24 @@ import {
   MobileNav,
   PostModal,
   ProfileCard,
+  EditProfileModal,
 } from "components";
 
 const Profile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isOpenProfile,
+    onOpen: onOpenProfile,
+    onClose: onCloseProfile,
+  } = useDisclosure();
 
   return (
     <>
       <PostModal isOpen={isOpen} onClose={onClose} />
+      <EditProfileModal
+        isOpenProfile={isOpenProfile}
+        onCloseProfile={onCloseProfile}
+      />
       <Box>
         <Flex justifyContent="center" bgColor="gray.200">
           <Heading
@@ -28,7 +38,7 @@ const Profile = () => {
         <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
           <SideNav onOpen={onOpen} />
           <Box>
-            <ProfileCard />
+            <ProfileCard onOpenProfile={onOpenProfile} />
             <PostCard />
             <PostCard />
             <PostCard />

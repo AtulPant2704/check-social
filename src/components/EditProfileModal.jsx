@@ -17,9 +17,9 @@ import {
 } from "@chakra-ui/react";
 import { AiFillCamera } from "react-icons/ai";
 
-const EditProfileModal = ({ isOpen, onClose }) => {
+const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpenProfile} onClose={onCloseProfile}>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Edit Profile</ModalHeader>
@@ -77,7 +77,7 @@ const EditProfileModal = ({ isOpen, onClose }) => {
           </Flex>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={onClose}>Update</Button>
+          <Button onClick={onCloseProfile}>Update</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
