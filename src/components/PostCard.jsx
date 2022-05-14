@@ -9,9 +9,17 @@ import {
   InputRightElement,
   Button,
   InputGroup,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverBody,
+  PopoverArrow,
+  PopoverCloseButton,
 } from "@chakra-ui/react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsBookmark, BsThreeDotsVertical } from "react-icons/bs";
+import { FaRegEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 const PostCard = () => {
   return (
@@ -24,12 +32,42 @@ const PostCard = () => {
       p="4"
     >
       {/* Avatar and Name */}
-      <Flex gap="2">
-        <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-        <Heading as="h3" size="md">
-          Atul Pant
-        </Heading>
-        <Text display="inline">@Atul27</Text>
+      <Flex justifyContent="space-between">
+        <Flex gap="2" alignItems="center">
+          <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
+          <Heading as="h3" size="md">
+            Atul Pant
+            <Text as="span" fontSize="14px" ml="2">
+              @Atul27
+            </Text>
+          </Heading>
+        </Flex>
+        <Popover>
+          <PopoverTrigger>
+            <IconButton
+              icon={<BsThreeDotsVertical />}
+              bgColor="transparent"
+              color="black"
+              size="sm"
+              fontSize="lg"
+              _hover={{
+                bgColor: "transparent",
+              }}
+            ></IconButton>
+          </PopoverTrigger>
+          <PopoverContent maxW="fit-content">
+            <PopoverArrow />
+            <PopoverCloseButton />
+            <PopoverBody>
+              <Button leftIcon={<FaRegEdit />} variant="ghost" display="block">
+                Edit
+              </Button>
+              <Button leftIcon={<MdDelete />} variant="ghost">
+                Delete
+              </Button>
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
       </Flex>
 
       {/* Post Content */}
@@ -106,18 +144,33 @@ const PostCard = () => {
             <Text>This is first comment.</Text>
           </Box>
         </Flex>
-        <IconButton
-          icon={<BsThreeDotsVertical />}
-          bgColor="transparent"
-          color="black"
-          size="sm"
-          fontSize="lg"
-          _hover={{
-            bgColor: "transparent",
-          }}
-        >
-          {" "}
-        </IconButton>
+        {/* Edit Comment */}
+        <Popover>
+          <PopoverTrigger>
+            <IconButton
+              icon={<BsThreeDotsVertical />}
+              bgColor="transparent"
+              color="black"
+              size="sm"
+              fontSize="lg"
+              _hover={{
+                bgColor: "transparent",
+              }}
+            ></IconButton>
+          </PopoverTrigger>
+          <PopoverContent maxW="fit-content">
+            <PopoverArrow />
+            <PopoverCloseButton />
+            <PopoverBody>
+              <Button leftIcon={<FaRegEdit />} variant="ghost" display="block">
+                Edit
+              </Button>
+              <Button leftIcon={<MdDelete />} variant="ghost">
+                Delete
+              </Button>
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
       </Flex>
       <Flex gap="2">
         <Avatar
