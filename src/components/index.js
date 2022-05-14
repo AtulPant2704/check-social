@@ -5,3 +5,5 @@ export { PostCard } from "./PostCard";
 export { UsersSidebar } from "./UsersSidebar";
 export { MobileNav } from "./MobileNav";
 export { PostModal } from "./PostModal";
+export { ProfileCard } from "./ProfileCard";
+export { EditProfileModal } from "./EditProfileModal";
