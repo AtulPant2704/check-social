@@ -39,6 +39,7 @@ const Profile = () => {
           <SideNav onOpen={onOpen} />
           <Box>
             <ProfileCard onOpenProfile={onOpenProfile} />
+            <Heading as="h3" size="md" mb="4">Your Posts</Heading>
             <PostCard />
             <PostCard />
             <PostCard />
