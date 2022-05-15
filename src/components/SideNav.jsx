@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Heading,
   ListItem,
@@ -13,6 +13,9 @@ import { MdOutlineExplore } from "react-icons/md";
 
 const SideNav = ({ onOpen }) => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  console.log(pathname);
 
   return (
     <Box
@@ -28,16 +31,29 @@ const SideNav = ({ onOpen }) => {
           fontSize="20px"
           fontWeight="bold"
           my="2"
+          color={`${pathname === "/home" ? "brand.500" : "black"}`}
           onClick={() => navigate("/home")}
         >
           <ListIcon as={FaHome} />
           Feed
         </ListItem>
-        <ListItem cursor="pointer" fontSize="20px" fontWeight="bold" my="2">
+        <ListItem
+          cursor="pointer"
+          fontSize="20px"
+          fontWeight="bold"
+          my="2"
+          color={`${pathname === "/explore" ? "brand.500" : "black"}`}
+        >
           <ListIcon as={MdOutlineExplore} />
           Explore
         </ListItem>
-        <ListItem cursor="pointer" fontSize="20px" fontWeight="bold" my="2">
+        <ListItem
+          cursor="pointer"
+          fontSize="20px"
+          fontWeight="bold"
+          my="2"
+          color={`${pathname === "/bookmark" ? "brand.500" : "black"}`}
+        >
           <ListIcon as={BsFillBookmarkFill} />
           Bookmark
         </ListItem>
@@ -46,6 +62,7 @@ const SideNav = ({ onOpen }) => {
           fontSize="20px"
           fontWeight="bold"
           my="2"
+          color={`${pathname === "/profile" ? "brand.500" : "black"}`}
           onClick={() => navigate("/profile")}
         >
           <ListIcon as={FaUserCircle} />
