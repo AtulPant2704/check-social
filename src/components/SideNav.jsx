@@ -25,7 +25,7 @@ const SideNav = ({ onOpen }) => {
       display={{ base: "none", md: "block" }}
     >
       <Heading color="brand.500">CheckSocial</Heading>
-      <UnorderedList listStyleType="none" w="100%" mt="8">
+      <UnorderedList listStyleType="none" w="100%" mt="8" ml="0">
         <ListItem
           cursor="pointer"
           fontSize="20px"
