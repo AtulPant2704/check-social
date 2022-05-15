@@ -95,8 +95,12 @@ const PostCard = () => {
           color="black"
           size="sm"
           fontSize="lg"
+          borderRadius="50%"
           _hover={{
-            bgColor: "transparent",
+            bgColor: "brand.100",
+          }}
+          _focus={{
+            borderColor: "transparent",
           }}
         />
         <IconButton
@@ -105,8 +109,12 @@ const PostCard = () => {
           color="black"
           size="sm"
           fontSize="lg"
+          borderRadius="50%"
           _hover={{
-            bgColor: "transparent",
+            bgColor: "brand.100",
+          }}
+          _focus={{
+            borderColor: "transparent",
           }}
         />
       </Flex>
