@@ -10,9 +10,16 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    logoutUser: (state) => {
+      state.user = null;
+      state.token = null;
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+    },
+  },
   extraReducers: {
-    [loginUser.pending]: (state, action) => {
+    [loginUser.pending]: (state) => {
       state.isLoading = true;
     },
     [loginUser.fulfilled]: (state, action) => {
@@ -24,7 +31,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       console.error(action.error.message);
     },
-    [signupUser.pending]: (state, action) => {
+    [signupUser.pending]: (state) => {
       state.isLoading = true;
     },
     [signupUser.fulfilled]: (state, action) => {
@@ -39,4 +46,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { logoutUser } = authSlice.actions;
 export const { reducer: authReducer } = authSlice;
