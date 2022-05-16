@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Modal,
   ModalOverlay,
@@ -14,10 +16,64 @@ import {
   Input,
   Textarea,
   FormLabel,
+  useToast,
 } from "@chakra-ui/react";
 import { AiFillCamera } from "react-icons/ai";
+import { editUser } from "redux/asyncThunks";
 
 const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const { user, token } = useSelector((state) => state.auth);
+  const [userData, setUserData] = useState({
+    avatarUrl: user.avatarUrl || "",
+    website: user.website || "",
+    bio: user.bio || "",
+  });
+
+  const inputHandler = (e) => {
+    const { name, value } = e.target;
+    setUserData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const saveAvatarToCloudinary = async (avatar) => {
+    try {
+      const data = new FormData();
+      data.append("file", avatar);
+      data.append("upload_preset", "tn3ynknq");
+      const requestOptions = {
+        method: "POST",
+        body: data,
+      };
+      await fetch(
+        "https://api.cloudinary.com/v1_1/check-social/image/upload",
+        requestOptions
+      )
+        .then((response) => response.json())
+        .then((json) => {
+          setUserData((prev) => ({ ...prev, avatarUrl: json.url }));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editUserHandler = async () => {
+    const response = await dispatch(editUser({ userData, token }));
+    if (response.status === 201) {
+      toast({
+        description: "Profile updated successfully",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+    onCloseProfile();
+  };
+
   return (
     <Modal isOpen={isOpenProfile} onClose={onCloseProfile}>
       <ModalOverlay />
@@ -29,8 +85,8 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
             <Text>Avatar</Text>
             <Box position="relative">
               <Avatar
-                name="Dan Abrahmov"
-                src="https://bit.ly/dan-abramov"
+                name={user.firstName + " " + user.lastName}
+                src={user.avatarUrl}
                 size="md"
               ></Avatar>
               <Box position="absolute" top="54%" left="59%">
@@ -42,6 +98,7 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
                     bgColor="red.100"
                     p="0"
                     visibility="hidden"
+                    onChange={(e) => saveAvatarToCloudinary(e.target.files[0])}
                   />
                   <AiFillCamera fontSize="20px" color="white" />
                 </FormLabel>
@@ -50,11 +107,13 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
           </Flex>
           <Flex gap="10" mb="2">
             <Text>Name</Text>
-            <Text>Atul Pant</Text>
+            <Text>
+              {user.firstName} {user.lastName}
+            </Text>
           </Flex>
           <Flex gap="3" mb="2">
             <Text>Username</Text>
-            <Text>Atul27</Text>
+            <Text>@{user.username}</Text>
           </Flex>
           <Flex gap="6" mb="2">
             <Text>Website</Text>
@@ -63,6 +122,9 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
               borderColor="var(--chakra-colors-gray-300)"
               size="sm"
               borderRadius="8"
+              name="website"
+              value={userData.website}
+              onChange={inputHandler}
             ></Input>
           </Flex>
           <Flex gap="14" mb="2">
@@ -73,11 +135,14 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
               _hover={{
                 borderColor: "brand.400",
               }}
+              name="bio"
+              value={userData.bio}
+              onChange={inputHandler}
             ></Textarea>
           </Flex>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={onCloseProfile}>Update</Button>
+          <Button onClick={editUserHandler}>Update</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
