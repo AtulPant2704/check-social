@@ -24,7 +24,6 @@ const authSlice = createSlice({
     },
     [loginUser.fulfilled]: (state, action) => {
       state.isLoading = false;
-      console.log(action, "action");
       state.user = action.payload.data.foundUser;
       state.token = action.payload.data.encodedToken;
     },
