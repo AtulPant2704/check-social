@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, signupUser } from "redux/asynThunks";
+import { loginUser, signupUser } from "redux/asyncThunkss";
 
 const initialState = {
   user: null,
