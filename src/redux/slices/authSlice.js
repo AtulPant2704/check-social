@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser } from "redux/asynThunks";
+import { loginUser, signupUser } from "redux/asynThunks";
 
 const initialState = {
   user: null,
@@ -21,6 +21,18 @@ const authSlice = createSlice({
       state.token = action.payload.data.encodedToken;
     },
     [loginUser.rejected]: (state, action) => {
+      state.isLoading = false;
+      console.error(action.error.message);
+    },
+    [signupUser.pending]: (state, action) => {
+      state.isLoading = true;
+    },
+    [signupUser.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.user = action.payload.data.foundUser;
+      state.token = action.payload.data.encodedToken;
+    },
+    [signupUser.rejected]: (state, action) => {
       state.isLoading = false;
       console.error(action.error.message);
     },

@@ -7,4 +7,10 @@ const loginUser = createAsyncThunk("auth/login", async (newUser) => {
   return data;
 });
 
-export { loginUser };
+const signupUser = createAsyncThunk("auth/signup", async (newUser) => {
+  const response = await axios.post("/api/auth/signup", newUser);
+  const data = { data: response.data, status: response.status };
+  return data;
+});
+
+export { loginUser, signupUser };
