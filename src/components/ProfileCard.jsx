@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   Heading,
@@ -16,6 +16,7 @@ import { logoutUser } from "redux/slices";
 const ProfileCard = ({ onOpenProfile }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
 
   const logoutHandler = () => {
     dispatch(logoutUser());
@@ -30,9 +31,9 @@ const ProfileCard = ({ onOpenProfile }) => {
         size="2xl"
       ></Avatar>
       <Heading as="h5" size="md">
-        Atul Pant
+        {user.firstName} {user.lastName}
       </Heading>
-      <Text>@Atul27</Text>
+      <Text>@{user.username}</Text>
       <Flex alignItems="center" gap="2">
         <Button my="2" onClick={onOpenProfile}>
           Edit Profile

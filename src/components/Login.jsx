@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Box, Button, Input, Checkbox, Text, useToast } from "@chakra-ui/react";
 import { loginUser } from "redux/asyncThunks";
 
 const Login = ({ setAuthType }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const toast = useToast();
   const [newUser, setNewUser] = useState({ username: "", password: "" });
@@ -38,7 +39,9 @@ const Login = ({ setAuthType }) => {
             JSON.stringify(response.payload.data.foundUser)
           );
         }
-        navigate("/home");
+        navigate(location?.state?.from?.pathname || "/home", {
+          replace: true,
+        });
         toast({
           description: "Successfully Logged In",
           status: "success",

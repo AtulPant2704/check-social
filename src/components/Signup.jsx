@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Box, Button, Input, Checkbox, Text, useToast } from "@chakra-ui/react";
 import { signupUser } from "redux/asyncThunks";
 
 const Signup = ({ setAuthType }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const toast = useToast();
   const [newUser, setNewUser] = useState({
@@ -45,7 +46,9 @@ const Signup = ({ setAuthType }) => {
             JSON.stringify(response.payload.data.createdUser)
           );
         }
-        navigate("/home");
+        navigate(location?.state?.from?.pathname || "/home", {
+          replace: true,
+        });
         toast({
           title: "Account created.",
           description: "We've created your account for you.",

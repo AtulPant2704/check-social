@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { loginUser, signupUser } from "redux/asyncThunks";
 
 const initialState = {
-  user: null,
-  token: null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  token: localStorage.getItem("token") || null,
   isLoading: false,
 };
 

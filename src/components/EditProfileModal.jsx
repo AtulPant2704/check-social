@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import {
   Modal,
   ModalOverlay,
@@ -18,6 +19,8 @@ import {
 import { AiFillCamera } from "react-icons/ai";
 
 const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
+  const { user } = useSelector((state) => state.auth);
+
   return (
     <Modal isOpen={isOpenProfile} onClose={onCloseProfile}>
       <ModalOverlay />
@@ -50,11 +53,13 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
           </Flex>
           <Flex gap="10" mb="2">
             <Text>Name</Text>
-            <Text>Atul Pant</Text>
+            <Text>
+              {user.firstName} {user.lastName}
+            </Text>
           </Flex>
           <Flex gap="3" mb="2">
             <Text>Username</Text>
-            <Text>Atul27</Text>
+            <Text>{user.username}</Text>
           </Flex>
           <Flex gap="6" mb="2">
             <Text>Website</Text>
