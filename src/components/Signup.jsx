@@ -12,7 +12,6 @@ const Signup = ({ setAuthType }) => {
   const [newUser, setNewUser] = useState({
     username: "",
     password: "",
-    email: "",
     firstName: "",
     lastName: "",
   });
@@ -28,7 +27,6 @@ const Signup = ({ setAuthType }) => {
     return (
       newUser.username &&
       newUser.password &&
-      newUser.email &&
       newUser.firstName &&
       newUser.lastName
     );
@@ -82,13 +80,6 @@ const Signup = ({ setAuthType }) => {
           mb="4"
           name="lastName"
           value={newUser.lastName}
-          onChange={inputHandler}
-        />
-        <Input
-          placeholder="Enter Email"
-          mb="4"
-          name="email"
-          value={newUser.email}
           onChange={inputHandler}
         />
         <Input
