@@ -121,6 +121,7 @@ const Signup = ({ setAuthType }) => {
           onClick={signupHandler}
           isLoading={isLoading}
           loadingText="Signing In"
+          spinnerPlacement="center"
         >
           Signup
         </Button>

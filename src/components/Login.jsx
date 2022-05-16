@@ -101,6 +101,7 @@ const Login = ({ setAuthType }) => {
           onClick={loginHandler}
           isLoading={isLoading}
           loadingText="Logging In"
+          spinnerPlacement="center"
         >
           Login
         </Button>
