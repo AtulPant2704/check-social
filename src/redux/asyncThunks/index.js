@@ -1,1 +1,1 @@
-export { loginUser, signupUser } from "./authThunk";
+export { loginUser, signupUser, editUser } from "./authThunk";

@@ -26,8 +26,8 @@ const ProfileCard = ({ onOpenProfile }) => {
   return (
     <Flex flexDirection="column" alignItems="center" mb="8">
       <Avatar
-        name="Dan Abrahmov"
-        src="https://bit.ly/dan-abramov"
+        name={user.firstName + " " + user.lastName}
+        src={user.avatarUrl}
         size="2xl"
       ></Avatar>
       <Heading as="h5" size="md">
@@ -44,13 +44,9 @@ const ProfileCard = ({ onOpenProfile }) => {
           onClick={logoutHandler}
         ></IconButton>
       </Flex>
-      <Text>An aspiring web developer</Text>
-      <Link
-        href="https://adarshbalika.netlify.app/"
-        isExternal
-        color="brand.500"
-      >
-        https://adarshbalika.netlify.app/
+      <Text>{user.bio}</Text>
+      <Link href={user.website} isExternal color="brand.500">
+        {user.website}
       </Link>
       <Flex
         gap="4"

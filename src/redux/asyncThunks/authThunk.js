@@ -13,4 +13,14 @@ const signupUser = createAsyncThunk("auth/signup", async (newUser) => {
   return data;
 });
 
-export { loginUser, signupUser };
+const editUser = createAsyncThunk("auth/edit", async ({ userData, token }) => {
+  const response = await axios.post(
+    "/api/users/edit",
+    { userData },
+    { headers: { authorization: token } }
+  );
+  const data = { data: response.data, status: response.status };
+  return data;
+});
+
+export { loginUser, signupUser, editUser };
