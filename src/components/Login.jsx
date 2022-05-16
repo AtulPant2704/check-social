@@ -30,7 +30,6 @@ const Login = ({ setAuthType }) => {
     if (checkInputs()) {
       e.preventDefault();
       const response = await dispatch(loginUser(newUser));
-      console.log(response);
       if (response?.payload?.status === 200) {
         if (remember) {
           localStorage.setItem("token", response.payload.data.encodedToken);
