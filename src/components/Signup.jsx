@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Input, Checkbox, Text, useToast } from "@chakra-ui/react";
-import { signupUser } from "redux/asyncThunkss";
+import { signupUser } from "redux/asyncThunks";
 
 const Signup = ({ setAuthType }) => {
   const navigate = useNavigate();
