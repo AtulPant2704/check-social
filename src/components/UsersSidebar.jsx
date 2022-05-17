@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Heading,
   Box,
@@ -9,8 +11,18 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { AiOutlinePlus } from "react-icons/ai";
+import { getUsers } from "redux/asyncThunks";
 
 const UsersSidebar = () => {
+  const dispatch = useDispatch();
+  const { users, isLoading } = useSelector((state) => state.users);
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
+
+  console.log("users", users);
+
   return (
     <Box
       position="sticky"
@@ -26,96 +38,29 @@ const UsersSidebar = () => {
         Suggested Users
       </Heading>
       <UnorderedList listStyleType="none" w="100%" mt="4">
-        <ListItem mb="2">
-          <Flex gap="4" alignItems="center">
-            <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-            <Box>
-              <Heading as="h4" size="sm">
-                Atul Pant
-              </Heading>
-              <Text>@Atul27</Text>
-            </Box>
-            <Button
-              leftIcon={<AiOutlinePlus color="white" />}
-              p="2"
-              fontSize="14"
-            >
-              Follow
-            </Button>
-          </Flex>
-        </ListItem>
-        <ListItem mb="2">
-          <Flex gap="4" alignItems="center">
-            <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-            <Box>
-              <Heading as="h4" size="sm">
-                Atul Pant
-              </Heading>
-              <Text>@Atul27</Text>
-            </Box>
-            <Button
-              leftIcon={<AiOutlinePlus color="white" />}
-              p="2"
-              fontSize="14"
-            >
-              Follow
-            </Button>
-          </Flex>
-        </ListItem>
-        <ListItem mb="2">
-          <Flex gap="4" alignItems="center">
-            <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-            <Box>
-              <Heading as="h4" size="sm">
-                Atul Pant
-              </Heading>
-              <Text>@Atul27</Text>
-            </Box>
-            <Button
-              leftIcon={<AiOutlinePlus color="white" />}
-              p="2"
-              fontSize="14"
-            >
-              Follow
-            </Button>
-          </Flex>
-        </ListItem>
-        <ListItem mb="2">
-          <Flex gap="4" alignItems="center">
-            <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-            <Box>
-              <Heading as="h4" size="sm">
-                Atul Pant
-              </Heading>
-              <Text>@Atul27</Text>
-            </Box>
-            <Button
-              leftIcon={<AiOutlinePlus color="white" />}
-              p="2"
-              fontSize="14"
-            >
-              Follow
-            </Button>
-          </Flex>
-        </ListItem>
-        <ListItem mb="2">
-          <Flex gap="4" alignItems="center">
-            <Avatar name="Dan Abrahmov" src="https://bit.ly/dan-abramov" />
-            <Box>
-              <Heading as="h4" size="sm">
-                Atul Pant
-              </Heading>
-              <Text>@Atul27</Text>
-            </Box>
-            <Button
-              leftIcon={<AiOutlinePlus color="white" />}
-              p="2"
-              fontSize="14"
-            >
-              Follow
-            </Button>
-          </Flex>
-        </ListItem>
+        {users.map((user) => (
+          <ListItem key={user._id} mb="2">
+            <Flex gap="4" alignItems="center">
+              <Avatar
+                name={user.firstName + " " + user.lastName}
+                src={user.avatarUrl}
+              />
+              <Box>
+                <Heading as="h4" size="sm">
+                  {user.firstName} {user.lastName}
+                </Heading>
+                <Text>@{user.username}</Text>
+              </Box>
+              <Button
+                leftIcon={<AiOutlinePlus color="white" />}
+                p="2"
+                fontSize="14"
+              >
+                Follow
+              </Button>
+            </Flex>
+          </ListItem>
+        ))}
       </UnorderedList>
     </Box>
   );
