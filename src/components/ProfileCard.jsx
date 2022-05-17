@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { MdLogout } from "react-icons/md";
 import { logoutUser, updateUser } from "redux/slices";
-import { followUser } from "redux/asyncThunks";
+import { followUser, unfollowUser } from "redux/asyncThunks";
 
 const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
   const navigate = useNavigate();
@@ -24,9 +24,14 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
     navigate("/");
   };
 
+  const unfollowUserHandler = async (followUserId) => {
+    const response = await dispatch(unfollowUser({ followUserId, token }));
+    dispatch(updateUser(response?.payload.data.user));
+  };
+
   const followUserHandler = async (followUserId) => {
     const response = await dispatch(followUser({ followUserId, token }));
-    dispatch(updateUser(response.payload.data.user));
+    dispatch(updateUser(response?.payload.data.user));
   };
 
   return (
@@ -54,7 +59,11 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
       ) : user.following.some(
           (item) => item.username === userProfile?.username
         ) ? (
-        <Button variant="outline" my="2">
+        <Button
+          variant="outline"
+          my="2"
+          onClick={() => unfollowUserHandler(userProfile._id)}
+        >
           Unfollow
         </Button>
       ) : (
