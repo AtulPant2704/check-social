@@ -47,9 +47,16 @@ const Profile = () => {
             <Heading as="h3" size="md" mb="4">
               Your Posts
             </Heading>
-            {userPosts.map((post) => (
-              <PostCard key={post._id} post={post} />
-            ))}
+            {userPosts.length !== 0 ? (
+              userPosts.map((post) => <PostCard key={post._id} post={post} />)
+            ) : (
+              <Box>
+                <Heading as="h3" size="md" testAlign="center">
+                  Nothing has been posted by your yet, Start posting and make
+                  friends.
+                </Heading>
+              </Box>
+            )}
           </Box>
           <UsersSidebar />
         </Flex>
