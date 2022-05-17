@@ -25,7 +25,7 @@ export const posts = [
       {
         _id: uuid(),
         firstName: "Guest",
-        lastName: "Guest123",
+        lastName: "User",
         username: "Guest123",
         avatarUrl: "",
         text: "First Comment",
