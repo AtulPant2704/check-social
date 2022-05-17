@@ -45,7 +45,7 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
             onClick={logoutHandler}
           ></IconButton>
         </Flex>
-      ) : user.followers.some(
+      ) : user.following.some(
           (item) => item.username === userProfile?.username
         ) ? (
         <Button variant="outline" my="2">

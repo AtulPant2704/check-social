@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   Heading,
   Box,
@@ -14,6 +15,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { getUsers } from "redux/asyncThunks";
 
 const UsersSidebar = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.users);
   const { user } = useSelector((state) => state.auth);
@@ -49,8 +51,13 @@ const UsersSidebar = () => {
               <Avatar
                 name={user.firstName + " " + user.lastName}
                 src={user.avatarUrl}
+                cursor="pointer"
+                onClick={() => navigate(`/profile/${user.username}`)}
               />
-              <Box>
+              <Box
+                cursor="pointer"
+                onClick={() => navigate(`/profile/${user.username}`)}
+              >
                 <Heading as="h4" size="sm">
                   {user.firstName} {user.lastName}
                 </Heading>
