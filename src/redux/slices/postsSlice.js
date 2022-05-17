@@ -20,7 +20,7 @@ const postsSlice = createSlice({
     },
     [getPosts.rejected]: (state, action) => {
       state.isLoading = false;
-      console.error(action.error.message);
+      console.error(action.payload.data.errors[0]);
     },
   },
 });

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   Flex,
@@ -26,7 +25,6 @@ const Profile = () => {
     onOpen: onOpenProfile,
     onClose: onCloseProfile,
   } = useDisclosure();
-  const { user } = useSelector((state) => state.auth);
   const { username } = useParams();
   const [loader, setLoader] = useState(false);
   const [userProfile, setUserProfile] = useState(null);

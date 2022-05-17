@@ -48,6 +48,13 @@ const Login = ({ setAuthType }) => {
           duration: 2000,
           isClosable: true,
         });
+      } else {
+        toast({
+          description: `${response.payload.data.errors[0]}`,
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
       }
     } else {
       toast({
