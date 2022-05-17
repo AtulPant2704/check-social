@@ -17,14 +17,14 @@ export const users = [
     avatarUrl: "",
     following: [
       {
-        _id: "79Gk42f9otl",
+        _id: uuid(),
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
         avatarUrl: "",
       },
       {
-        _id: "79Gksh9otl",
+        _id: uuid(),
         firstName: "John",
         lastName: "Doe",
         username: "johndoe",
@@ -32,7 +32,7 @@ export const users = [
           "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
       },
       {
-        _id: "1T6Be1QpLm",
+        _id: uuid(),
         firstName: "Jane",
         lastName: "Doe",
         username: "janedoe",
@@ -42,14 +42,14 @@ export const users = [
     ],
     followers: [
       {
-        _id: "79Gk42f9otl",
+        _id: uuid(),
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
         avatarUrl: "",
       },
       {
-        _id: "1T6Be1QpLm",
+        _id: uuid(),
         firstName: "Jane",
         lastName: "Doe",
         username: "janedoe",
@@ -73,13 +73,14 @@ export const users = [
     avatarUrl: "",
     following: [
       {
-        _id: "79Gksh9pq7",
+        _id: uuid(),
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
         avatarUrl: "",
       },
       {
+        _id: uuid(),
         firstName: "John",
         lastName: "Doe",
         username: "johndoe",
@@ -89,14 +90,14 @@ export const users = [
     ],
     followers: [
       {
-        _id: "79Gksh9pq7",
+        _id: uuid(),
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
         avatarUrl: "",
       },
       {
-        _id: "M1NR81Bzlz",
+        _id: uuid(),
         firstName: "Clement",
         lastName: "Maxwell",
         username: "clement14",
@@ -121,7 +122,7 @@ export const users = [
       "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
     followers: [
       {
-        _id: "79Gksh9pq7",
+        _id: uuid(),
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
@@ -130,14 +131,14 @@ export const users = [
     ],
     following: [
       {
-        _id: "79Gksh9pq7",
+        _id: uuid(),
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
         avatarUrl: "",
       },
       {
-        _id: "LCrc9f0Zl0",
+        _id: uuid(),
         firstName: "Carl",
         lastName: "Smith",
         username: "carlsmith",
@@ -162,7 +163,7 @@ export const users = [
       "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
     following: [
       {
-        _id: "M1NR81Bzlz",
+        _id: uuid(),
         firstName: "Clement",
         lastName: "Maxwell",
         username: "clement14",
@@ -172,7 +173,7 @@ export const users = [
     ],
     followers: [
       {
-        _id: "1T6Be1QpLm",
+        _id: uuid(),
         firstName: "Jane",
         lastName: "Doe",
         username: "janedoe",
@@ -197,7 +198,7 @@ export const users = [
       "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
     followers: [
       {
-        _id: "LCrc9f0Zl0",
+        _id: uuid(),
         firstName: "Carl",
         lastName: "Smith",
         username: "carlsmith",
@@ -207,7 +208,7 @@ export const users = [
     ],
     following: [
       {
-        _id: "79Gk42f9otl",
+        _id: uuid(),
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
@@ -248,14 +249,14 @@ export const users = [
       "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
     followers: [
       {
-        _id: "79Gksh9pq7",
+        _id: uuid(),
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
         avatarUrl: "",
       },
       {
-        _id: "79Gk42f9otl",
+        _id: uuid(),
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
