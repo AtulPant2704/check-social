@@ -13,7 +13,7 @@ import {
 import { MdLogout } from "react-icons/md";
 import { logoutUser } from "redux/slices";
 
-const ProfileCard = ({ onOpenProfile }) => {
+const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -26,14 +26,14 @@ const ProfileCard = ({ onOpenProfile }) => {
   return (
     <Flex flexDirection="column" alignItems="center" mb="8">
       <Avatar
-        name={user.firstName + " " + user.lastName}
-        src={user.avatarUrl}
+        name={userProfile?.firstName + " " + userProfile?.lastName}
+        src={userProfile?.avatarUrl}
         size="2xl"
       ></Avatar>
       <Heading as="h5" size="md">
-        {user.firstName} {user.lastName}
+        {userProfile?.firstName} {userProfile?.lastName}
       </Heading>
-      <Text>@{user.username}</Text>
+      <Text>@{userProfile?.username}</Text>
       <Flex alignItems="center" gap="2">
         <Button my="2" onClick={onOpenProfile}>
           Edit Profile
@@ -45,8 +45,8 @@ const ProfileCard = ({ onOpenProfile }) => {
         ></IconButton>
       </Flex>
       <Text>{user.bio}</Text>
-      <Link href={user.website} isExternal color="brand.500">
-        {user.website}
+      <Link href={userProfile?.website} isExternal color="brand.500">
+        {userProfile?.website}
       </Link>
       <Flex
         gap="4"
@@ -58,19 +58,19 @@ const ProfileCard = ({ onOpenProfile }) => {
       >
         <Box>
           <Heading as="h5" size="md" textAlign="center">
-            2
+            {userProfile?.following.length}
           </Heading>
           <Text>Following</Text>
         </Box>
         <Box>
           <Heading as="h5" size="md" textAlign="center">
-            2
+            {userpostsLength}
           </Heading>
           <Text>Posts</Text>
         </Box>
         <Box>
           <Heading as="h5" size="md" textAlign="center">
-            2
+            {userProfile?.followers.length}
           </Heading>
           <Text>Followers</Text>
         </Box>
