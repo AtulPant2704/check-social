@@ -1,4 +1,5 @@
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Flex,
   Box,
@@ -13,10 +14,16 @@ import {
   MobileNav,
   PostModal,
 } from "components";
+import { getPosts } from "redux/asyncThunks";
 
 const Explore = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
   const { posts, isLoading } = useSelector((state) => state.posts);
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
 
   return (
     <>
@@ -64,7 +71,6 @@ const Explore = () => {
               bottom="0"
               left="0"
               right="0"
-              top="95%"
               h="50px"
               bgColor="black"
               display={{ base: "block", md: "none" }}
