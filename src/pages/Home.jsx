@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Flex, Box, Heading, useDisclosure } from "@chakra-ui/react";
 import {
   SideNav,
@@ -6,9 +8,18 @@ import {
   MobileNav,
   PostModal,
 } from "components";
+import { getPosts } from "redux/asyncThunks";
 
 const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const dispatch = useDispatch();
+  const { posts, isLoading } = useSelector((state) => state.posts);
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, [dispatch]);
+
+  console.log("posts", posts);
 
   return (
     <>
@@ -22,11 +33,9 @@ const Home = () => {
         <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
           <SideNav onOpen={onOpen} />
           <Box>
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
+            {posts.map((post) => (
+              <PostCard key={post._id} post={post} />
+            ))}
           </Box>
           <UsersSidebar />
         </Flex>
