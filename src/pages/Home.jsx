@@ -13,13 +13,19 @@ import { getPosts } from "redux/asyncThunks";
 const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
   const { posts, isLoading } = useSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(getPosts());
   }, [dispatch]);
 
-  // console.log("posts", posts);
+  const userFeed = posts.filter((item) =>
+    user.following.some(
+      (follower) =>
+        follower.username === item.username || user.username === item.username
+    )
+  );
 
   return (
     <>
@@ -33,7 +39,7 @@ const Home = () => {
         <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
           <SideNav onOpen={onOpen} />
           <Box>
-            {posts.map((post) => (
+            {userFeed.map((post) => (
               <PostCard key={post._id} post={post} />
             ))}
           </Box>
