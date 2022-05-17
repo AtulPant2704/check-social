@@ -23,7 +23,7 @@ const UsersSidebar = () => {
 
   const followUserHandler = async (followUserId) => {
     const response = await dispatch(followUser({ followUserId, token }));
-    dispatch(updateUser(response.payload.data.user));
+    dispatch(updateUser(response?.payload.data.user));
   };
 
   useEffect(() => {

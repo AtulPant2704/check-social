@@ -38,10 +38,14 @@ const Profile = () => {
   return (
     <>
       <PostModal isOpen={isOpen} onClose={onClose} />
-      <EditProfileModal
-        isOpenProfile={isOpenProfile}
-        onCloseProfile={onCloseProfile}
-      />
+      {userProfile && (
+        <EditProfileModal
+          isOpenProfile={isOpenProfile}
+          onCloseProfile={onCloseProfile}
+          userProfile={userProfile}
+          setUserProfile={setUserProfile}
+        />
+      )}
       <Box>
         {loader ? (
           <CircularProgress
