@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Flex, Box, Heading, useDisclosure } from "@chakra-ui/react";
 import {
   SideNav,
@@ -16,6 +17,10 @@ const Profile = () => {
     onOpen: onOpenProfile,
     onClose: onCloseProfile,
   } = useDisclosure();
+  const { user } = useSelector((state) => state.auth);
+  const { posts } = useSelector((state) => state.posts);
+
+  const userPosts = posts.filter((post) => post.username === user.username);
 
   return (
     <>
@@ -39,11 +44,12 @@ const Profile = () => {
           <SideNav onOpen={onOpen} />
           <Box>
             <ProfileCard onOpenProfile={onOpenProfile} />
-            <Heading as="h3" size="md" mb="4">Your Posts</Heading>
-            <PostCard />
-            <PostCard />
-            <PostCard />
-            <PostCard />
+            <Heading as="h3" size="md" mb="4">
+              Your Posts
+            </Heading>
+            {userPosts.map((post) => (
+              <PostCard key={post._id} post={post} />
+            ))}
           </Box>
           <UsersSidebar />
         </Flex>
