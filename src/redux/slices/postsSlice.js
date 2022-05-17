@@ -1,14 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getPosts } from "redux/asyncThunks";
 
 const initialState = {
   posts: [],
+  isLoading: false,
 };
 
 const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {},
-  extraReducers: {},
+  extraReducers: {
+    [getPosts.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getPosts.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.posts = action.payload.data.posts;
+      console.log(action);
+    },
+    [getPosts.rejected]: (state, action) => {
+      state.isLoading = false;
+      console.error(action.error.message);
+    },
+  },
 });
 
 export const { reducer: postsReducer } = postsSlice;
