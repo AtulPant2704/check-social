@@ -20,14 +20,14 @@ export const posts = [
     lastName: "Balika",
     createdAt: new Date("Apr 06 2021 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarUrl: "",
     comments: [
       {
         _id: uuid(),
         firstName: "Guest",
         lastName: "Guest123",
         username: "Guest123",
-        avatarURL: "",
+        avatarUrl: "",
         text: "First Comment",
         votes: {
           upvotedBy: [],
@@ -40,7 +40,7 @@ export const posts = [
         firstName: "Jane",
         lastName: "Doe",
         username: "janedoe",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
         text: "Wow!",
         votes: {
@@ -65,7 +65,7 @@ export const posts = [
     lastName: "User",
     createdAt: new Date("Feb 23 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarUrl: "",
     comments: [],
   },
   {
@@ -82,7 +82,7 @@ export const posts = [
     username: "janedoe",
     createdAt: new Date("March 13 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
     comments: [],
   },
@@ -100,7 +100,7 @@ export const posts = [
     lastName: "Balika",
     createdAt: new Date("May 03 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarUrl: "",
     comments: [],
   },
   {
@@ -117,7 +117,7 @@ export const posts = [
     username: "carlsmith",
     createdAt: new Date("April 18 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
     comments: [],
   },
@@ -135,7 +135,7 @@ export const posts = [
     username: "clement14",
     createdAt: new Date("Jan 01 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
     comments: [],
   },
@@ -153,7 +153,7 @@ export const posts = [
     username: "johndoe",
     createdAt: new Date("Dec 15 2020 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
     comments: [],
   },
@@ -171,7 +171,7 @@ export const posts = [
     lastName: "User",
     createdAt: new Date("May 12 2022 10:31:25"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarUrl: "",
     comments: [],
   },
   {
@@ -188,7 +188,7 @@ export const posts = [
     username: "marina27",
     createdAt: new Date("Feb 28 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722233/second_wmzgil.jpg",
     comments: [],
   },
@@ -206,7 +206,7 @@ export const posts = [
     lastName: "Balika",
     createdAt: new Date("April 15 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarUrl: "",
     comments: [],
   },
   {
@@ -223,7 +223,7 @@ export const posts = [
     username: "Guest123",
     createdAt: new Date("September 15 2021 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarUrl: "",
     comments: [],
   },
   {
@@ -241,7 +241,7 @@ export const posts = [
     username: "johndoe",
     createdAt: new Date("October 09 2021 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
     comments: [],
   },
@@ -259,7 +259,7 @@ export const posts = [
     username: "carlsmith",
     createdAt: new Date("November 18 2021 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
     comments: [],
   },
@@ -277,7 +277,7 @@ export const posts = [
     username: "janedoe",
     createdAt: new Date("Jan 19 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
     comments: [],
   },
@@ -297,7 +297,7 @@ export const posts = [
     lastName: "Balika",
     createdAt: new Date("Feb 18 2021 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarUrl: "",
     comments: [],
   },
   {
@@ -314,7 +314,7 @@ export const posts = [
     username: "clement14",
     createdAt: new Date("March 04 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
     comments: [],
   },
@@ -331,7 +331,7 @@ export const posts = [
     username: "marina27",
     createdAt: new Date("December 17 2021 12:31:25"),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722233/second_wmzgil.jpg",
     comments: [],
   },

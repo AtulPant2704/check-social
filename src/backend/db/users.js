@@ -14,21 +14,21 @@ export const users = [
     password: "adarshBalika123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarUrl: "",
     following: [
       {
         _id: "79Gk42f9otl",
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
-        avatarURL: "",
+        avatarUrl: "",
       },
       {
         _id: "79Gksh9otl",
         firstName: "John",
         lastName: "Doe",
         username: "johndoe",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
       },
       {
@@ -36,7 +36,7 @@ export const users = [
         firstName: "Jane",
         lastName: "Doe",
         username: "janedoe",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
       },
     ],
@@ -46,7 +46,7 @@ export const users = [
         firstName: "John",
         lastName: "Doe",
         username: "johndoe123",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
       },
 
@@ -55,7 +55,7 @@ export const users = [
         firstName: "Carl",
         lastName: "Smith",
         username: "carlsmith",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
       },
     ],
@@ -72,20 +72,20 @@ export const users = [
     password: "test123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatarURL: "",
+    avatarUrl: "",
     following: [
       {
         _id: "79Gksh9pq7",
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
-        avatarURL: "",
+        avatarUrl: "",
       },
       {
         firstName: "John",
         lastName: "Doe",
         username: "johndoe",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
       },
     ],
@@ -95,13 +95,13 @@ export const users = [
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
-        avatarURL: "",
+        avatarUrl: "",
       },
       {
         firstName: "John",
         lastName: "Doe",
         username: "johndoe",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
       },
       {
@@ -109,7 +109,7 @@ export const users = [
         firstName: "Jane",
         lastName: "Doe",
         username: "janedoe",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
       },
     ],
@@ -126,7 +126,7 @@ export const users = [
     password: "janedoe123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
     followers: [
       {
@@ -134,13 +134,13 @@ export const users = [
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
-        avatarURL: "",
+        avatarUrl: "",
       },
       {
         firstName: "John",
         lastName: "Doe",
         username: "johndoe",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
       },
     ],
@@ -150,14 +150,14 @@ export const users = [
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
-        avatarURL: "",
+        avatarUrl: "",
       },
       {
         _id: "LCrc9f0Zl0",
         firstName: "Carl",
         lastName: "Smith",
         username: "carlsmith",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
       },
     ],
@@ -174,7 +174,7 @@ export const users = [
     password: "carlsmith123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
     following: [
       {
@@ -182,7 +182,7 @@ export const users = [
         firstName: "Clement",
         lastName: "Maxwell",
         username: "clement14",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
       },
     ],
@@ -192,7 +192,7 @@ export const users = [
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
-        avatarURL: "",
+        avatarUrl: "",
       },
     ],
     bookmarks: [],
@@ -208,14 +208,14 @@ export const users = [
     password: "clement123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
     followers: [
       {
         firstName: "John",
         lastName: "Doe",
         username: "johndoe",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
       },
     ],
@@ -225,7 +225,7 @@ export const users = [
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
-        avatarURL: "",
+        avatarUrl: "",
       },
     ],
     bookmarks: [],
@@ -241,7 +241,7 @@ export const users = [
     password: "marina123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatarURL:
+    avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722233/second_wmzgil.jpg",
     followers: [
       {
@@ -249,7 +249,7 @@ export const users = [
         firstName: "Jane",
         lastName: "Doe",
         username: "janedoe",
-        avatarURL:
+        avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
       },
     ],
