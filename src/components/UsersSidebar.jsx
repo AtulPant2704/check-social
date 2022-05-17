@@ -12,13 +12,19 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { AiOutlinePlus } from "react-icons/ai";
-import { getUsers } from "redux/asyncThunks";
+import { getUsers, followUser } from "redux/asyncThunks";
+import { updateUser } from "redux/slices";
 
 const UsersSidebar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.users);
-  const { user } = useSelector((state) => state.auth);
+  const { user, token } = useSelector((state) => state.auth);
+
+  const followUserHandler = async (followUserId) => {
+    const response = await dispatch(followUser({ followUserId, token }));
+    dispatch(updateUser(response.payload.data.user));
+  };
 
   useEffect(() => {
     dispatch(getUsers());
@@ -67,6 +73,7 @@ const UsersSidebar = () => {
                 leftIcon={<AiOutlinePlus color="white" />}
                 p="2"
                 fontSize="14"
+                onClick={() => followUserHandler(user._id)}
               >
                 Follow
               </Button>

@@ -11,16 +11,22 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { MdLogout } from "react-icons/md";
-import { logoutUser } from "redux/slices";
+import { logoutUser, updateUser } from "redux/slices";
+import { followUser } from "redux/asyncThunks";
 
 const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { user, token } = useSelector((state) => state.auth);
 
   const logoutHandler = () => {
     dispatch(logoutUser());
     navigate("/");
+  };
+
+  const followUserHandler = async (followUserId) => {
+    const response = await dispatch(followUser({ followUserId, token }));
+    dispatch(updateUser(response.payload.data.user));
   };
 
   return (
@@ -52,7 +58,9 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
           Unfollow
         </Button>
       ) : (
-        <Button my="2">Follow</Button>
+        <Button my="2" onClick={() => followUserHandler(userProfile._id)}>
+          Follow
+        </Button>
       )}
       <Text>{user.bio}</Text>
       <Link href={userProfile?.website} isExternal color="brand.500">
