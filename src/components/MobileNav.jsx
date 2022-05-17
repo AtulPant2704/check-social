@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ListItem, UnorderedList, ListIcon } from "@chakra-ui/react";
 import { FaHome, FaUserCircle } from "react-icons/fa";
@@ -8,6 +9,7 @@ import { IoMdAddCircle } from "react-icons/io";
 const MobileNav = ({ onOpen }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <UnorderedList
@@ -45,8 +47,8 @@ const MobileNav = ({ onOpen }) => {
       <ListItem
         cursor="pointer"
         fontSize="25px"
-        onClick={() => navigate("/profile")}
-        color={`${pathname === "/profile" ? "brand.500" : "white"}`}
+        onClick={() => navigate(`/profile/${user.username}`)}
+        color={`${pathname.includes("/profile") ? "brand.500" : "white"}`}
       >
         <ListIcon as={FaUserCircle} />
       </ListItem>
