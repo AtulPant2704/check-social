@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Heading,
   Flex,
@@ -21,6 +22,8 @@ import { CommentCard } from "./CommentCard";
 import { CommentInput } from "./CommentInput";
 
 const PostCard = ({ post }) => {
+  const navigate = useNavigate();
+
   return (
     <Flex
       flexDirection="column"
@@ -32,7 +35,12 @@ const PostCard = ({ post }) => {
     >
       {/* Avatar and Name */}
       <Flex justifyContent="space-between">
-        <Flex gap="2" alignItems="center">
+        <Flex
+          gap="2"
+          alignItems="center"
+          cursor="pointer"
+          onClick={() => navigate(`/profile/${post.username}`)}
+        >
           <Avatar
             name={post.firstName + " " + post.lastName}
             src={post.avatarUrl}

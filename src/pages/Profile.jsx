@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {
   Flex,
   Box,
@@ -16,7 +16,7 @@ import {
   ProfileCard,
   EditProfileModal,
 } from "components";
-import { getPosts } from "redux/asyncThunks";
+import { getSingleUser, getUserPosts } from "services";
 
 const Profile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,25 +25,29 @@ const Profile = () => {
     onOpen: onOpenProfile,
     onClose: onCloseProfile,
   } = useDisclosure();
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
-  const { posts, isLoading } = useSelector((state) => state.posts);
+  const { username } = useParams();
+  const [loader, setLoader] = useState(false);
+  const [userProfile, setUserProfile] = useState(null);
+  const [userPosts, setUserPosts] = useState(null);
 
   useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
-
-  const userPosts = posts.filter((post) => post.username === user.username);
+    getSingleUser(setUserProfile, username, setLoader);
+    getUserPosts(setUserPosts, username, setLoader);
+  }, [username]);
 
   return (
     <>
       <PostModal isOpen={isOpen} onClose={onClose} />
-      <EditProfileModal
-        isOpenProfile={isOpenProfile}
-        onCloseProfile={onCloseProfile}
-      />
+      {userProfile && (
+        <EditProfileModal
+          isOpenProfile={isOpenProfile}
+          onCloseProfile={onCloseProfile}
+          userProfile={userProfile}
+          setUserProfile={setUserProfile}
+        />
+      )}
       <Box>
-        {isLoading ? (
+        {loader ? (
           <CircularProgress
             isIndeterminate
             color="brand.500"
@@ -67,18 +71,22 @@ const Profile = () => {
             </Flex>
             <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
               <SideNav onOpen={onOpen} />
-              <Box>
-                <ProfileCard onOpenProfile={onOpenProfile} />
+              <Box maxW="60%">
+                <ProfileCard
+                  onOpenProfile={onOpenProfile}
+                  userProfile={userProfile}
+                  userpostsLength={userPosts?.length}
+                />
                 <Heading as="h3" size="md" mb="4">
                   Your Posts
                 </Heading>
-                {userPosts.length !== 0 ? (
-                  userPosts.map((post) => (
+                {userPosts?.length !== 0 ? (
+                  userPosts?.map((post) => (
                     <PostCard key={post._id} post={post} />
                   ))
                 ) : (
                   <Box>
-                    <Heading as="h3" size="md" testAlign="center">
+                    <Heading as="h3" size="md" textAlign="center">
                       Nothing has been posted by your yet, Start posting and
                       make friends.
                     </Heading>

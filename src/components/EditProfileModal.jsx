@@ -20,57 +20,74 @@ import {
 } from "@chakra-ui/react";
 import { AiFillCamera } from "react-icons/ai";
 import { editUser } from "redux/asyncThunks";
+import { updateUser, setLoading } from "redux/slices";
+import { saveAvatarToCloudinary } from "services";
 
-const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
+const EditProfileModal = ({
+  isOpenProfile,
+  onCloseProfile,
+  userProfile,
+  setUserProfile,
+}) => {
   const dispatch = useDispatch();
   const toast = useToast();
-  const { user, token } = useSelector((state) => state.auth);
-  const [userData, setUserData] = useState({
-    avatarUrl: user.avatarUrl || "",
-    website: user.website || "",
-    bio: user.bio || "",
-  });
+  const { token, isLoading } = useSelector((state) => state.auth);
+  const initialUserData = { ...userProfile, avatarUrl: "", avatarFile: {} };
+  const [userData, setUserData] = useState(initialUserData);
+
+  let reader = new FileReader();
 
   const inputHandler = (e) => {
     const { name, value } = e.target;
     setUserData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const saveAvatarToCloudinary = async (avatar) => {
-    try {
-      const data = new FormData();
-      data.append("file", avatar);
-      data.append("upload_preset", "tn3ynknq");
-      const requestOptions = {
-        method: "POST",
-        body: data,
-      };
-      await fetch(
-        "https://api.cloudinary.com/v1_1/check-social/image/upload",
-        requestOptions
-      )
-        .then((response) => response.json())
-        .then((json) => {
-          setUserData((prev) => ({ ...prev, avatarUrl: json.url }));
-        })
-        .catch((error) => {
-          console.error(error);
+  const addProfileImageHandler = (e) => {
+    reader.readAsDataURL(e.target.files[0]);
+    reader.onload = () => {
+      if (reader.readyState === 2) {
+        setUserData({
+          ...userData,
+          avatarUrl: reader.result,
+          avatarFile: e.target.files[0],
         });
-    } catch (error) {
-      console.error(error);
-    }
+      }
+    };
   };
 
   const editUserHandler = async () => {
-    const response = await dispatch(editUser({ userData, token }));
-    if (response.status === 201) {
+    if (userData.avatarUrl !== "") {
+      dispatch(setLoading());
+      await saveAvatarToCloudinary(userData.avatarFile, setUserData);
+    }
+    const data = {
+      avatarUrl: userData.avatarUrl || userProfile?.avatarUrl,
+      website: userData.website,
+      bio: userData.bio,
+    };
+    const response = await dispatch(editUser({ userData: data, token }));
+    if (response?.payload.status === 201) {
+      setUserProfile(response.payload.data.user);
+      dispatch(updateUser(response.payload.data.user));
       toast({
         description: "Profile updated successfully",
         status: "success",
         duration: 2000,
         isClosable: true,
       });
+    } else {
+      toast({
+        description: `${response.payload.data.errors[0]}`,
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
     }
+    onCloseProfile();
+  };
+
+  const closeHandler = () => {
+    setUserData(null);
     onCloseProfile();
   };
 
@@ -79,14 +96,14 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
       <ModalOverlay />
       <ModalContent>
         <ModalHeader>Edit Profile</ModalHeader>
-        <ModalCloseButton />
+        <ModalCloseButton onClick={closeHandler} />
         <ModalBody>
           <Flex gap="10" mb="2">
             <Text>Avatar</Text>
             <Box position="relative">
               <Avatar
-                name={user.firstName + " " + user.lastName}
-                src={user.avatarUrl}
+                name={userData?.firstName + " " + userData?.lastName}
+                src={userData?.avatarUrl || userProfile?.avatarUrl}
                 size="md"
               ></Avatar>
               <Box position="absolute" top="54%" left="59%">
@@ -98,7 +115,7 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
                     bgColor="red.100"
                     p="0"
                     visibility="hidden"
-                    onChange={(e) => saveAvatarToCloudinary(e.target.files[0])}
+                    onChange={addProfileImageHandler}
                   />
                   <AiFillCamera fontSize="20px" color="white" />
                 </FormLabel>
@@ -108,12 +125,12 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
           <Flex gap="10" mb="2">
             <Text>Name</Text>
             <Text>
-              {user.firstName} {user.lastName}
+              {userData?.firstName} {userData?.lastName}
             </Text>
           </Flex>
           <Flex gap="3" mb="2">
             <Text>Username</Text>
-            <Text>@{user.username}</Text>
+            <Text>@{userData?.username}</Text>
           </Flex>
           <Flex gap="6" mb="2">
             <Text>Website</Text>
@@ -123,7 +140,7 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
               size="sm"
               borderRadius="8"
               name="website"
-              value={userData.website}
+              value={userData?.website}
               onChange={inputHandler}
             ></Input>
           </Flex>
@@ -136,13 +153,15 @@ const EditProfileModal = ({ isOpenProfile, onCloseProfile }) => {
                 borderColor: "brand.400",
               }}
               name="bio"
-              value={userData.bio}
+              value={userData?.bio}
               onChange={inputHandler}
             ></Textarea>
           </Flex>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={editUserHandler}>Update</Button>
+          <Button isLoading={isLoading} onClick={editUserHandler}>
+            Update
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

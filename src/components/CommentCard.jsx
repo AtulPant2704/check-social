@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
   Heading,
   Flex,
@@ -18,16 +19,25 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 const CommentCard = ({ comment }) => {
+  const navigate = useNavigate();
+
   return (
     <Flex gap="2">
       <Avatar
         name={comment.firstName + " " + comment.lastName}
         src={comment.avatarUrl}
         size="sm"
+        cursor="pointer"
+        onClick={() => navigate(`/profile/${comment.username}`)}
       />
       <Flex justifyContent="space-between" width="100%">
         <Box>
-          <Heading as="h5" size="sm">
+          <Heading
+            as="h5"
+            size="sm"
+            cursor="pointer"
+            onClick={() => navigate(`/profile/${comment.username}`)}
+          >
             {comment.firstName} {comment.lastName}
           </Heading>
           <Text>{comment.text}</Text>

@@ -59,7 +59,7 @@ const Home = () => {
             <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
               <SideNav onOpen={onOpen} />
               {userFeed.length !== 0 ? (
-                <Box>
+                <Box maxW="60%">
                   {userFeed.map((post) => (
                     <PostCard key={post._id} post={post} />
                   ))}

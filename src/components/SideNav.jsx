@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   Heading,
@@ -14,6 +15,7 @@ import { MdOutlineExplore } from "react-icons/md";
 const SideNav = ({ onOpen }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <Box
@@ -61,8 +63,8 @@ const SideNav = ({ onOpen }) => {
           fontSize="20px"
           fontWeight="bold"
           my="2"
-          color={`${pathname === "/profile" ? "brand.500" : "black"}`}
-          onClick={() => navigate("/profile")}
+          color={`${pathname.includes("/profile") ? "brand.500" : "black"}`}
+          onClick={() => navigate(`/profile/${user.username}`)}
         >
           <ListIcon as={FaUserCircle} />
           Profile
