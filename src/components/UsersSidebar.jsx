@@ -16,12 +16,17 @@ import { getUsers } from "redux/asyncThunks";
 const UsersSidebar = () => {
   const dispatch = useDispatch();
   const { users, isLoading } = useSelector((state) => state.users);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
 
-  console.log("users", users);
+  const otherUsers = users.filter((item) => item.username !== user.username);
+
+  const nonFollowers = otherUsers.filter((item) =>
+    item.followers.every((follower) => follower.username !== user.username)
+  );
 
   return (
     <Box
@@ -38,7 +43,7 @@ const UsersSidebar = () => {
         Suggested Users
       </Heading>
       <UnorderedList listStyleType="none" w="100%" mt="4">
-        {users.map((user) => (
+        {nonFollowers.map((user) => (
           <ListItem key={user._id} mb="2">
             <Flex gap="4" alignItems="center">
               <Avatar

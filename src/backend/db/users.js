@@ -42,21 +42,19 @@ export const users = [
     ],
     followers: [
       {
-        _id: "79Gksh9otl",
-        firstName: "John",
-        lastName: "Doe",
-        username: "johndoe123",
-        avatarUrl:
-          "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
+        _id: "79Gk42f9otl",
+        firstName: "Guest",
+        lastName: "User",
+        username: "Guest123",
+        avatarUrl: "",
       },
-
       {
-        _id: "LCrc9f0Zl0",
-        firstName: "Carl",
-        lastName: "Smith",
-        username: "carlsmith",
+        _id: "1T6Be1QpLm",
+        firstName: "Jane",
+        lastName: "Doe",
+        username: "janedoe",
         avatarUrl:
-          "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
+          "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
       },
     ],
     bookmarks: [],
@@ -98,19 +96,12 @@ export const users = [
         avatarUrl: "",
       },
       {
-        firstName: "John",
-        lastName: "Doe",
-        username: "johndoe",
+        _id: "M1NR81Bzlz",
+        firstName: "Clement",
+        lastName: "Maxwell",
+        username: "clement14",
         avatarUrl:
-          "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
-      },
-      {
-        _id: "1T6Be1QpLm",
-        firstName: "Jane",
-        lastName: "Doe",
-        username: "janedoe",
-        avatarUrl:
-          "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+          "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
       },
     ],
     bookmarks: [],
@@ -135,13 +126,6 @@ export const users = [
         lastName: "Balika",
         username: "adarshbalika",
         avatarUrl: "",
-      },
-      {
-        firstName: "John",
-        lastName: "Doe",
-        username: "johndoe",
-        avatarUrl:
-          "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
       },
     ],
     following: [
@@ -188,11 +172,12 @@ export const users = [
     ],
     followers: [
       {
-        _id: "79Gksh9pq7",
-        firstName: "Adarsh",
-        lastName: "Balika",
-        username: "adarshbalika",
-        avatarUrl: "",
+        _id: "1T6Be1QpLm",
+        firstName: "Jane",
+        lastName: "Doe",
+        username: "janedoe",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
       },
     ],
     bookmarks: [],
@@ -212,11 +197,12 @@ export const users = [
       "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
     followers: [
       {
-        firstName: "John",
-        lastName: "Doe",
-        username: "johndoe",
+        _id: "LCrc9f0Zl0",
+        firstName: "Carl",
+        lastName: "Smith",
+        username: "carlsmith",
         avatarUrl:
-          "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
+          "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
       },
     ],
     following: [
@@ -243,14 +229,37 @@ export const users = [
     updatedAt: formatDate(),
     avatarUrl:
       "https://res.cloudinary.com/check-social/image/upload/v1652722233/second_wmzgil.jpg",
+    followers: [],
+    following: [],
+    bookmarks: [],
+    bio: "I am sixth user",
+    portfolio: "https://www.google.co.in/",
+  },
+  /*********************************************7*****************************************/
+  {
+    _id: "qq8abrfEeXd",
+    firstName: "John",
+    lastName: "Doe",
+    username: "johndoe",
+    password: "johndoe123",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+    avatarUrl:
+      "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
     followers: [
       {
-        _id: "1T6Be1QpLm",
-        firstName: "Jane",
-        lastName: "Doe",
-        username: "janedoe",
-        avatarUrl:
-          "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        _id: "79Gksh9pq7",
+        firstName: "Adarsh",
+        lastName: "Balika",
+        username: "adarshbalika",
+        avatarUrl: "",
+      },
+      {
+        _id: "79Gk42f9otl",
+        firstName: "Guest",
+        lastName: "User",
+        username: "Guest123",
+        avatarUrl: "",
       },
     ],
     following: [],
