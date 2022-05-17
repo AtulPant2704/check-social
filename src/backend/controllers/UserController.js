@@ -307,7 +307,7 @@ export const unfollowUserHandler = function (schema, request) {
     return new Response(
       200,
       {},
-      { user: updatedUser, followUser: updatedFollowUser }
+      { user: updatedUser, followUser: updatedFollowUser, users: this.db.users }
     );
   } catch (error) {
     return new Response(
