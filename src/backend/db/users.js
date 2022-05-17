@@ -1,4 +1,3 @@
-import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 /**
  * User Database can be added here.
@@ -17,14 +16,14 @@ export const users = [
     avatarUrl: "",
     following: [
       {
-        _id: uuid(),
+        _id: "79Gk42f9otl",
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
         avatarUrl: "",
       },
       {
-        _id: uuid(),
+        _id: "qq8abrfEeXd",
         firstName: "John",
         lastName: "Doe",
         username: "johndoe",
@@ -32,7 +31,7 @@ export const users = [
           "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
       },
       {
-        _id: uuid(),
+        _id: "1T6Be1QpLm",
         firstName: "Jane",
         lastName: "Doe",
         username: "janedoe",
@@ -42,14 +41,14 @@ export const users = [
     ],
     followers: [
       {
-        _id: uuid(),
+        _id: "79Gk42f9otl",
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
         avatarUrl: "",
       },
       {
-        _id: uuid(),
+        _id: "1T6Be1QpLm",
         firstName: "Jane",
         lastName: "Doe",
         username: "janedoe",
@@ -73,14 +72,14 @@ export const users = [
     avatarUrl: "",
     following: [
       {
-        _id: uuid(),
+        _id: "79Gksh9pq7",
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
         avatarUrl: "",
       },
       {
-        _id: uuid(),
+        _id: "qq8abrfEeXd",
         firstName: "John",
         lastName: "Doe",
         username: "johndoe",
@@ -90,14 +89,14 @@ export const users = [
     ],
     followers: [
       {
-        _id: uuid(),
+        _id: "79Gksh9pq7",
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
         avatarUrl: "",
       },
       {
-        _id: uuid(),
+        _id: "M1NR81Bzlz",
         firstName: "Clement",
         lastName: "Maxwell",
         username: "clement14",
@@ -122,7 +121,7 @@ export const users = [
       "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
     followers: [
       {
-        _id: uuid(),
+        _id: "79Gksh9pq7",
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
@@ -131,14 +130,14 @@ export const users = [
     ],
     following: [
       {
-        _id: uuid(),
+        _id: "79Gksh9pq7",
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
         avatarUrl: "",
       },
       {
-        _id: uuid(),
+        _id: "LCrc9f0Zl0",
         firstName: "Carl",
         lastName: "Smith",
         username: "carlsmith",
@@ -163,7 +162,7 @@ export const users = [
       "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
     following: [
       {
-        _id: uuid(),
+        _id: "M1NR81Bzlz",
         firstName: "Clement",
         lastName: "Maxwell",
         username: "clement14",
@@ -173,7 +172,7 @@ export const users = [
     ],
     followers: [
       {
-        _id: uuid(),
+        _id: "1T6Be1QpLm",
         firstName: "Jane",
         lastName: "Doe",
         username: "janedoe",
@@ -198,7 +197,7 @@ export const users = [
       "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
     followers: [
       {
-        _id: uuid(),
+        _id: "LCrc9f0Zl0",
         firstName: "Carl",
         lastName: "Smith",
         username: "carlsmith",
@@ -208,7 +207,7 @@ export const users = [
     ],
     following: [
       {
-        _id: uuid(),
+        _id: "79Gk42f9otl",
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
@@ -249,14 +248,14 @@ export const users = [
       "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
     followers: [
       {
-        _id: uuid(),
+        _id: "79Gksh9pq7",
         firstName: "Adarsh",
         lastName: "Balika",
         username: "adarshbalika",
         avatarUrl: "",
       },
       {
-        _id: uuid(),
+        _id: "79Gk42f9otl",
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
