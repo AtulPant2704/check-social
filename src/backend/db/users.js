@@ -246,7 +246,7 @@ export const users = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
     avatarUrl:
-      "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+      "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
     followers: [
       {
         _id: uuid(),
