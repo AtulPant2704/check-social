@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { RequiresAuth } from "./RequiresAuth";
-import { Landing, Home, Profile } from "pages";
+import { Landing, Home, Profile, Explore } from "pages";
 import "./App.css";
 
 function App() {
@@ -21,6 +21,14 @@ function App() {
           element={
             <RequiresAuth>
               <Profile />
+            </RequiresAuth>
+          }
+        />
+        <Route
+          path="/explore"
+          element={
+            <RequiresAuth>
+              <Explore />
             </RequiresAuth>
           }
         />

@@ -41,6 +41,7 @@ const SideNav = ({ onOpen }) => {
           fontWeight="bold"
           my="2"
           color={`${pathname === "/explore" ? "brand.500" : "black"}`}
+          onClick={() => navigate("/explore")}
         >
           <ListIcon as={MdOutlineExplore} />
           Explore
