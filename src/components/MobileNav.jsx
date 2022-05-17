@@ -16,18 +16,19 @@ const MobileNav = ({ onOpen }) => {
       justifyContent="space-around"
       alignItems="center"
     >
-      <ListItem>
-        <ListIcon
-          as={FaHome}
-          fontSize="25px"
-          color={`${pathname === "/home" ? "brand.500" : "white"}`}
-          onClick={() => navigate("/home")}
-        />
+      <ListItem
+        cursor="pointer"
+        fontSize="25px"
+        color={`${pathname === "/home" ? "brand.500" : "white"}`}
+        onClick={() => navigate("/home")}
+      >
+        <ListIcon as={FaHome} />
       </ListItem>
       <ListItem
         cursor="pointer"
         fontSize="25px"
         color={`${pathname === "/explore" ? "brand.500" : "white"}`}
+        onClick={() => navigate("/explore")}
       >
         <ListIcon as={MdOutlineExplore} />
       </ListItem>

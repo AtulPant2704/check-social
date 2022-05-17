@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   Flex,
   Box,
@@ -14,23 +13,10 @@ import {
   MobileNav,
   PostModal,
 } from "components";
-import { getPosts } from "redux/asyncThunks";
 
-const Home = () => {
+const Explore = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
   const { posts, isLoading } = useSelector((state) => state.posts);
-
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
-
-  const userFeed = posts.filter(
-    (item) =>
-      user.username === item.username ||
-      user.following.some((follower) => follower.username === item.username)
-  );
 
   return (
     <>
@@ -58,17 +44,16 @@ const Home = () => {
             </Flex>
             <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
               <SideNav onOpen={onOpen} />
-              {userFeed.length !== 0 ? (
+              {posts.length !== 0 ? (
                 <Box>
-                  {userFeed.map((post) => (
+                  {posts.map((post) => (
                     <PostCard key={post._id} post={post} />
                   ))}
                 </Box>
               ) : (
                 <Flex w="50rem" justifyContent="center" alignItems="center">
                   <Heading as="h3" size="md" textAlign="center">
-                    No posts to display, start following other users to update
-                    your feed.
+                    No posts to display.
                   </Heading>
                 </Flex>
               )}
@@ -79,6 +64,7 @@ const Home = () => {
               bottom="0"
               left="0"
               right="0"
+              top="95%"
               h="50px"
               bgColor="black"
               display={{ base: "block", md: "none" }}
@@ -93,4 +79,4 @@ const Home = () => {
   );
 };
 
-export { Home };
+export { Explore };

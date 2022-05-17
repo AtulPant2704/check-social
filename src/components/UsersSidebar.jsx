@@ -15,7 +15,7 @@ import { getUsers } from "redux/asyncThunks";
 
 const UsersSidebar = () => {
   const dispatch = useDispatch();
-  const { users, isLoading } = useSelector((state) => state.users);
+  const { users } = useSelector((state) => state.users);
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
