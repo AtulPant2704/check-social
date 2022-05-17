@@ -17,7 +17,6 @@ const usersSlice = createSlice({
     [getUsers.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.users = action.payload.data.users;
-      console.log(action);
     },
     [getUsers.rejected]: (state, action) => {
       state.isLoading = false;

@@ -17,7 +17,6 @@ const postsSlice = createSlice({
     [getPosts.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.posts = action.payload.data.posts;
-      console.log(action);
     },
     [getPosts.rejected]: (state, action) => {
       state.isLoading = false;

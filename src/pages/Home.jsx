@@ -19,7 +19,7 @@ const Home = () => {
     dispatch(getPosts());
   }, [dispatch]);
 
-  console.log("posts", posts);
+  // console.log("posts", posts);
 
   return (
     <>
