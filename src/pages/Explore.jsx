@@ -52,7 +52,7 @@ const Explore = () => {
             <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
               <SideNav onOpen={onOpen} />
               {posts.length !== 0 ? (
-                <Box>
+                <Box maxW="60%">
                   {posts.map((post) => (
                     <PostCard key={post._id} post={post} />
                   ))}

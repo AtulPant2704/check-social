@@ -37,51 +37,55 @@ const UsersSidebar = () => {
   );
 
   return (
-    <Box
-      position="sticky"
-      top="16px"
-      display={{ base: "none", lg: "block" }}
-      bgColor="gray.200"
-      h="fit-content"
-      minW="fit-content"
-      p="4"
-      borderRadius="8"
-    >
-      <Heading as="h3" size="md">
-        Suggested Users
-      </Heading>
-      <UnorderedList listStyleType="none" w="100%" mt="4">
-        {nonFollowers.map((user) => (
-          <ListItem key={user._id} mb="2">
-            <Flex gap="4" alignItems="center">
-              <Avatar
-                name={user.firstName + " " + user.lastName}
-                src={user.avatarUrl}
-                cursor="pointer"
-                onClick={() => navigate(`/profile/${user.username}`)}
-              />
-              <Box
-                cursor="pointer"
-                onClick={() => navigate(`/profile/${user.username}`)}
-              >
-                <Heading as="h4" size="sm">
-                  {user.firstName} {user.lastName}
-                </Heading>
-                <Text>@{user.username}</Text>
-              </Box>
-              <Button
-                leftIcon={<AiOutlinePlus color="white" />}
-                p="2"
-                fontSize="14"
-                onClick={() => followUserHandler(user._id)}
-              >
-                Follow
-              </Button>
-            </Flex>
-          </ListItem>
-        ))}
-      </UnorderedList>
-    </Box>
+    <>
+      {nonFollowers.length !== 0 ? (
+        <Box
+          position="sticky"
+          top="16px"
+          display={{ base: "none", lg: "block" }}
+          bgColor="gray.200"
+          h="fit-content"
+          minW="fit-content"
+          p="4"
+          borderRadius="8"
+        >
+          <Heading as="h3" size="md">
+            Suggested Users
+          </Heading>
+          <UnorderedList listStyleType="none" w="100%" mt="4">
+            {nonFollowers.map((user) => (
+              <ListItem key={user._id} mb="2">
+                <Flex gap="4" alignItems="center">
+                  <Avatar
+                    name={user.firstName + " " + user.lastName}
+                    src={user.avatarUrl}
+                    cursor="pointer"
+                    onClick={() => navigate(`/profile/${user.username}`)}
+                  />
+                  <Box
+                    cursor="pointer"
+                    onClick={() => navigate(`/profile/${user.username}`)}
+                  >
+                    <Heading as="h4" size="sm">
+                      {user.firstName} {user.lastName}
+                    </Heading>
+                    <Text>@{user.username}</Text>
+                  </Box>
+                  <Button
+                    leftIcon={<AiOutlinePlus color="white" />}
+                    p="2"
+                    fontSize="14"
+                    onClick={() => followUserHandler(user._id)}
+                  >
+                    Follow
+                  </Button>
+                </Flex>
+              </ListItem>
+            ))}
+          </UnorderedList>
+        </Box>
+      ) : null}
+    </>
   );
 };
 

@@ -71,7 +71,7 @@ const Profile = () => {
             </Flex>
             <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
               <SideNav onOpen={onOpen} />
-              <Box>
+              <Box maxW="60%">
                 <ProfileCard
                   onOpenProfile={onOpenProfile}
                   userProfile={userProfile}
