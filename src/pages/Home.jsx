@@ -1,6 +1,12 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Flex, Box, Heading, useDisclosure } from "@chakra-ui/react";
+import {
+  Flex,
+  Box,
+  Heading,
+  CircularProgress,
+  useDisclosure,
+} from "@chakra-ui/react";
 import {
   SideNav,
   PostCard,
@@ -20,42 +26,69 @@ const Home = () => {
     dispatch(getPosts());
   }, [dispatch]);
 
-  const userFeed = posts.filter((item) =>
-    user.following.some(
-      (follower) =>
-        follower.username === item.username || user.username === item.username
-    )
+  const userFeed = posts.filter(
+    (item) =>
+      user.username === item.username ||
+      user.following.some((follower) => follower.username === item.username)
   );
 
   return (
     <>
       <PostModal isOpen={isOpen} onClose={onClose} />
-      <Box>
-        <Flex justifyContent="center" bgColor="gray.200">
-          <Heading color="brand.500" display={{ base: "block", md: "none" }}>
-            CheckSocial
-          </Heading>
-        </Flex>
-        <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
-          <SideNav onOpen={onOpen} />
-          <Box>
-            {userFeed.map((post) => (
-              <PostCard key={post._id} post={post} />
-            ))}
-          </Box>
-          <UsersSidebar />
-        </Flex>
-        <Box
-          position="sticky"
-          bottom="0"
-          left="0"
-          right="0"
-          bgColor="black"
-          display={{ base: "block", md: "none" }}
-          zIndex="2"
-        >
-          <MobileNav onOpen={onOpen} />
-        </Box>
+      <Box h="100%">
+        {isLoading ? (
+          <CircularProgress
+            isIndeterminate
+            color="brand.500"
+            position="fixed"
+            top="50%"
+            left="50%"
+            size="80px"
+            thickness="10px"
+          />
+        ) : (
+          <>
+            <Flex justifyContent="center" bgColor="gray.200">
+              <Heading
+                color="brand.500"
+                display={{ base: "block", md: "none" }}
+              >
+                CheckSocial
+              </Heading>
+            </Flex>
+            <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
+              <SideNav onOpen={onOpen} />
+              {userFeed.length !== 0 ? (
+                <Box>
+                  {userFeed.map((post) => (
+                    <PostCard key={post._id} post={post} />
+                  ))}
+                </Box>
+              ) : (
+                <Flex w="50rem" justifyContent="center" alignItems="center">
+                  <Heading as="h3" size="md" textAlign="center">
+                    No posts to display, start following other users to update
+                    your feed.
+                  </Heading>
+                </Flex>
+              )}
+              <UsersSidebar />
+            </Flex>
+            <Box
+              position="sticky"
+              bottom="0"
+              left="0"
+              right="0"
+              top="95%"
+              h="50px"
+              bgColor="black"
+              display={{ base: "block", md: "none" }}
+              zIndex="2"
+            >
+              <MobileNav onOpen={onOpen} />
+            </Box>
+          </>
+        )}
       </Box>
     </>
   );

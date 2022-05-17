@@ -12,7 +12,6 @@ const MobileNav = ({ onOpen }) => {
   return (
     <UnorderedList
       listStyleType="none"
-      h="50px"
       display="flex"
       justifyContent="space-around"
       alignItems="center"
