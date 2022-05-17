@@ -17,6 +17,9 @@ const authSlice = createSlice({
       localStorage.removeItem("user");
       localStorage.removeItem("token");
     },
+    updateUser: (state, action) => {
+      state.user = action.payload;
+    },
   },
   extraReducers: {
     [loginUser.pending]: (state) => {
@@ -57,5 +60,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { logoutUser } = authSlice.actions;
+export const { logoutUser, updateUser } = authSlice.actions;
 export const { reducer: authReducer } = authSlice;
