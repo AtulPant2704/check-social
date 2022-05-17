@@ -34,16 +34,26 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
         {userProfile?.firstName} {userProfile?.lastName}
       </Heading>
       <Text>@{userProfile?.username}</Text>
-      <Flex alignItems="center" gap="2">
-        <Button my="2" onClick={onOpenProfile}>
-          Edit Profile
+      {userProfile?.username === user.username ? (
+        <Flex alignItems="center" gap="2">
+          <Button my="2" onClick={onOpenProfile}>
+            Edit Profile
+          </Button>
+          <IconButton
+            variant="outline"
+            icon={<MdLogout />}
+            onClick={logoutHandler}
+          ></IconButton>
+        </Flex>
+      ) : user.followers.some(
+          (item) => item.username === userProfile?.username
+        ) ? (
+        <Button variant="outline" my="2">
+          Unfollow
         </Button>
-        <IconButton
-          variant="outline"
-          icon={<MdLogout />}
-          onClick={logoutHandler}
-        ></IconButton>
-      </Flex>
+      ) : (
+        <Button my="2">Follow</Button>
+      )}
       <Text>{user.bio}</Text>
       <Link href={userProfile?.website} isExternal color="brand.500">
         {userProfile?.website}
