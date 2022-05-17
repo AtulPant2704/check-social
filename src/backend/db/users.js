@@ -58,7 +58,7 @@ export const users = [
     ],
     bookmarks: [],
     bio: "I am the first user",
-    portfolio: "https://adarshbalika.netlify.app/",
+    website: "https://adarshbalika.netlify.app/",
   },
   /*****************************************2*******************************************/
   {
@@ -106,7 +106,7 @@ export const users = [
     ],
     bookmarks: [],
     bio: "I am the second user",
-    portfolio: "https://www.google.co.in/",
+    website: "https://www.google.co.in/",
   },
   /*******************************************3****************************************************/
   {
@@ -147,7 +147,7 @@ export const users = [
     ],
     bookmarks: [],
     bio: "I am third user",
-    portfolio: "https://www.google.co.in/",
+    website: "https://www.google.co.in/",
   },
   /**************************************************4**************************************************/
   {
@@ -182,7 +182,7 @@ export const users = [
     ],
     bookmarks: [],
     bio: "I am fourth user",
-    portfolio: "https://www.google.co.in/",
+    website: "https://www.google.co.in/",
   },
   /*******************************************5*******************************************/
   {
@@ -216,7 +216,7 @@ export const users = [
     ],
     bookmarks: [],
     bio: "I am fifth user",
-    portfolio: "https://www.google.co.in/",
+    website: "https://www.google.co.in/",
   },
   /*********************************************6*****************************************/
   {
@@ -233,7 +233,7 @@ export const users = [
     following: [],
     bookmarks: [],
     bio: "I am sixth user",
-    portfolio: "https://www.google.co.in/",
+    website: "https://www.google.co.in/",
   },
   /*********************************************7*****************************************/
   {
@@ -265,6 +265,6 @@ export const users = [
     following: [],
     bookmarks: [],
     bio: "I am sixth user",
-    portfolio: "https://www.google.co.in/",
+    website: "https://www.google.co.in/",
   },
 ];
