@@ -40,15 +40,16 @@ const MobileNav = ({ onOpen }) => {
       <ListItem
         cursor="pointer"
         fontSize="25px"
-        color={`${pathname === "/bookmark" ? "brand.500" : "white"}`}
+        color={`${pathname === "/bookmarks" ? "brand.500" : "white"}`}
+        onClick={() => navigate("/bookmarks")}
       >
         <ListIcon as={BsFillBookmarkFill} />
       </ListItem>
       <ListItem
         cursor="pointer"
         fontSize="25px"
-        onClick={() => navigate(`/profile/${user.username}`)}
         color={`${pathname.includes("/profile") ? "brand.500" : "white"}`}
+        onClick={() => navigate(`/profile/${user.username}`)}
       >
         <ListIcon as={FaUserCircle} />
       </ListItem>

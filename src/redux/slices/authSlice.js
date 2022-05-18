@@ -1,10 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginUser, signupUser, editUser } from "redux/asyncThunks";
+import {
+  loginUser,
+  signupUser,
+  editUser,
+  addToBookmark,
+  removeFromBookmark,
+  getUserBookmarks,
+} from "redux/asyncThunks";
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || null,
   token: localStorage.getItem("token") || null,
+  bookmarks: [],
   isLoading: false,
+  bookmarkStatus: "idle",
 };
 
 const authSlice = createSlice({
@@ -59,6 +68,39 @@ const authSlice = createSlice({
     [editUser.rejected]: (state, action) => {
       state.isLoading = false;
       console.error(action.payload.data.errors[0]);
+    },
+    [addToBookmark.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [addToBookmark.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.bookmarks = action.payload.data.bookmarks;
+    },
+    [addToBookmark.rejected]: (state, action) => {
+      state.isLoading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [removeFromBookmark.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [removeFromBookmark.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.bookmarks = action.payload.data.bookmarks;
+    },
+    [removeFromBookmark.rejected]: (state, action) => {
+      state.isLoading = false;
+      console.error(action.payload.data.errors[0]);
+    },
+    [getUserBookmarks.pending]: (state) => {
+      state.bookmarkStatus = "pending";
+    },
+    [getUserBookmarks.fulfilled]: (state, action) => {
+      state.bookmarkStatus = "resolved";
+      state.bookmarks = action.payload.data.bookmarks;
+    },
+    [getUserBookmarks.rejected]: (state, action) => {
+      state.bookmarkStatus = "rejected";
+      console.error(action);
     },
   },
 });

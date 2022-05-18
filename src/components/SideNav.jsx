@@ -53,7 +53,8 @@ const SideNav = ({ onOpen }) => {
           fontSize="20px"
           fontWeight="bold"
           my="2"
-          color={`${pathname === "/bookmark" ? "brand.500" : "black"}`}
+          color={`${pathname === "/bookmarks" ? "brand.500" : "black"}`}
+          onClick={() => navigate("/bookmarks")}
         >
           <ListIcon as={BsFillBookmarkFill} />
           Bookmark

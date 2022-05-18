@@ -72,4 +72,54 @@ const deletePost = createAsyncThunk(
   }
 );
 
-export { getPosts, addPost, editPost, deletePost };
+const likePost = createAsyncThunk(
+  "posts/likePost",
+  async ({ postId, token, setLikeDisable }, { rejectWithValue }) => {
+    try {
+      setLikeDisable(true);
+      const response = await axios.post(
+        `/api/posts/like/${postId}`,
+        {},
+        {
+          headers: { authorization: token },
+        }
+      );
+      const data = { data: response.data, status: response.status };
+      return data;
+    } catch (error) {
+      return rejectWithValue({
+        data: error.response.data,
+        status: error.response.status,
+      });
+    } finally {
+      setLikeDisable(false);
+    }
+  }
+);
+
+const dislikePost = createAsyncThunk(
+  "posts/dislikePost",
+  async ({ postId, token, setLikeDisable }, { rejectWithValue }) => {
+    try {
+      setLikeDisable(true);
+      const response = await axios.post(
+        `/api/posts/dislike/${postId}`,
+        {},
+        {
+          headers: { authorization: token },
+        }
+      );
+      const data = { data: response.data, status: response.status };
+      return data;
+    } catch (error) {
+      return rejectWithValue({
+        data: error.response.data,
+        status: error.response.status,
+      });
+    } finally {
+      setLikeDisable(false);
+    }
+  }
+);
+
+export { getPosts, addPost, editPost, deletePost, likePost, dislikePost };
