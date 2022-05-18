@@ -65,6 +65,7 @@ const EditProfileModal = ({
       website: userData.website,
       bio: userData.bio,
     };
+
     const response = await dispatch(editUser({ userData: data, token }));
     if (response?.payload.status === 201) {
       setUserProfile(response.payload.data.user);

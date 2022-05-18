@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Flex,
@@ -21,6 +21,7 @@ const Home = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
   const { posts, isLoading } = useSelector((state) => state.posts);
+  const [editedPost, setEditedPost] = useState(null);
 
   useEffect(() => {
     dispatch(getPosts());
@@ -34,7 +35,14 @@ const Home = () => {
 
   return (
     <>
-      <PostModal isOpen={isOpen} onClose={onClose} />
+      {isOpen ? (
+        <PostModal
+          isOpen={isOpen}
+          onClose={onClose}
+          editedPost={editedPost}
+          setEditedPost={setEditedPost}
+        />
+      ) : null}
       <Box h="100%">
         {isLoading ? (
           <CircularProgress
@@ -61,7 +69,12 @@ const Home = () => {
               {userFeed.length !== 0 ? (
                 <Box maxW="60%">
                   {userFeed.map((post) => (
-                    <PostCard key={post._id} post={post} />
+                    <PostCard
+                      key={post._id}
+                      post={post}
+                      onOpen={onOpen}
+                      setEditedPost={setEditedPost}
+                    />
                   ))}
                 </Box>
               ) : (

@@ -25,7 +25,7 @@ import { CommentCard } from "./CommentCard";
 import { CommentInput } from "./CommentInput";
 import { deletePost } from "redux/asyncThunks";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, onOpen, setEditedPost }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const toast = useToast();
@@ -48,6 +48,11 @@ const PostCard = ({ post }) => {
         isClosable: true,
       });
     }
+  };
+
+  const callEditPostHandler = (post) => {
+    setEditedPost(post);
+    onOpen();
   };
 
   return (
@@ -108,6 +113,7 @@ const PostCard = ({ post }) => {
                   leftIcon={<FaRegEdit />}
                   variant="ghost"
                   display="block"
+                  onClick={() => callEditPostHandler(post)}
                 >
                   Edit
                 </Button>
