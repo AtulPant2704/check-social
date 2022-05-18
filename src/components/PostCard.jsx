@@ -1,3 +1,4 @@
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   Heading,
@@ -14,6 +15,7 @@ import {
   PopoverArrow,
   PopoverCloseButton,
   Image,
+  useToast,
 } from "@chakra-ui/react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsBookmark, BsThreeDotsVertical } from "react-icons/bs";
@@ -21,9 +23,32 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { CommentCard } from "./CommentCard";
 import { CommentInput } from "./CommentInput";
+import { deletePost } from "redux/asyncThunks";
 
 const PostCard = ({ post }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const toast = useToast();
+  const { user, token } = useSelector((state) => state.auth);
+
+  const deletePostHandler = async (post) => {
+    const response = await dispatch(deletePost({ post, token }));
+    if (response?.payload.status === 201) {
+      toast({
+        description: "Post successfully deleted",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
+    } else {
+      toast({
+        description: `${response.payload.data.errors[0]}`,
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  };
 
   return (
     <Flex
@@ -53,40 +78,50 @@ const PostCard = ({ post }) => {
             </Text>
           </Heading>
         </Flex>
-        <Popover>
-          <PopoverTrigger>
-            <IconButton
-              icon={<BsThreeDotsVertical />}
-              bgColor="transparent"
-              color="black"
-              size="sm"
-              fontSize="lg"
-              _hover={{
-                bgColor: "transparent",
-              }}
-              _active={{
-                bgColor: "transparent",
-                border: "none",
-              }}
-              _focus={{
-                bgColor: "transparent",
-                border: "none",
-              }}
-            ></IconButton>
-          </PopoverTrigger>
-          <PopoverContent maxW="fit-content">
-            <PopoverArrow />
-            <PopoverCloseButton />
-            <PopoverBody>
-              <Button leftIcon={<FaRegEdit />} variant="ghost" display="block">
-                Edit
-              </Button>
-              <Button leftIcon={<MdDelete />} variant="ghost">
-                Delete
-              </Button>
-            </PopoverBody>
-          </PopoverContent>
-        </Popover>
+        {user.username === post.username ? (
+          <Popover>
+            <PopoverTrigger>
+              <IconButton
+                icon={<BsThreeDotsVertical />}
+                bgColor="transparent"
+                color="black"
+                size="sm"
+                fontSize="lg"
+                _hover={{
+                  bgColor: "transparent",
+                }}
+                _active={{
+                  bgColor: "transparent",
+                  border: "none",
+                }}
+                _focus={{
+                  bgColor: "transparent",
+                  border: "none",
+                }}
+              ></IconButton>
+            </PopoverTrigger>
+            <PopoverContent maxW="fit-content">
+              <PopoverArrow />
+              <PopoverCloseButton />
+              <PopoverBody>
+                <Button
+                  leftIcon={<FaRegEdit />}
+                  variant="ghost"
+                  display="block"
+                >
+                  Edit
+                </Button>
+                <Button
+                  leftIcon={<MdDelete />}
+                  variant="ghost"
+                  onClick={() => deletePostHandler(post)}
+                >
+                  Delete
+                </Button>
+              </PopoverBody>
+            </PopoverContent>
+          </Popover>
+        ) : null}
       </Flex>
 
       {/* Post Content */}
