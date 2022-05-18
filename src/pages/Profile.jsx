@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   Flex,
@@ -26,6 +27,7 @@ const Profile = () => {
     onClose: onCloseProfile,
   } = useDisclosure();
   const { username } = useParams();
+  const { posts } = useSelector((state) => state.posts);
   const [loader, setLoader] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
   const [userPosts, setUserPosts] = useState(null);
@@ -34,9 +36,7 @@ const Profile = () => {
   useEffect(() => {
     getSingleUser(setUserProfile, username, setLoader);
     getUserPosts(setUserPosts, username, setLoader);
-  }, [username]);
-
-  console.log(userPosts);
+  }, [username, posts]);
 
   return (
     <>
