@@ -1,7 +1,7 @@
-const saveImageToCloudinary = async (avatar, setterFunc) => {
+const saveImageToCloudinary = async (image, setterFunc) => {
   try {
     const data = new FormData();
-    data.append("file", avatar);
+    data.append("file", image);
     data.append("upload_preset", "tn3ynknq");
     const requestOptions = {
       method: "POST",
