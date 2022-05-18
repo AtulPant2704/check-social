@@ -24,7 +24,7 @@ const CommentCard = ({ comment }) => {
   const { user } = useSelector((state) => state.auth);
 
   return (
-    <Flex gap="2">
+    <Flex gap="2" alignItems="center">
       <Avatar
         name={comment.firstName + " " + comment.lastName}
         src={
