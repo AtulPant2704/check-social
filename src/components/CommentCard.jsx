@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   Heading,
@@ -20,6 +21,7 @@ import { MdDelete } from "react-icons/md";
 
 const CommentCard = ({ comment }) => {
   const navigate = useNavigate();
+  const { user } = useSelector((state) => state.auth);
 
   return (
     <Flex gap="2">
@@ -44,40 +46,42 @@ const CommentCard = ({ comment }) => {
         </Box>
       </Flex>
       {/* Edit Comment */}
-      <Popover>
-        <PopoverTrigger>
-          <IconButton
-            icon={<BsThreeDotsVertical />}
-            bgColor="transparent"
-            color="black"
-            size="sm"
-            fontSize="lg"
-            _hover={{
-              bgColor: "transparent",
-            }}
-            _active={{
-              bgColor: "transparent",
-              border: "none",
-            }}
-            _focus={{
-              bgColor: "transparent",
-              border: "none",
-            }}
-          ></IconButton>
-        </PopoverTrigger>
-        <PopoverContent maxW="fit-content">
-          <PopoverArrow />
-          <PopoverCloseButton />
-          <PopoverBody>
-            <Button leftIcon={<FaRegEdit />} variant="ghost" display="block">
-              Edit
-            </Button>
-            <Button leftIcon={<MdDelete />} variant="ghost">
-              Delete
-            </Button>
-          </PopoverBody>
-        </PopoverContent>
-      </Popover>
+      {user.username === comment.username ? (
+        <Popover>
+          <PopoverTrigger>
+            <IconButton
+              icon={<BsThreeDotsVertical />}
+              bgColor="transparent"
+              color="black"
+              size="sm"
+              fontSize="lg"
+              _hover={{
+                bgColor: "transparent",
+              }}
+              _active={{
+                bgColor: "transparent",
+                border: "none",
+              }}
+              _focus={{
+                bgColor: "transparent",
+                border: "none",
+              }}
+            ></IconButton>
+          </PopoverTrigger>
+          <PopoverContent maxW="fit-content">
+            <PopoverArrow />
+            <PopoverCloseButton />
+            <PopoverBody>
+              <Button leftIcon={<FaRegEdit />} variant="ghost" display="block">
+                Edit
+              </Button>
+              <Button leftIcon={<MdDelete />} variant="ghost">
+                Delete
+              </Button>
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+      ) : null}
     </Flex>
   );
 };
