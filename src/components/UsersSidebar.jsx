@@ -54,8 +54,8 @@ const UsersSidebar = () => {
           </Heading>
           <UnorderedList listStyleType="none" w="100%" mt="4">
             {nonFollowers.map((user) => (
-              <ListItem key={user._id} mb="2">
-                <Flex gap="4" alignItems="center">
+              <ListItem key={user._id} mb="2" pr="4">
+                <Flex alignItems="center">
                   <Avatar
                     name={user.firstName + " " + user.lastName}
                     src={user.avatarUrl}
@@ -74,6 +74,7 @@ const UsersSidebar = () => {
                   <Button
                     leftIcon={<AiOutlinePlus color="white" />}
                     p="2"
+                    ml="auto"
                     fontSize="14"
                     onClick={() => followUserHandler(user._id)}
                   >

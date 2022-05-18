@@ -21,7 +21,7 @@ import {
 import { AiFillCamera } from "react-icons/ai";
 import { editUser } from "redux/asyncThunks";
 import { updateUser, setLoading } from "redux/slices";
-import { saveAvatarToCloudinary } from "services";
+import { saveImageToCloudinary } from "services";
 
 const EditProfileModal = ({
   isOpenProfile,
@@ -55,39 +55,55 @@ const EditProfileModal = ({
     };
   };
 
+  const saveEditedUser = async (data) => {
+    try {
+      const response = await dispatch(editUser({ userData: data, token }));
+      if (response?.payload.status === 201) {
+        setUserProfile(response.payload.data.user);
+        dispatch(updateUser(response.payload.data.user));
+        toast({
+          description: "Profile updated successfully",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          description: `${response.payload.data.errors[0]}`,
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const editUserHandler = async () => {
-    if (userData.avatarUrl !== "") {
-      dispatch(setLoading());
-      await saveAvatarToCloudinary(userData.avatarFile, setUserData);
+    try {
+      if (userData.avatarUrl !== "") {
+        dispatch(setLoading());
+        await saveImageToCloudinary(
+          userData.avatarFile,
+          saveEditedUser,
+          userData,
+          "image"
+        );
+      } else if (
+        userData.bio !== userProfile.bio ||
+        userData.website !== userProfile.website
+      ) {
+        saveEditedUser(userData);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      onCloseProfile();
     }
-    const data = {
-      avatarUrl: userData.avatarUrl || userProfile?.avatarUrl,
-      website: userData.website,
-      bio: userData.bio,
-    };
-    const response = await dispatch(editUser({ userData: data, token }));
-    if (response?.payload.status === 201) {
-      setUserProfile(response.payload.data.user);
-      dispatch(updateUser(response.payload.data.user));
-      toast({
-        description: "Profile updated successfully",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-      });
-    } else {
-      toast({
-        description: `${response.payload.data.errors[0]}`,
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-      });
-    }
-    onCloseProfile();
   };
 
   const closeHandler = () => {
-    setUserData(null);
     onCloseProfile();
   };
 
@@ -110,6 +126,7 @@ const EditProfileModal = ({
                 <FormLabel cursor="pointer">
                   <Input
                     type="file"
+                    accept="image/*"
                     position="absolute"
                     opacity="0"
                     bgColor="red.100"

@@ -4,8 +4,13 @@ import {
   withDefaultColorScheme,
 } from "@chakra-ui/react";
 
+const breakpoints = {
+  lg: "1150px",
+};
+
 export const theme = extendTheme(
   {
+    breakpoints,
     colors: {
       brand: {
         100: "#8ecdf7",

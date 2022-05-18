@@ -29,6 +29,7 @@ const Profile = () => {
   const [loader, setLoader] = useState(false);
   const [userProfile, setUserProfile] = useState(null);
   const [userPosts, setUserPosts] = useState(null);
+  const [editedPost, setEditedPost] = useState(null);
 
   useEffect(() => {
     getSingleUser(setUserProfile, username, setLoader);
@@ -37,7 +38,14 @@ const Profile = () => {
 
   return (
     <>
-      <PostModal isOpen={isOpen} onClose={onClose} />
+      {isOpen ? (
+        <PostModal
+          isOpen={isOpen}
+          onClose={onClose}
+          editedPost={editedPost}
+          setEditedPost={setEditedPost}
+        />
+      ) : null}
       {userProfile && (
         <EditProfileModal
           isOpenProfile={isOpenProfile}
@@ -71,7 +79,7 @@ const Profile = () => {
             </Flex>
             <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
               <SideNav onOpen={onOpen} />
-              <Box maxW="60%">
+              <Box maxW="40rem">
                 <ProfileCard
                   onOpenProfile={onOpenProfile}
                   userProfile={userProfile}
@@ -82,7 +90,12 @@ const Profile = () => {
                 </Heading>
                 {userPosts?.length !== 0 ? (
                   userPosts?.map((post) => (
-                    <PostCard key={post._id} post={post} />
+                    <PostCard
+                      key={post._id}
+                      post={post}
+                      setEditedPost={setEditedPost}
+                      onOpen={onOpen}
+                    />
                   ))
                 ) : (
                   <Box>
