@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -41,10 +42,9 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const toast = useToast();
-  const { user, token, bookmarks, isBookmarkLoading } = useSelector(
-    (state) => state.auth
-  );
-  const { posts, isLikeLoading } = useSelector((state) => state.posts);
+  const { user, token, bookmarks } = useSelector((state) => state.auth);
+  const [likeDisable, setLikeDisable] = useState(false);
+  const [bookmarkDisable, setBookmarkDisable] = useState(false);
 
   const deletePostHandler = async (post) => {
     const response = await dispatch(deletePost({ post, token }));
@@ -78,14 +78,16 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
 
   const likeHandler = async (postId) => {
     isLiked
-      ? await dispatch(dislikePost({ postId, token }))
-      : await dispatch(likePost({ postId, token }));
+      ? await dispatch(dislikePost({ postId, token, setLikeDisable }))
+      : await dispatch(likePost({ postId, token, setLikeDisable }));
   };
 
   const bookmarkHandler = async (postId) => {
     isBookmarked
-      ? await dispatch(removeFromBookmark({ postId, token }))
-      : await dispatch(addToBookmark({ postId, token }));
+      ? await dispatch(
+          removeFromBookmark({ postId, token, setBookmarkDisable })
+        )
+      : await dispatch(addToBookmark({ postId, token, setBookmarkDisable }));
   };
 
   return (
@@ -195,9 +197,7 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
               borderColor: "transparent",
             }}
             onClick={() => likeHandler(post._id)}
-            isLoading={posts.some((currPost) =>
-              currPost._id === post._id ? isLikeLoading : null
-            )}
+            isLoading={likeDisable}
           />
           <Text as="span">{post.likes.likeCount} likes</Text>
         </Box>
@@ -215,7 +215,7 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
             borderColor: "transparent",
           }}
           onClick={() => bookmarkHandler(post._id)}
-          isLoading={isBookmarkLoading}
+          isLoading={bookmarkDisable}
         />
       </Flex>
 
