@@ -163,7 +163,7 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
             </Box>
             <Button
               onClick={
-                editedPost.content || editedPost.img
+                editedPost?.content || editedPost?.img
                   ? editPostHandler
                   : addPostHandler
               }

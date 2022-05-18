@@ -74,7 +74,9 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
         >
           <Avatar
             name={post.firstName + " " + post.lastName}
-            src={post.avatarUrl}
+            src={
+              post.username === user.username ? user.avatarUrl : post.avatarUrl
+            }
           />
           <Heading as="h3" size="md">
             {post.firstName} {post.lastName}

@@ -94,6 +94,7 @@ const Profile = () => {
                       key={post._id}
                       post={post}
                       setEditedPost={setEditedPost}
+                      onOpen={onOpen}
                     />
                   ))
                 ) : (

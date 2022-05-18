@@ -20,7 +20,7 @@ const Explore = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const { posts, isLoading } = useSelector((state) => state.posts);
-  const { editedPost, setEditedPost } = useState(null);
+  const [editedPost, setEditedPost] = useState(null);
 
   useEffect(() => {
     dispatch(getPosts());
@@ -64,6 +64,7 @@ const Explore = () => {
                       key={post._id}
                       post={post}
                       setEditedPost={setEditedPost}
+                      onOpen={onOpen}
                     />
                   ))}
                 </Box>

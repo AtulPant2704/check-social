@@ -27,7 +27,11 @@ const CommentCard = ({ comment }) => {
     <Flex gap="2">
       <Avatar
         name={comment.firstName + " " + comment.lastName}
-        src={comment.avatarUrl}
+        src={
+          comment.username === user.username
+            ? user.avatarUrl
+            : comment.avatarUrl
+        }
         size="sm"
         cursor="pointer"
         onClick={() => navigate(`/profile/${comment.username}`)}
