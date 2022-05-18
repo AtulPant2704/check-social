@@ -5,6 +5,7 @@ import {
   editUser,
   addToBookmark,
   removeFromBookmark,
+  getUserBookmarks,
 } from "redux/asyncThunks";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   token: localStorage.getItem("token") || null,
   bookmarks: [],
   isLoading: false,
+  bookmarkStatus: "idle",
 };
 
 const authSlice = createSlice({
@@ -88,6 +90,17 @@ const authSlice = createSlice({
     [removeFromBookmark.rejected]: (state, action) => {
       state.isLoading = false;
       console.error(action.payload.data.errors[0]);
+    },
+    [getUserBookmarks.pending]: (state) => {
+      state.bookmarkStatus = "pending";
+    },
+    [getUserBookmarks.fulfilled]: (state, action) => {
+      state.bookmarkStatus = "resolved";
+      state.bookmarks = action.payload.data.bookmarks;
+    },
+    [getUserBookmarks.rejected]: (state, action) => {
+      state.bookmarkStatus = "rejected";
+      console.error(action);
     },
   },
 });

@@ -5,6 +5,7 @@ export {
   editUser,
   addToBookmark,
   removeFromBookmark,
+  getUserBookmarks,
 } from "./authThunk";
 export {
   getPosts,
