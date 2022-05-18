@@ -44,61 +44,102 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
     };
   };
 
+  const saveEditPostHandler = async (data) => {
+    try {
+      const postData = {
+        _id: editedPost._id,
+        content: data.content,
+        img: data.img || null,
+      };
+      console.log(postData);
+      const response = await dispatch(editPost({ postData, token }));
+      if (response?.payload.status === 201) {
+        toast({
+          description: "Post successfully edited",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          description: `${response.payload.data.errors[0]}`,
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+      modalCloseHandler();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const editPostHandler = async () => {
     if (postImg.imageUrl !== "" && postImg.imageUrl !== editedPost.img) {
-      await saveImageToCloudinary(postImg.imageFile, setPost);
-    }
-    const postData = {
-      _id: editedPost._id,
-      content: post.content,
-      img: post.avatarImg || postImg.imageUrl || null,
-    };
-
-    const response = await dispatch(editPost({ postData, token }));
-    if (response?.payload.status === 201) {
-      toast({
-        description: "Post successfully edited",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-      });
+      const type = postImg.imageUrl.includes("video") ? "video" : "image";
+      await saveImageToCloudinary(
+        postImg.imageFile,
+        saveEditPostHandler,
+        post,
+        type,
+        "post"
+      );
+    } else if (post.content !== "") {
+      saveEditPostHandler(post);
     } else {
       toast({
-        description: `${response.payload.data.errors[0]}`,
-        status: "error",
+        description: "Post can't be blank",
+        status: "warning",
         duration: 2000,
         isClosable: true,
       });
     }
-    modalCloseHandler();
+  };
+
+  const saveAddPostHandler = async (data) => {
+    try {
+      const response = await dispatch(addPost({ postData: data, token }));
+      if (response?.payload.status === 201) {
+        toast({
+          description: "Post successfully added",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          description: `${response.payload.data.errors[0]}`,
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      }
+      modalCloseHandler();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const addPostHandler = async () => {
     if (postImg.imageUrl !== "") {
-      await saveImageToCloudinary(postImg.imageFile, setPost);
-    }
-    const postData = {
-      content: post.content,
-      img: post.avatarImg || postImg.imageUrl || null,
-    };
-
-    const response = await dispatch(addPost({ postData, token }));
-    if (response?.payload.status === 201) {
-      toast({
-        description: "Post successfully added",
-        status: "success",
-        duration: 2000,
-        isClosable: true,
-      });
+      const type = postImg.imageUrl.includes("video") ? "video" : "image";
+      await saveImageToCloudinary(
+        postImg.imageFile,
+        saveAddPostHandler,
+        post,
+        type,
+        "post"
+      );
+    } else if (post.content !== "") {
+      saveAddPostHandler(post);
     } else {
       toast({
-        description: `${response.payload.data.errors[0]}`,
-        status: "error",
+        description: "Post can't be blank",
+        status: "warning",
         duration: 2000,
         isClosable: true,
       });
     }
-    modalCloseHandler();
   };
 
   const modalCloseHandler = () => {
@@ -131,6 +172,7 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
               <FormLabel cursor="pointer">
                 <Input
                   type="file"
+                  accept="image/*,video/*"
                   position="absolute"
                   opacity="0"
                   bgColor="red.100"

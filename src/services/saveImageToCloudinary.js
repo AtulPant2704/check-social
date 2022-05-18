@@ -1,4 +1,10 @@
-const saveImageToCloudinary = async (image, setterFunc) => {
+const saveImageToCloudinary = async (
+  image,
+  callingFunc,
+  inputData,
+  type,
+  from = "profile"
+) => {
   try {
     const data = new FormData();
     data.append("file", image);
@@ -8,12 +14,20 @@ const saveImageToCloudinary = async (image, setterFunc) => {
       body: data,
     };
     await fetch(
-      "https://api.cloudinary.com/v1_1/check-social/image/upload",
+      `https://api.cloudinary.com/v1_1/check-social/${type}/upload`,
       requestOptions
     )
-      .then((response) => response.json())
+      .then((response) => {
+        return response.json();
+      })
       .then((json) => {
-        setterFunc((prev) => ({ ...prev, avatarUrl: json.url }));
+        let data;
+        if (from === "post") {
+          data = { ...inputData, img: json.url };
+        } else {
+          data = { ...inputData, avatarUrl: json.url };
+        }
+        callingFunc(data);
       })
       .catch((error) => {
         console.error(error);

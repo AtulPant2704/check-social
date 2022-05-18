@@ -38,6 +38,7 @@ const postsSlice = createSlice({
     },
     [editPost.fulfilled]: (state, action) => {
       state.isLoading = false;
+      console.log(action.payload.data.posts);
       state.posts = action.payload.data.posts;
     },
     [editPost.rejected]: (state, action) => {

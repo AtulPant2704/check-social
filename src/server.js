@@ -64,6 +64,9 @@ export function makeServer({ environment = "development" } = {}) {
       this.passthrough(
         "https://api.cloudinary.com/v1_1/check-social/image/upload"
       );
+      this.passthrough(
+        "https://api.cloudinary.com/v1_1/check-social/video/upload"
+      );
 
       // auth routes (public)
       this.post("/auth/signup", signupHandler.bind(this));

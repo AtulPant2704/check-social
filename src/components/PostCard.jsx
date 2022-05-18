@@ -16,6 +16,7 @@ import {
   PopoverCloseButton,
   Image,
   useToast,
+  AspectRatio,
 } from "@chakra-ui/react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsBookmark, BsThreeDotsVertical } from "react-icons/bs";
@@ -135,7 +136,13 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
       {/* Post Content */}
       <Box>
         <Text>{post.content}</Text>
-        <Image src={post.img}></Image>
+        {post?.img && post.img.includes("video") ? (
+          <AspectRatio maxW="560px" ratio={4 / 3}>
+            <iframe title="naruto" src={post.img} />
+          </AspectRatio>
+        ) : (
+          <Image src={post.img}></Image>
+        )}
       </Box>
 
       {/* Like and Bookmark */}
