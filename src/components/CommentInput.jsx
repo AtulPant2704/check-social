@@ -16,6 +16,7 @@ const CommentInput = ({ postId }) => {
   const toast = useToast();
   const { user, token } = useSelector((state) => state.auth);
   const [commentData, setCommentData] = useState("");
+  const [commentBtnDisable, setCommentBtnDisable] = useState(false);
 
   const addCommentHandler = async () => {
     if (commentData === "") {
@@ -27,7 +28,7 @@ const CommentInput = ({ postId }) => {
       });
     } else {
       const response = await dispatch(
-        addComment({ postId, commentData, token })
+        addComment({ postId, commentData, token, setCommentBtnDisable })
       );
       if (response?.payload.status === 201) {
         toast({
@@ -69,7 +70,10 @@ const CommentInput = ({ postId }) => {
             _hover={{
               bgColor: "transparent",
             }}
-            onClick={addCommentHandler}
+            cursor={commentData !== "" ? "pointer" : "not-allowed"}
+            onClick={commentData !== "" ? addCommentHandler : null}
+            opacity={commentData === "" ? "0.5" : "1"}
+            isLoading={commentBtnDisable}
           >
             POST
           </Button>

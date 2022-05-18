@@ -124,8 +124,12 @@ const dislikePost = createAsyncThunk(
 
 const addComment = createAsyncThunk(
   "posts/addComment",
-  async ({ postId, commentData, token }, { rejectWithValue }) => {
+  async (
+    { postId, commentData, token, setCommentBtnDisable },
+    { rejectWithValue }
+  ) => {
     try {
+      setCommentBtnDisable(true);
       const response = await axios.post(
         `/api/comments/add/${postId}`,
         { commentData },
@@ -138,6 +142,8 @@ const addComment = createAsyncThunk(
         data: error.response.data,
         status: error.response.status,
       });
+    } finally {
+      setCommentBtnDisable(false);
     }
   }
 );
