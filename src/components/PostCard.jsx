@@ -22,15 +22,17 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { BsBookmark, BsThreeDotsVertical } from "react-icons/bs";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { FcLike } from "react-icons/fc";
 import { CommentCard } from "./CommentCard";
 import { CommentInput } from "./CommentInput";
-import { deletePost } from "redux/asyncThunks";
+import { deletePost, likePost, dislikePost } from "redux/asyncThunks";
 
 const PostCard = ({ post, onOpen, setEditedPost }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const toast = useToast();
   const { user, token } = useSelector((state) => state.auth);
+  const { isLikeLoading } = useSelector((state) => state.posts);
 
   const deletePostHandler = async (post) => {
     const response = await dispatch(deletePost({ post, token }));
@@ -54,6 +56,16 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
   const callEditPostHandler = (post) => {
     setEditedPost(post);
     onOpen();
+  };
+
+  const isLiked = post?.likes.likedBy.some(
+    (currUser) => currUser._id === user._id
+  );
+
+  const likeHandler = async (postId) => {
+    isLiked
+      ? await dispatch(dislikePost({ postId, token }))
+      : await dispatch(likePost({ postId, token }));
   };
 
   return (
@@ -149,9 +161,9 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
       {/* Like and Bookmark */}
       <Flex alignItems="center">
         <IconButton
-          icon={<AiOutlineHeart />}
+          icon={isLiked ? <FcLike /> : <AiOutlineHeart />}
           bgColor="transparent"
-          color="black"
+          color={isLiked ? "red.400" : "black"}
           size="sm"
           fontSize="lg"
           borderRadius="50%"
@@ -161,6 +173,8 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
           _focus={{
             borderColor: "transparent",
           }}
+          onClick={() => likeHandler(post._id)}
+          isLoading={isLikeLoading}
         />
         <Text as="span">{post.likes.likeCount} likes</Text>
         <IconButton
