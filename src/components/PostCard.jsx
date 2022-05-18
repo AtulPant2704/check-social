@@ -220,11 +220,11 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
       </Flex>
 
       {/* Comment Input */}
-      <CommentInput />
+      <CommentInput postId={post._id} />
 
       {/* Comments */}
       {post?.comments?.map((comment) => (
-        <CommentCard key={comment._id} comment={comment} />
+        <CommentCard key={comment._id} comment={comment} postId={post._id} />
       ))}
     </Flex>
   );
