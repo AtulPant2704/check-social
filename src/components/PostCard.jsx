@@ -44,7 +44,7 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
   const { user, token, bookmarks, isBookmarkLoading } = useSelector(
     (state) => state.auth
   );
-  const { isLikeLoading } = useSelector((state) => state.posts);
+  const { posts, isLikeLoading } = useSelector((state) => state.posts);
 
   const deletePostHandler = async (post) => {
     const response = await dispatch(deletePost({ post, token }));
@@ -74,7 +74,7 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
     (currUser) => currUser._id === user._id
   );
 
-  const isBookmarked = bookmarks.some((currPost) => currPost._id === post._id);
+  const isBookmarked = bookmarks.some((curr) => curr === post._id);
 
   const likeHandler = async (postId) => {
     isLiked
@@ -195,7 +195,9 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
               borderColor: "transparent",
             }}
             onClick={() => likeHandler(post._id)}
-            isLoading={isLikeLoading}
+            isLoading={posts.some((currPost) =>
+              currPost._id === post._id ? isLikeLoading : null
+            )}
           />
           <Text as="span">{post.likes.likeCount} likes</Text>
         </Box>
