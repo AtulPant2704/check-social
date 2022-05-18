@@ -36,6 +36,8 @@ const Profile = () => {
     getUserPosts(setUserPosts, username, setLoader);
   }, [username]);
 
+  console.log(userPosts);
+
   return (
     <>
       {isOpen ? (
@@ -88,9 +90,9 @@ const Profile = () => {
                 <Heading as="h3" size="md" mb="4">
                   Your Posts
                 </Heading>
-                {userPosts?.length !== 0 ? (
+                {userPosts?.length > 0 ? (
                   [...userPosts]
-                    .reverse()
+                    ?.reverse()
                     .map((post) => (
                       <PostCard
                         key={post._id}
