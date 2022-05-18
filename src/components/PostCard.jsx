@@ -139,7 +139,7 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
         {post?.img &&
         !post.img.includes("jpg" || "jpeg" || "png" || "gif" || "webp") ? (
           <AspectRatio maxW="560px" ratio={4 / 3}>
-            <iframe title="naruto" src={post.img} />
+            <video controls src={post.img}></video>
           </AspectRatio>
         ) : (
           <Image src={post.img}></Image>
