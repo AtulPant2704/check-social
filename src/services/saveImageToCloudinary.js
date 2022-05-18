@@ -1,4 +1,4 @@
-const saveAvatarToCloudinary = async (avatar, setUserData) => {
+const saveImageToCloudinary = async (avatar, setterFunc) => {
   try {
     const data = new FormData();
     data.append("file", avatar);
@@ -13,7 +13,7 @@ const saveAvatarToCloudinary = async (avatar, setUserData) => {
     )
       .then((response) => response.json())
       .then((json) => {
-        setUserData((prev) => ({ ...prev, avatarUrl: json.url }));
+        setterFunc((prev) => ({ ...prev, avatarUrl: json.url }));
       })
       .catch((error) => {
         console.error(error);
@@ -23,4 +23,4 @@ const saveAvatarToCloudinary = async (avatar, setUserData) => {
   }
 };
 
-export { saveAvatarToCloudinary };
+export { saveImageToCloudinary };

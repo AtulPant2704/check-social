@@ -21,7 +21,7 @@ import {
 import { AiFillCamera } from "react-icons/ai";
 import { editUser } from "redux/asyncThunks";
 import { updateUser, setLoading } from "redux/slices";
-import { saveAvatarToCloudinary } from "services";
+import { saveImageToCloudinary } from "services";
 
 const EditProfileModal = ({
   isOpenProfile,
@@ -58,7 +58,7 @@ const EditProfileModal = ({
   const editUserHandler = async () => {
     if (userData.avatarUrl !== "") {
       dispatch(setLoading());
-      await saveAvatarToCloudinary(userData.avatarFile, setUserData);
+      await saveImageToCloudinary(userData.avatarFile, setUserData);
     }
     const data = {
       avatarUrl: userData.avatarUrl || userProfile?.avatarUrl,
