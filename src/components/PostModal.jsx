@@ -22,11 +22,13 @@ import { BsCardImage } from "react-icons/bs";
 import { GrFormClose } from "react-icons/gr";
 import { saveImageToCloudinary } from "services";
 import { addPost, editPost } from "redux/asyncThunks";
+import { setBtnLoading } from "redux/slices";
 
 const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
   const dispatch = useDispatch();
   const toast = useToast();
   const { token } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.posts);
   const [postImg, setPostImg] = useState({
     imageUrl: editedPost?.img || "",
     imageFile: {},
@@ -76,6 +78,7 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
 
   const editPostHandler = async () => {
     if (postImg.imageUrl !== "" && postImg.imageUrl !== editedPost.img) {
+      dispatch(setBtnLoading());
       const type = postImg.imageUrl.includes("video") ? "video" : "image";
       await saveImageToCloudinary(
         postImg.imageFile,
@@ -122,6 +125,7 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
 
   const addPostHandler = async () => {
     if (postImg.imageUrl !== "") {
+      dispatch(setBtnLoading());
       const type = postImg.imageUrl.includes("video") ? "video" : "image";
       await saveImageToCloudinary(
         postImg.imageFile,
@@ -204,6 +208,7 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
               ) : null}
             </Box>
             <Button
+              isLoading={isLoading}
               onClick={
                 editedPost?.content || editedPost?.img
                   ? editPostHandler
