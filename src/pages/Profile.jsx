@@ -89,14 +89,16 @@ const Profile = () => {
                   Your Posts
                 </Heading>
                 {userPosts?.length !== 0 ? (
-                  userPosts?.map((post) => (
-                    <PostCard
-                      key={post._id}
-                      post={post}
-                      setEditedPost={setEditedPost}
-                      onOpen={onOpen}
-                    />
-                  ))
+                  [...userPosts]
+                    .reverse()
+                    .map((post) => (
+                      <PostCard
+                        key={post._id}
+                        post={post}
+                        setEditedPost={setEditedPost}
+                        onOpen={onOpen}
+                      />
+                    ))
                 ) : (
                   <Box>
                     <Heading as="h3" size="md" textAlign="center">

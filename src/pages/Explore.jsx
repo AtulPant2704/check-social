@@ -62,7 +62,7 @@ const Explore = () => {
               <SideNav onOpen={onOpen} />
               {posts.length !== 0 ? (
                 <Box maxW="40rem">
-                  {posts.map((post) => (
+                  {[...posts].reverse().map((post) => (
                     <PostCard
                       key={post._id}
                       post={post}
