@@ -13,6 +13,7 @@ import {
   PopoverBody,
   PopoverArrow,
   PopoverCloseButton,
+  Image,
 } from "@chakra-ui/react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { BsBookmark, BsThreeDotsVertical } from "react-icons/bs";
@@ -91,6 +92,7 @@ const PostCard = ({ post }) => {
       {/* Post Content */}
       <Box>
         <Text>{post.content}</Text>
+        <Image src={post.img}></Image>
       </Box>
 
       {/* Like and Bookmark */}
@@ -130,7 +132,7 @@ const PostCard = ({ post }) => {
       <CommentInput />
 
       {/* Comments */}
-      {post.comments.map((comment) => (
+      {post?.comments?.map((comment) => (
         <CommentCard key={comment._id} comment={comment} />
       ))}
     </Flex>
