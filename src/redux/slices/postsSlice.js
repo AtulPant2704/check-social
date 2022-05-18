@@ -4,6 +4,7 @@ import { getPosts, addPost, editPost, deletePost } from "redux/asyncThunks";
 const initialState = {
   posts: [],
   isLoading: false,
+  status: "idle",
 };
 
 const postsSlice = createSlice({
@@ -12,14 +13,14 @@ const postsSlice = createSlice({
   reducers: {},
   extraReducers: {
     [getPosts.pending]: (state) => {
-      state.isLoading = true;
+      state.status = "pending";
     },
     [getPosts.fulfilled]: (state, action) => {
-      state.isLoading = false;
+      state.status = "resolved";
       state.posts = action.payload.data.posts;
     },
     [getPosts.rejected]: (state, action) => {
-      state.isLoading = false;
+      state.status = "failed";
       console.error(action.payload.data.errors[0]);
     },
     [addPost.pending]: (state) => {
