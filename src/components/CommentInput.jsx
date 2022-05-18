@@ -44,6 +44,7 @@ const CommentInput = ({ postId }) => {
           isClosable: true,
         });
       }
+      setCommentData("");
     }
   };
 
