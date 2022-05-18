@@ -192,7 +192,7 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
                       borderColor: "initial",
                     }}
                   >
-                    Image
+                    {postImg.imageUrl.includes("video") ? "Video" : "Image"}
                   </Button>
                   <IconButton
                     aria-label="Add to friends"
