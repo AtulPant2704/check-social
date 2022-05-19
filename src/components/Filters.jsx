@@ -52,7 +52,6 @@ const Filters = ({ filterType, setFilterType }) => {
       >
         <Select
           placeholder="Random Date"
-          color="brand.500"
           textAlign="center"
           fontSize="lg"
           fontWeight="var(--chakra-fontWeights-semibold)"
