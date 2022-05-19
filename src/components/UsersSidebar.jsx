@@ -54,8 +54,8 @@ const UsersSidebar = () => {
           </Heading>
           <UnorderedList listStyleType="none" w="100%" mt="4">
             {nonFollowers.map((user) => (
-              <ListItem key={user._id} mb="2" pr="4">
-                <Flex alignItems="center">
+              <ListItem key={user._id} mb="4" pr="4">
+                <Flex alignItems="center" gap="2">
                   <Avatar
                     name={user.firstName + " " + user.lastName}
                     src={user.avatarUrl}

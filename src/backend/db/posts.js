@@ -12,7 +12,39 @@ export const posts = [
     content: "Testing post",
     likes: {
       likeCount: 4,
-      likedBy: [],
+      likedBy: [
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+        {
+          _id: "M1NR81Bzlz",
+          firstName: "Clement",
+          lastName: "Maxwell",
+          username: "clement14",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
+        },
+        {
+          _id: "LCrc9f0Zl0",
+          firstName: "Carl",
+          lastName: "Smith",
+          username: "carlsmith",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
+        },
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     username: "adarshbalika",
@@ -57,7 +89,30 @@ export const posts = [
 		- Han Solo, 'Star Wars: The Empire Strikes Back'`,
     likes: {
       likeCount: 3,
-      likedBy: [],
+      likedBy: [
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+        {
+          _id: "79Gk42f9otl",
+          firstName: "Guest",
+          lastName: "User",
+          username: "Guest123",
+          avatarUrl: "",
+        },
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+      ],
       dislikedBy: [],
     },
     username: "Guest123",
@@ -73,8 +128,16 @@ export const posts = [
     content: `“How inappropriate to call this planet "Earth," when it is clearly "Ocean.”
 			― Arthur C. Clarke`,
     likes: {
-      likeCount: 5,
-      likedBy: [],
+      likeCount: 1,
+      likedBy: [
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "Jane",
@@ -93,7 +156,31 @@ export const posts = [
     likes: {
       likeCount: 3,
       dislikedBy: [],
-      likedBy: [],
+      likedBy: [
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+        {
+          _id: "LCrc9f0Zl0",
+          firstName: "Carl",
+          lastName: "Smith",
+          username: "carlsmith",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
+        },
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+      ],
     },
     username: "adarshbalika",
     firstName: "Adarsh",
@@ -109,7 +196,24 @@ export const posts = [
 			― Douglas Adams, Mostly Harmless`,
     likes: {
       likeCount: 2,
-      likedBy: [],
+      likedBy: [
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+        {
+          _id: "M1NR81Bzlz",
+          firstName: "Clement",
+          lastName: "Maxwell",
+          username: "clement14",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "Carl",
@@ -126,8 +230,25 @@ export const posts = [
     content: `“When religion and politics travel in the same cart, the riders believe nothing can stand in their way. Their movements become headlong - faster and faster and faster. They put aside all thoughts of obstacles and forget the precipice does not show itself to the man in a blind rush until it's too late.”
 			― Frank Herbert, Dune`,
     likes: {
-      likeCount: 5,
-      likedBy: [],
+      likeCount: 2,
+      likedBy: [
+        {
+          _id: "M1NR81Bzlz",
+          firstName: "Clement",
+          lastName: "Maxwell",
+          username: "clement14",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
+        },
+        {
+          _id: "LCrc9f0Zl0",
+          firstName: "Carl",
+          lastName: "Smith",
+          username: "carlsmith",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "Clement",
@@ -145,7 +266,23 @@ export const posts = [
 			― Arthur C. Clarke`,
     likes: {
       likeCount: 2,
-      likedBy: [],
+      likedBy: [
+        {
+          _id: "LCrc9f0Zl0",
+          firstName: "Carl",
+          lastName: "Smith",
+          username: "carlsmith",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
+        },
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "John",
@@ -162,8 +299,47 @@ export const posts = [
     content: `“Everything's science fiction until someone makes it science fact.”
 			― Marie Lu, Warcross`,
     likes: {
-      likeCount: 6,
-      likedBy: [],
+      likeCount: 5,
+      likedBy: [
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+        {
+          _id: "LCrc9f0Zl0",
+          firstName: "Carl",
+          lastName: "Smith",
+          username: "carlsmith",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722212/first_bvrlba.jpg",
+        },
+        {
+          _id: "M1NR81Bzlz",
+          firstName: "Clement",
+          lastName: "Maxwell",
+          username: "clement14",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722226/fifth_dg1lz2.jpg",
+        },
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+        {
+          _id: "79Gk42f9otl",
+          firstName: "Guest",
+          lastName: "User",
+          username: "Guest123",
+          avatarUrl: "",
+        },
+      ],
       dislikedBy: [],
     },
     username: "Guest123",
@@ -180,7 +356,31 @@ export const posts = [
 			― Frank Herbert, Dune`,
     likes: {
       likeCount: 3,
-      likedBy: [],
+      likedBy: [
+        {
+          _id: "79Gk42f9otl",
+          firstName: "Guest",
+          lastName: "User",
+          username: "Guest123",
+          avatarUrl: "",
+        },
+        {
+          _id: "qq8abrfEeXd",
+          firstName: "John",
+          lastName: "Doe",
+          username: "johndoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
+        },
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "Marina",
@@ -198,7 +398,24 @@ export const posts = [
 			― Douglas Adams, The Hitchhiker's Guide to the Galaxy`,
     likes: {
       likeCount: 2,
-      likedBy: [],
+      likedBy: [
+        {
+          _id: "qq8abrfEeXd",
+          firstName: "John",
+          lastName: "Doe",
+          username: "johndoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
+        },
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     username: "adarshbalika",
@@ -215,7 +432,31 @@ export const posts = [
 		― Terry Pratchett`,
     likes: {
       likeCount: 3,
-      likedBy: [],
+      likedBy: [
+        {
+          _id: "qq8abrfEeXd",
+          firstName: "John",
+          lastName: "Doe",
+          username: "johndoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
+        },
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "Guest",
@@ -233,7 +474,23 @@ export const posts = [
 `,
     likes: {
       likeCount: 2,
-      likedBy: [],
+      likedBy: [
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+        {
+          _id: "qq8abrfEeXd",
+          firstName: "John",
+          lastName: "Doe",
+          username: "johndoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "John",
@@ -250,8 +507,39 @@ export const posts = [
     content: `“If we can't write diversity into sci-fi, then what's the point? You don't create new worlds to give them all the same limits of the old ones.”
 			― Jane Espenson`,
     likes: {
-      likeCount: 5,
-      likedBy: [],
+      likeCount: 4,
+      likedBy: [
+        {
+          _id: "qq8abrfEeXd",
+          firstName: "John",
+          lastName: "Doe",
+          username: "johndoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722184/third_mrjqm3.jpg",
+        },
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+        {
+          _id: "79Gk42f9otl",
+          firstName: "Guest",
+          lastName: "User",
+          username: "Guest123",
+          avatarUrl: "",
+        },
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "Carl",
@@ -268,8 +556,31 @@ export const posts = [
     content: `“It seems to me, Golan, that the advance of civilization is nothing but an exercise in the limiting of privacy.”
 			― Isaac Asimov, Foundation's Edge`,
     likes: {
-      likeCount: 4,
-      likedBy: [],
+      likeCount: 3,
+      likedBy: [
+        {
+          _id: "79Gk42f9otl",
+          firstName: "Guest",
+          lastName: "User",
+          username: "Guest123",
+          avatarUrl: "",
+        },
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "Jane",
@@ -288,8 +599,23 @@ export const posts = [
 			`,
     likes: {
       likeCount: 2,
-      likedBy: [],
-
+      likedBy: [
+        {
+          _id: "79Gksh9pq7",
+          firstName: "Adarsh",
+          lastName: "Balika",
+          username: "adarshbalika",
+          avatarUrl: "",
+        },
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+      ],
       dislikedBy: [],
     },
     username: "adarshbalika",
@@ -305,7 +631,7 @@ export const posts = [
     content:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Suscipit, commodi?",
     likes: {
-      likeCount: 5,
+      likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
@@ -323,7 +649,23 @@ export const posts = [
     content: "Lorem ipsum dolor sit amet.",
     likes: {
       likeCount: 2,
-      likedBy: [],
+      likedBy: [
+        {
+          _id: "1T6Be1QpLm",
+          firstName: "Jane",
+          lastName: "Doe",
+          username: "janedoe",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
+        },
+        {
+          _id: "79Gk42f9otl",
+          firstName: "Guest",
+          lastName: "User",
+          username: "Guest123",
+          avatarUrl: "",
+        },
+      ],
       dislikedBy: [],
     },
     firstName: "Marina",

@@ -90,7 +90,12 @@ const Bookmark = () => {
                   ))}
                 </Box>
               ) : (
-                <Flex w="50rem" justifyContent="center" alignItems="center">
+                <Flex
+                  w="50rem"
+                  justifyContent="center"
+                  alignItems="center"
+                  h="calc(95.2vh - 90px)"
+                >
                   <Heading as="h3" size="md" textAlign="center">
                     Nothing has been bookmarked.
                   </Heading>

@@ -16,6 +16,7 @@ import {
   Filters,
 } from "components";
 import { getPosts } from "redux/asyncThunks";
+import { filterPosts } from "utils";
 
 const Home = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -23,6 +24,7 @@ const Home = () => {
   const { user } = useSelector((state) => state.auth);
   const { posts, status } = useSelector((state) => state.posts);
   const [editedPost, setEditedPost] = useState(null);
+  const [filterType, setFilterType] = useState("noFilter");
 
   useEffect(() => {
     if (status === "idle") {
@@ -35,6 +37,8 @@ const Home = () => {
       user.username === item.username ||
       user.following.some((follower) => follower.username === item.username)
   );
+
+  const filteredPosts = filterPosts(userFeed, filterType);
 
   return (
     <>
@@ -73,8 +77,11 @@ const Home = () => {
               <SideNav onOpen={onOpen} />
               {userFeed.length !== 0 ? (
                 <Box maxW="40rem">
-                  <Filters />
-                  {[...userFeed].reverse().map((post) => (
+                  <Filters
+                    filterType={filterType}
+                    setFilterType={setFilterType}
+                  />
+                  {filteredPosts.map((post) => (
                     <PostCard
                       key={post._id}
                       post={post}

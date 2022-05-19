@@ -90,6 +90,21 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
       : await dispatch(addToBookmark({ postId, token, setBookmarkDisable }));
   };
 
+  const getPostDate = (date) => {
+    let postDate = new Date(date);
+    postDate = postDate.toDateString().split(" ").slice(1, 4).join(" ");
+    return postDate.slice(0, 6) + "," + postDate.slice(6);
+  };
+
+  const getLikeMessage = () => {
+    if (post?.likes.likeCount === 1) {
+      return `Liked by ${post.likes.likedBy[0].username}`;
+    }
+    return `Liked by ${post.likes.likedBy[0].username} and ${
+      post.likes.likeCount - 1
+    } others`;
+  };
+
   return (
     <Flex
       flexDirection="column"
@@ -115,7 +130,10 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
           />
           <Heading as="h3" size="md">
             {post.firstName} {post.lastName}
-            <Text as="span" fontSize="14px" ml="2">
+            <Text as="span" fontSize="14px" ml="2" color="gray.600">
+              {getPostDate(post.createdAt)}
+            </Text>
+            <Text fontSize="14px" color="gray.600" pt="1">
               @{post.username}
             </Text>
           </Heading>
@@ -182,25 +200,32 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
 
       {/* Like and Bookmark */}
       <Flex alignItems="center" justifyContent="space-between">
-        <Box>
+        <Flex alignItems="center">
           <IconButton
             icon={isLiked ? <FcLike /> : <AiOutlineHeart />}
             bgColor="transparent"
-            color={isLiked ? "red.400" : "black"}
+            color={isLiked ? "red.500" : "black"}
             size="sm"
             fontSize="lg"
             borderRadius="50%"
             _hover={{
-              bgColor: "brand.100",
+              bgColor: "red.100",
             }}
             _focus={{
+              bgColor: "red.100",
+              borderColor: "transparent",
+            }}
+            _active={{
+              bgColor: "red.100",
               borderColor: "transparent",
             }}
             onClick={() => likeHandler(post._id)}
             isLoading={likeDisable}
           />
-          <Text as="span">{post.likes.likeCount} likes</Text>
-        </Box>
+          {post.likes.likeCount > 0 ? (
+            <Text as="span">{getLikeMessage()}</Text>
+          ) : null}
+        </Flex>
         <IconButton
           icon={isBookmarked ? <BsFillBookmarkFill /> : <BsBookmark />}
           bgColor="transparent"
@@ -209,9 +234,14 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
           fontSize="lg"
           borderRadius="50%"
           _hover={{
-            bgColor: "brand.100",
+            bgColor: "red.100",
           }}
           _focus={{
+            bgColor: "red.100",
+            borderColor: "transparent",
+          }}
+          _active={{
+            bgColor: "red.100",
             borderColor: "transparent",
           }}
           onClick={() => bookmarkHandler(post._id)}

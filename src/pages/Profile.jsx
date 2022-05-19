@@ -67,7 +67,14 @@ const Profile = () => {
             CheckSocial
           </Heading>
         </Flex>
-        <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
+        <Flex
+          backgroundColor="bg"
+          w="90%"
+          mx="auto"
+          my="4"
+          gap="10"
+          minH="calc(95.8vh - 90px)"
+        >
           <SideNav onOpen={onOpen} />
           <Box maxW="40rem">
             <ProfileCard
