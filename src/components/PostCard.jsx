@@ -96,6 +96,15 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
     return postDate.slice(0, 6) + "," + postDate.slice(6);
   };
 
+  const getLikeMessage = () => {
+    if (post?.likes.likeCount === 1) {
+      return `Liked by ${post.likes.likedBy[0].username}`;
+    }
+    return `Liked by ${post.likes.likedBy[0].username} and ${
+      post.likes.likeCount - 1
+    } others`;
+  };
+
   return (
     <Flex
       flexDirection="column"
@@ -191,7 +200,7 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
 
       {/* Like and Bookmark */}
       <Flex alignItems="center" justifyContent="space-between">
-        <Box>
+        <Flex alignItems="center">
           <IconButton
             icon={isLiked ? <FcLike /> : <AiOutlineHeart />}
             bgColor="transparent"
@@ -208,8 +217,10 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
             onClick={() => likeHandler(post._id)}
             isLoading={likeDisable}
           />
-          <Text as="span">{post.likes.likeCount} likes</Text>
-        </Box>
+          {post.likes.likeCount > 0 ? (
+            <Text as="span">{getLikeMessage()}</Text>
+          ) : null}
+        </Flex>
         <IconButton
           icon={isBookmarked ? <BsFillBookmarkFill /> : <BsBookmark />}
           bgColor="transparent"
