@@ -72,7 +72,7 @@ const Explore = () => {
                     filterType={filterType}
                     setFilterType={setFilterType}
                   />
-                  {[...filteredPosts].reverse().map((post) => (
+                  {filteredPosts.map((post) => (
                     <PostCard
                       key={post._id}
                       post={post}
