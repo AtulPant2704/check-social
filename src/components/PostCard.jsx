@@ -204,14 +204,19 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
           <IconButton
             icon={isLiked ? <FcLike /> : <AiOutlineHeart />}
             bgColor="transparent"
-            color={isLiked ? "red.400" : "black"}
+            color={isLiked ? "red.500" : "black"}
             size="sm"
             fontSize="lg"
             borderRadius="50%"
             _hover={{
-              bgColor: "brand.100",
+              bgColor: "red.100",
             }}
             _focus={{
+              bgColor: "red.100",
+              borderColor: "transparent",
+            }}
+            _active={{
+              bgColor: "red.100",
               borderColor: "transparent",
             }}
             onClick={() => likeHandler(post._id)}
@@ -229,9 +234,14 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
           fontSize="lg"
           borderRadius="50%"
           _hover={{
-            bgColor: "brand.100",
+            bgColor: "red.100",
           }}
           _focus={{
+            bgColor: "red.100",
+            borderColor: "transparent",
+          }}
+          _active={{
+            bgColor: "red.100",
             borderColor: "transparent",
           }}
           onClick={() => bookmarkHandler(post._id)}
