@@ -13,6 +13,7 @@ import {
   UsersSidebar,
   MobileNav,
   PostModal,
+  Filters,
 } from "components";
 import { getPosts } from "redux/asyncThunks";
 
@@ -72,6 +73,7 @@ const Home = () => {
               <SideNav onOpen={onOpen} />
               {userFeed.length !== 0 ? (
                 <Box maxW="40rem">
+                  <Filters />
                   {[...userFeed].reverse().map((post) => (
                     <PostCard
                       key={post._id}
