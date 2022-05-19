@@ -54,6 +54,7 @@ const Explore = () => {
               <Heading
                 color="brand.500"
                 display={{ base: "block", md: "none" }}
+                py="1"
               >
                 CheckSocial
               </Heading>

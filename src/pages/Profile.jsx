@@ -56,6 +56,7 @@ const Profile = () => {
             top="16px"
             color="brand.500"
             display={{ base: "block", md: "none" }}
+            py="1"
           >
             CheckSocial
           </Heading>
