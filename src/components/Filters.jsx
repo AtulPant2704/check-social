@@ -1,4 +1,5 @@
-import { Flex, Box, Button } from "@chakra-ui/react";
+import { Flex, Box, Button, Select } from "@chakra-ui/react";
+import { AiTwotoneFire } from "react-icons/ai";
 
 const Filters = ({ filterType, setFilterType }) => {
   return (
@@ -8,26 +9,28 @@ const Filters = ({ filterType, setFilterType }) => {
       bgColor="gray.200"
       borderRadius="8"
       mb="8"
+      overflow="hidden"
     >
       <Box
         w="52%"
         textAlign="center"
-        borderRight="4px solid var(--chakra-colors-blue-500)"
+        borderRight="4px solid #1d9bf0"
+        bgColor={filterType === "trending" ? "brand.500" : " gray.200"}
       >
         <Button
+          leftIcon={<AiTwotoneFire />}
           variant="ghost"
+          w="100%"
           fontSize="xl"
-          color="brand.500"
+          color={filterType === "trending" ? "gray.200" : "brand.500"}
           _hover={{
             bgColor: "transparent",
           }}
           _active={{
             bgColor: "transparent",
-            border: "none",
           }}
           _focus={{
             bgColor: "transparent",
-            border: "none",
           }}
           onClick={() =>
             filterType === "trending"
@@ -38,26 +41,31 @@ const Filters = ({ filterType, setFilterType }) => {
           Trending
         </Button>
       </Box>
-      <Box w="48%" textAlign="center">
-        <Button
-          variant="ghost"
-          fontSize="xl"
+      <Box
+        w="48%"
+        textAlign="center"
+        bgColor={
+          filterType === "oldestByDate" || filterType === "newestByDate"
+            ? "brand.500"
+            : "gray.200"
+        }
+      >
+        <Select
+          placeholder="Random Date"
           color="brand.500"
-          _hover={{
-            bgColor: "transparent",
-          }}
-          _active={{
-            bgColor: "transparent",
-            border: "none",
-          }}
-          _focus={{
-            bgColor: "transparent",
-            border: "none",
-          }}
-          onClick={() => setFilterType("oldestByDate")}
+          textAlign="center"
+          fontSize="lg"
+          fontWeight="var(--chakra-fontWeights-semibold)"
+          onChange={(e) => setFilterType(e.target.value)}
+          color={
+            filterType === "oldestByDate" || filterType === "newestByDate"
+              ? "gray.200"
+              : "brand.500"
+          }
         >
-          By Date
-        </Button>
+          <option value="oldestByDate">Oldest First</option>
+          <option value="newestByDate">Newest First</option>
+        </Select>
       </Box>
     </Flex>
   );
