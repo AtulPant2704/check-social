@@ -61,6 +61,10 @@ const EditProfileModal = ({
       if (response?.payload.status === 201) {
         setUserProfile(response.payload.data.user);
         dispatch(updateUser(response.payload.data.user));
+        localStorage.setItem(
+          "user",
+          JSON.stringify(response.payload.data.user)
+        );
         toast({
           description: "Profile updated successfully",
           status: "success",

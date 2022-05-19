@@ -22,6 +22,8 @@ const Profile = () => {
   } = useDisclosure();
   const { username } = useParams();
   const { posts } = useSelector((state) => state.posts);
+  const { users } = useSelector((state) => state.users);
+  const { user } = useSelector((state) => state.auth);
   const [userProfile, setUserProfile] = useState(null);
   const [userPosts, setUserPosts] = useState(null);
   const [editedPost, setEditedPost] = useState(null);
@@ -29,7 +31,11 @@ const Profile = () => {
   useEffect(() => {
     getSingleUser(setUserProfile, username);
     getUserPosts(setUserPosts, username);
-  }, [username, posts]);
+  }, [username, posts, users]);
+
+  if (user?.avatarUrl !== userProfile?.avatarUrl) {
+    setUserProfile((prev) => ({ ...prev, avatarUrl: user.avatarUrl }));
+  }
 
   return (
     <>

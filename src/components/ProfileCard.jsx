@@ -85,7 +85,7 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
       >
         <Box>
           <Heading as="h5" size="md" textAlign="center">
-            {userProfile?.following.length}
+            {userProfile?.following?.length}
           </Heading>
           <Text>Following</Text>
         </Box>
@@ -97,7 +97,7 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
         </Box>
         <Box>
           <Heading as="h5" size="md" textAlign="center">
-            {userProfile?.followers.length}
+            {userProfile?.followers?.length}
           </Heading>
           <Text>Followers</Text>
         </Box>
