@@ -58,6 +58,7 @@ const CommentInput = ({ postId }) => {
       />
       <InputGroup size="sm">
         <Input
+          pr="12"
           borderRadius="4"
           placeholder="Add a comment"
           borderColor="gray.500"
