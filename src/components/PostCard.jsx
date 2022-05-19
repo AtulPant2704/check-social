@@ -91,8 +91,9 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
   };
 
   const getPostDate = (date) => {
-    // Extract date of the post
-    return "22 July 2014";
+    let postDate = new Date(date);
+    postDate = postDate.toDateString().split(" ").slice(1, 4).join(" ");
+    return postDate.slice(0, 6) + "," + postDate.slice(6);
   };
 
   return (
@@ -120,11 +121,11 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
           />
           <Heading as="h3" size="md">
             {post.firstName} {post.lastName}
-            <Text as="span" fontSize="14px" ml="2">
-              @{post.username}
-            </Text>
-            <Text as="span" fontSize="14px" ml="2">
+            <Text as="span" fontSize="14px" ml="2" color="gray.600">
               {getPostDate(post.createdAt)}
+            </Text>
+            <Text fontSize="14px" color="gray.600" pt="1">
+              @{post.username}
             </Text>
           </Heading>
         </Flex>
