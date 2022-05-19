@@ -13,20 +13,25 @@ import {
   UsersSidebar,
   MobileNav,
   PostModal,
+  Filters,
 } from "components";
 import { getPosts } from "redux/asyncThunks";
+import { filterPosts } from "utils";
 
 const Explore = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const { posts, status } = useSelector((state) => state.posts);
   const [editedPost, setEditedPost] = useState(null);
+  const [filterType, setFilterType] = useState("noFilter");
 
   useEffect(() => {
     if (status === "idle") {
       dispatch(getPosts());
     }
   }, [dispatch, status]);
+
+  const filteredPosts = filterPosts(posts, filterType);
 
   return (
     <>
@@ -63,7 +68,11 @@ const Explore = () => {
               <SideNav onOpen={onOpen} />
               {posts.length !== 0 ? (
                 <Box maxW="40rem">
-                  {[...posts].reverse().map((post) => (
+                  <Filters
+                    filterType={filterType}
+                    setFilterType={setFilterType}
+                  />
+                  {[...filteredPosts].reverse().map((post) => (
                     <PostCard
                       key={post._id}
                       post={post}
