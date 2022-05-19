@@ -64,7 +64,12 @@ const SideNav = ({ onOpen }) => {
           fontSize="20px"
           fontWeight="bold"
           my="2"
-          color={`${pathname.includes("/profile") ? "brand.500" : "black"}`}
+          color={`${
+            pathname.includes("/profile") &&
+            pathname.includes(`${user.username}`)
+              ? "brand.500"
+              : "black"
+          }`}
           onClick={() => navigate(`/profile/${user.username}`)}
         >
           <ListIcon as={FaUserCircle} />
