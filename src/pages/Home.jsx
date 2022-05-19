@@ -71,7 +71,7 @@ const Home = () => {
               <SideNav onOpen={onOpen} />
               {userFeed.length !== 0 ? (
                 <Box maxW="40rem">
-                  {userFeed.map((post) => (
+                  {[...userFeed].reverse().map((post) => (
                     <PostCard
                       key={post._id}
                       post={post}

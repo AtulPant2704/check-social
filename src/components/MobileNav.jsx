@@ -48,7 +48,11 @@ const MobileNav = ({ onOpen }) => {
       <ListItem
         cursor="pointer"
         fontSize="25px"
-        color={`${pathname.includes("/profile") ? "brand.500" : "white"}`}
+        color={`${
+          pathname.includes("/profile") && pathname.includes(`${user.username}`)
+            ? "brand.500"
+            : "white"
+        }`}
         onClick={() => navigate(`/profile/${user.username}`)}
       >
         <ListIcon as={FaUserCircle} />

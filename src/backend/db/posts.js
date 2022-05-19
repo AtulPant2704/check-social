@@ -28,7 +28,7 @@ export const posts = [
         lastName: "User",
         username: "Guest123",
         avatarUrl: "",
-        text: "First Comment",
+        commentData: "First Comment",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
@@ -42,7 +42,7 @@ export const posts = [
         username: "janedoe",
         avatarUrl:
           "https://res.cloudinary.com/check-social/image/upload/v1652722197/fourth_rgotvm.jpg",
-        text: "Wow!",
+        commentData: "Wow!",
         votes: {
           upvotedBy: [],
           downvotedBy: [],
