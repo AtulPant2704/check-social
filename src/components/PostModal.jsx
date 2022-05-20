@@ -39,9 +39,28 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
 
   const addImageHandler = (e) => {
     reader.readAsDataURL(e.target.files[0]);
-    reader.onload = () => {
-      if (reader.readyState === 2) {
-        setPostImg({ imageUrl: reader.result, imageFile: e.target.files[0] });
+    reader.onprogress = () => {
+      if (e.target.files[0].size <= 5242880) {
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            setPostImg({
+              imageUrl: reader.result,
+              imageFile: e.target.files[0],
+            });
+          }
+        };
+      } else {
+        toast({
+          description: "File size should be less than 5MB",
+          status: "warning",
+          duration: 2000,
+          isClosable: true,
+        });
+        reader.abort();
+        setPostImg({
+          imageUrl: "",
+          imageFile: {},
+        });
       }
     };
   };
@@ -53,7 +72,6 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
         content: data.content,
         img: data.img || null,
       };
-      console.log(postData);
       const response = await dispatch(editPost({ postData, token }));
       if (response?.payload.status === 201) {
         toast({

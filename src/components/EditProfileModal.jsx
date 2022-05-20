@@ -44,12 +44,29 @@ const EditProfileModal = ({
 
   const addProfileImageHandler = (e) => {
     reader.readAsDataURL(e.target.files[0]);
-    reader.onload = () => {
-      if (reader.readyState === 2) {
+    reader.onprogress = () => {
+      if (e.target.files[0].size <= 2097152) {
+        reader.onload = () => {
+          if (reader.readyState === 2) {
+            setUserData({
+              ...userData,
+              avatarUrl: reader.result,
+              avatarFile: e.target.files[0],
+            });
+          }
+        };
+      } else {
+        toast({
+          description: "File size should be less than 2MB",
+          status: "warning",
+          duration: 2000,
+          isClosable: true,
+        });
+        reader.abort();
         setUserData({
           ...userData,
-          avatarUrl: reader.result,
-          avatarFile: e.target.files[0],
+          avatarUrl: "",
+          avatarFile: {},
         });
       }
     };
