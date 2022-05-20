@@ -47,7 +47,7 @@ const Profile = () => {
           setEditedPost={setEditedPost}
         />
       ) : null}
-      {userProfile && (
+      {isOpenProfile && (
         <EditProfileModal
           isOpenProfile={isOpenProfile}
           onCloseProfile={onCloseProfile}
