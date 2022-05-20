@@ -75,7 +75,7 @@ const Home = () => {
             </Flex>
             <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
               <SideNav onOpen={onOpen} />
-              {userFeed.length !== 0 ? (
+              {userFeed?.length !== 0 ? (
                 <Box maxW="40rem">
                   <Filters
                     filterType={filterType}
