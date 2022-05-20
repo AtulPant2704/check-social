@@ -1,10 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Box, Flex, Image } from "@chakra-ui/react";
 import { Login, Signup } from "components";
 import { landingImage } from "assets";
 
 const Landing = () => {
+  const navigate = useNavigate();
+  const { token } = useSelector((state) => state.auth);
   const [authType, setAuthType] = useState("login");
+
+  useEffect(() => {
+    if (token) {
+      navigate("/home");
+    }
+  }, [token, navigate]);
 
   return (
     <Flex h="100%">
