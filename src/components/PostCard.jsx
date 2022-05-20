@@ -105,6 +105,8 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
     } others`;
   };
 
+  const imageFileFormats = ["jpg", "jpeg", "png", "gif", "webp"];
+
   return (
     <Flex
       flexDirection="column"
@@ -189,7 +191,7 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
       <Box>
         <Text>{post.content}</Text>
         {post?.img &&
-        !post.img.includes("jpg" || "jpeg" || "png" || "gif" || "webp") ? (
+        !imageFileFormats.some((format) => post.img.includes(format)) ? (
           <AspectRatio maxW="560px" ratio={4 / 3}>
             <video controls src={post.img}></video>
           </AspectRatio>
