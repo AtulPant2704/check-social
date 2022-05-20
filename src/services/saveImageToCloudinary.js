@@ -25,7 +25,7 @@ const saveImageToCloudinary = async (
         if (from === "post") {
           data = { ...inputData, img: json.url };
         } else {
-          data = { ...inputData, avatarUrl: json.url };
+          data = { ...inputData, avatarUrl: json.secure_url };
         }
         callingFunc(data);
       })
