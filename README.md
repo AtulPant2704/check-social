@@ -83,7 +83,7 @@ Check Social is a social media app where users can hang out with their friends s
 ## Desktop Version
 
 <p align="center">
-  <img width="100%" src="./src/assets/checkmateVideo.gif" alt="CheckMate Video"/>
+  <img width="100%" src="./src/assets/check-social.gif" alt="CheckMate Video"/>
 </p>
 
 ---
