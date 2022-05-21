@@ -51,9 +51,21 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
             Edit Profile
           </Button>
           <IconButton
-            variant="outline"
+            variant="solid"
+            backgroundColor="red.500"
+            color="white"
+            fontSize="xl"
             icon={<MdLogout />}
             onClick={logoutHandler}
+            _hover={{
+              backgroundColor: "red.400",
+            }}
+            _focus={{
+              backgroundColor: "red.400",
+            }}
+            _active={{
+              backgroundColor: "red.400",
+            }}
           ></IconButton>
         </Flex>
       ) : user.following.some(
