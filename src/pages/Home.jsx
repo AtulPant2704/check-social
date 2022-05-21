@@ -91,7 +91,12 @@ const Home = () => {
                   ))}
                 </Box>
               ) : (
-                <Flex w="50rem" justifyContent="center" alignItems="center">
+                <Flex
+                  w="50rem"
+                  justifyContent="center"
+                  alignItems="center"
+                  minH="calc(95.2vh - 90px)"
+                >
                   <Heading as="h3" size="md" textAlign="center">
                     No posts to display, start following other users to update
                     your feed.
