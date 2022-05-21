@@ -1,4 +1,4 @@
-# CheckMate Video Library
+# Check Social
 
 Check Social is a social media app where users can hang out with their friends share text as well as media posts and make a community.
 
