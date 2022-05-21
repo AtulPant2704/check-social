@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Box, Button, Input, Checkbox, Text, useToast } from "@chakra-ui/react";
+import { Box, Button, Input, Text, useToast } from "@chakra-ui/react";
 import { signupUser } from "redux/asyncThunks";
 
 const Signup = ({ setAuthType }) => {
@@ -15,7 +15,6 @@ const Signup = ({ setAuthType }) => {
     firstName: "",
     lastName: "",
   });
-  const [remember, setRemember] = useState(false);
   const { isLoading } = useSelector((state) => state.auth);
 
   const inputHandler = (e) => {
@@ -37,13 +36,6 @@ const Signup = ({ setAuthType }) => {
       e.preventDefault();
       const response = await dispatch(signupUser(newUser));
       if (response?.payload?.status === 201) {
-        if (remember) {
-          localStorage.setItem("token", response.payload.data.encodedToken);
-          localStorage.setItem(
-            "user",
-            JSON.stringify(response.payload.data.createdUser)
-          );
-        }
         navigate(location?.state?.from?.pathname || "/home", {
           replace: true,
         });
@@ -104,15 +96,6 @@ const Signup = ({ setAuthType }) => {
           value={newUser.password}
           onChange={inputHandler}
         />
-        <Checkbox
-          borderColor="brand.100"
-          colorScheme="green"
-          _focus={{ borderColor: "transparent" }}
-          _active={{ borderColor: "transparent" }}
-          onChange={() => setRemember((prev) => !prev)}
-        >
-          I accept all Terms & Conditions
-        </Checkbox>
         <Button
           variant="solid"
           display="block"
