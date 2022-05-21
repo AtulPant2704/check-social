@@ -144,7 +144,12 @@ const EditProfileModal = ({
                 size="md"
               ></Avatar>
               <Box position="absolute" top="54%" left="59%">
-                <FormLabel cursor="pointer">
+                <FormLabel
+                  cursor="pointer"
+                  background="white"
+                  borderRadius="50%"
+                  p="5px"
+                >
                   <Input
                     type="file"
                     accept="image/*"
@@ -155,7 +160,7 @@ const EditProfileModal = ({
                     visibility="hidden"
                     onChange={addProfileImageHandler}
                   />
-                  <AiFillCamera fontSize="20px" color="white" />
+                  <AiFillCamera fontSize="18px" />
                 </FormLabel>
               </Box>
             </Box>
