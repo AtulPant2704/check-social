@@ -33,10 +33,6 @@ const Profile = () => {
     getUserPosts(setUserPosts, username);
   }, [username, posts, users]);
 
-  if (user?.avatarUrl !== userProfile?.avatarUrl) {
-    setUserProfile((prev) => ({ ...prev, avatarUrl: user.avatarUrl }));
-  }
-
   return (
     <>
       {isOpen ? (
