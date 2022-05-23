@@ -14,6 +14,7 @@ import {
   MobileNav,
   PostModal,
   Filters,
+  SearchUser,
 } from "components";
 import { getPosts } from "redux/asyncThunks";
 import { filterPosts } from "utils";
@@ -77,6 +78,7 @@ const Home = () => {
               <SideNav onOpen={onOpen} />
               {userFeed?.length !== 0 ? (
                 <Box maxW="40rem">
+                  <SearchUser />
                   <Filters
                     filterType={filterType}
                     setFilterType={setFilterType}
