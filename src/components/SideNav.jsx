@@ -24,7 +24,13 @@ const SideNav = ({ onOpen }) => {
       h="fit-content"
       display={{ base: "none", md: "block" }}
     >
-      <Heading color="brand.500">CheckSocial</Heading>
+      <Heading
+        color="brand.500"
+        cursor="pointer"
+        onClick={() => navigate("/home")}
+      >
+        CheckSocial
+      </Heading>
       <UnorderedList listStyleType="none" w="100%" mt="8" ml="0">
         <ListItem
           cursor="pointer"
