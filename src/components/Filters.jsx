@@ -8,7 +8,7 @@ const Filters = ({ filterType, setFilterType }) => {
       alignItems="center"
       bgColor="gray.200"
       borderRadius="8"
-      mb="8"
+      my="8"
       overflow="hidden"
     >
       <Box
