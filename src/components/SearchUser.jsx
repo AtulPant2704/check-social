@@ -31,7 +31,7 @@ const SearchUser = () => {
             user.username.includes(searchQuery))
       );
       setSearchedUsers(foundUsers);
-    }, 1000);
+    }, 300);
   }, [searchQuery, users]);
 
   return (
