@@ -33,7 +33,7 @@ const Home = () => {
     }
   }, [dispatch, status]);
 
-  const userFeed = posts.filter(
+  const userFeed = posts?.filter(
     (item) =>
       user.username === item.username ||
       user.following.some((follower) => follower.username === item.username)
