@@ -35,6 +35,8 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
   });
   const [post, setPost] = useState({ content: editedPost?.content || "" });
 
+  console.log(editedPost);
+
   let reader = new FileReader();
 
   const addImageHandler = (e) => {
@@ -70,7 +72,7 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
       const postData = {
         _id: editedPost._id,
         content: data.content,
-        img: data.img || null,
+        img: data.img || postImg.imageUrl || null,
       };
       const response = await dispatch(editPost({ postData, token }));
       if (response?.payload.status === 201) {
