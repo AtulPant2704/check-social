@@ -15,10 +15,11 @@ export const posts = [
       likedBy: [
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
         {
           _id: "M1NR81Bzlz",
@@ -47,19 +48,21 @@ export const posts = [
       ],
       dislikedBy: [],
     },
-    username: "adarshbalika",
-    firstName: "Adarsh",
-    lastName: "Balika",
+    username: "emberjung",
+    firstName: "Ember",
+    lastName: "Jung",
     createdAt: new Date("Apr 06 2021 12:31:25"),
     updatedAt: formatDate(),
-    avatarUrl: "",
+    avatarUrl:
+      "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
     comments: [
       {
         _id: uuid(),
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
-        avatarUrl: "",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
         commentData: "First Comment",
         votes: {
           upvotedBy: [],
@@ -103,14 +106,16 @@ export const posts = [
           firstName: "Guest",
           lastName: "User",
           username: "Guest123",
-          avatarUrl: "",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
         },
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
       ],
       dislikedBy: [],
@@ -120,7 +125,8 @@ export const posts = [
     lastName: "User",
     createdAt: new Date("Feb 23 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarUrl: "",
+    avatarUrl:
+      "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
     comments: [],
   },
   {
@@ -132,10 +138,11 @@ export const posts = [
       likedBy: [
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
       ],
       dislikedBy: [],
@@ -159,10 +166,11 @@ export const posts = [
       likedBy: [
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
         {
           _id: "LCrc9f0Zl0",
@@ -182,12 +190,13 @@ export const posts = [
         },
       ],
     },
-    username: "adarshbalika",
-    firstName: "Adarsh",
-    lastName: "Balika",
+    username: "emberjung",
+    firstName: "Ember",
+    lastName: "Jung",
     createdAt: new Date("May 03 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarUrl: "",
+    avatarUrl:
+      "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
     comments: [],
   },
   {
@@ -277,10 +286,11 @@ export const posts = [
         },
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
       ],
       dislikedBy: [],
@@ -303,10 +313,11 @@ export const posts = [
       likedBy: [
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
         {
           _id: "LCrc9f0Zl0",
@@ -337,7 +348,8 @@ export const posts = [
           firstName: "Guest",
           lastName: "User",
           username: "Guest123",
-          avatarUrl: "",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
         },
       ],
       dislikedBy: [],
@@ -347,7 +359,8 @@ export const posts = [
     lastName: "User",
     createdAt: new Date("May 12 2022 10:31:25"),
     updatedAt: formatDate(),
-    avatarUrl: "",
+    avatarUrl:
+      "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
     comments: [],
   },
   {
@@ -362,7 +375,8 @@ export const posts = [
           firstName: "Guest",
           lastName: "User",
           username: "Guest123",
-          avatarUrl: "",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
         },
         {
           _id: "qq8abrfEeXd",
@@ -418,12 +432,13 @@ export const posts = [
       ],
       dislikedBy: [],
     },
-    username: "adarshbalika",
-    firstName: "Adarsh",
-    lastName: "Balika",
+    username: "emberjung",
+    firstName: "Ember",
+    lastName: "Jung",
     createdAt: new Date("April 15 2022 12:31:25"),
     updatedAt: formatDate(),
-    avatarUrl: "",
+    avatarUrl:
+      "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
     comments: [],
   },
   {
@@ -451,10 +466,11 @@ export const posts = [
         },
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
       ],
       dislikedBy: [],
@@ -464,7 +480,8 @@ export const posts = [
     username: "Guest123",
     createdAt: new Date("September 15 2021 12:31:25"),
     updatedAt: formatDate(),
-    avatarUrl: "",
+    avatarUrl:
+      "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
     comments: [],
   },
   {
@@ -477,10 +494,11 @@ export const posts = [
       likedBy: [
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
         {
           _id: "qq8abrfEeXd",
@@ -519,17 +537,19 @@ export const posts = [
         },
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
         {
           _id: "79Gk42f9otl",
           firstName: "Guest",
           lastName: "User",
           username: "Guest123",
-          avatarUrl: "",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
         },
         {
           _id: "1T6Be1QpLm",
@@ -563,7 +583,8 @@ export const posts = [
           firstName: "Guest",
           lastName: "User",
           username: "Guest123",
-          avatarUrl: "",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
         },
         {
           _id: "1T6Be1QpLm",
@@ -575,10 +596,11 @@ export const posts = [
         },
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
       ],
       dislikedBy: [],
@@ -602,10 +624,11 @@ export const posts = [
       likedBy: [
         {
           _id: "79Gksh9pq7",
-          firstName: "Adarsh",
-          lastName: "Balika",
-          username: "adarshbalika",
-          avatarUrl: "",
+          firstName: "Ember",
+          lastName: "Jung",
+          username: "emberjung",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
         },
         {
           _id: "1T6Be1QpLm",
@@ -618,12 +641,13 @@ export const posts = [
       ],
       dislikedBy: [],
     },
-    username: "adarshbalika",
-    firstName: "Adarsh",
-    lastName: "Balika",
+    username: "emberjung",
+    firstName: "Ember",
+    lastName: "Jung",
     createdAt: new Date("Feb 18 2021 12:31:25"),
     updatedAt: formatDate(),
-    avatarUrl: "",
+    avatarUrl:
+      "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
     comments: [],
   },
   {
@@ -663,7 +687,8 @@ export const posts = [
           firstName: "Guest",
           lastName: "User",
           username: "Guest123",
-          avatarUrl: "",
+          avatarUrl:
+            "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
         },
       ],
       dislikedBy: [],

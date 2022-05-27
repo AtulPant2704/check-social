@@ -1,5 +1,4 @@
 const filterPosts = (posts, filterType) => {
-  console.log(posts);
   switch (filterType) {
     case "noFilter":
       return posts;
