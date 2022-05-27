@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/app/store";
@@ -11,7 +11,9 @@ import { makeServer } from "./server";
 // Call make Server
 makeServer();
 
-ReactDOM.render(
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
   <React.StrictMode>
     <ChakraProvider resetCSS={true} theme={theme}>
       <Provider store={store}>
@@ -20,6 +22,5 @@ ReactDOM.render(
         </Router>
       </Provider>
     </ChakraProvider>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );

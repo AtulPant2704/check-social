@@ -4,8 +4,8 @@ const filterPosts = (posts, filterType) => {
       return posts;
     case "trending":
       return [...posts].sort((a, b) => {
-        const strengthA = a.likes.likeCount + a.comments.length;
-        const strengthB = b.likes.likeCount + b.comments.length;
+        const strengthA = a.likes?.likeCount + a.comments?.length;
+        const strengthB = b.likes?.likeCount + b.comments?.length;
         return strengthB - strengthA;
       });
     case "oldestByDate":

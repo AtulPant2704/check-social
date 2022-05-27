@@ -1,7 +1,18 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { Box, Button, Input, Checkbox, Text, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Input,
+  Checkbox,
+  Text,
+  useToast,
+  InputGroup,
+  InputRightElement,
+  IconButton,
+} from "@chakra-ui/react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { loginUser } from "redux/asyncThunks";
 
 const Login = ({ setAuthType }) => {
@@ -10,7 +21,8 @@ const Login = ({ setAuthType }) => {
   const dispatch = useDispatch();
   const toast = useToast();
   const [newUser, setNewUser] = useState({ username: "", password: "" });
-  const [remember, setRemember] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [passwordType, setPasswordType] = useState("password");
   const { isLoading } = useSelector((state) => state.auth);
 
   const guestUser = {
@@ -23,6 +35,11 @@ const Login = ({ setAuthType }) => {
     setNewUser((prev) => ({ ...prev, [name]: value }));
   };
 
+  const guestUserHandler = () => {
+    setNewUser(guestUser);
+    setRememberMe(true);
+  };
+
   const checkInputs = () => {
     return newUser.username && newUser.password;
   };
@@ -32,7 +49,7 @@ const Login = ({ setAuthType }) => {
       e.preventDefault();
       const response = await dispatch(loginUser(newUser));
       if (response?.payload?.status === 200) {
-        if (remember) {
+        if (rememberMe) {
           localStorage.setItem("token", response.payload.data.encodedToken);
           localStorage.setItem(
             "user",
@@ -76,20 +93,41 @@ const Login = ({ setAuthType }) => {
           value={newUser.username}
           onChange={inputHandler}
         />
-        <Input
-          type="password"
-          placeholder="Enter Password"
-          mb="4"
-          name="password"
-          value={newUser.password}
-          onChange={inputHandler}
-        />
+        <InputGroup>
+          <Input
+            type={passwordType}
+            placeholder="Enter Password"
+            mb="4"
+            autoComplete="true"
+            name="password"
+            value={newUser.password}
+            onChange={inputHandler}
+          />
+          <InputRightElement>
+            {passwordType === "password" ? (
+              <IconButton
+                icon={<AiFillEye />}
+                fontSize="2xl"
+                onClick={() => setPasswordType("text")}
+              ></IconButton>
+            ) : (
+              <IconButton
+                icon={<AiFillEyeInvisible />}
+                fontSize="2xl"
+                onClick={() => setPasswordType("password")}
+              ></IconButton>
+            )}
+          </InputRightElement>
+        </InputGroup>
         <Checkbox
           borderColor="brand.100"
-          colorScheme="green"
+          color="brand.500"
           _focus={{ borderColor: "transparent" }}
           _active={{ borderColor: "transparent" }}
-          onChange={() => setRemember((prev) => !prev)}
+          isChecked={rememberMe}
+          onChange={(e) =>
+            e.target.checked ? setRememberMe(true) : setRememberMe(false)
+          }
         >
           Remember Me
         </Checkbox>
@@ -99,7 +137,7 @@ const Login = ({ setAuthType }) => {
           w="100%"
           mt="8"
           mb="4"
-          onClick={() => setNewUser(guestUser)}
+          onClick={guestUserHandler}
         >
           Enter Guest Credentials
         </Button>

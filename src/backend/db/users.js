@@ -7,20 +7,22 @@ import { formatDate } from "../utils/authUtils";
 export const users = [
   {
     _id: "79Gksh9pq7",
-    firstName: "Adarsh",
-    lastName: "Balika",
-    username: "adarshbalika",
-    password: "adarshBalika123",
+    firstName: "Ember",
+    lastName: "Jung",
+    username: "emberjung",
+    password: "emberjung123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatarUrl: "",
+    avatarUrl:
+      "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
     following: [
       {
         _id: "79Gk42f9otl",
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
-        avatarUrl: "",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
       },
       {
         _id: "qq8abrfEeXd",
@@ -45,7 +47,8 @@ export const users = [
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
-        avatarUrl: "",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
       },
       {
         _id: "1T6Be1QpLm",
@@ -58,7 +61,7 @@ export const users = [
     ],
     bookmarks: [],
     bio: "I am the first user",
-    website: "https://adarshbalika.netlify.app/",
+    website: "https://atulpant.netlify.app/",
   },
   /*****************************************2*******************************************/
   {
@@ -69,14 +72,16 @@ export const users = [
     password: "test123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    avatarUrl: "",
+    avatarUrl:
+      "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
     following: [
       {
         _id: "79Gksh9pq7",
-        firstName: "Adarsh",
-        lastName: "Balika",
-        username: "adarshbalika",
-        avatarUrl: "",
+        firstName: "Ember",
+        lastName: "Jung",
+        username: "emberjung",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
       },
       {
         _id: "qq8abrfEeXd",
@@ -90,10 +95,11 @@ export const users = [
     followers: [
       {
         _id: "79Gksh9pq7",
-        firstName: "Adarsh",
-        lastName: "Balika",
-        username: "adarshbalika",
-        avatarUrl: "",
+        firstName: "Ember",
+        lastName: "Jung",
+        username: "emberjung",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
       },
       {
         _id: "M1NR81Bzlz",
@@ -122,19 +128,21 @@ export const users = [
     followers: [
       {
         _id: "79Gksh9pq7",
-        firstName: "Adarsh",
-        lastName: "Balika",
-        username: "adarshbalika",
-        avatarUrl: "",
+        firstName: "Ember",
+        lastName: "Jung",
+        username: "emberjung",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
       },
     ],
     following: [
       {
         _id: "79Gksh9pq7",
-        firstName: "Adarsh",
-        lastName: "Balika",
-        username: "adarshbalika",
-        avatarUrl: "",
+        firstName: "Ember",
+        lastName: "Jung",
+        username: "emberjung",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
       },
       {
         _id: "LCrc9f0Zl0",
@@ -211,7 +219,8 @@ export const users = [
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
-        avatarUrl: "",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
       },
     ],
     bookmarks: [],
@@ -249,17 +258,19 @@ export const users = [
     followers: [
       {
         _id: "79Gksh9pq7",
-        firstName: "Adarsh",
-        lastName: "Balika",
-        username: "adarshbalika",
-        avatarUrl: "",
+        firstName: "Ember",
+        lastName: "Jung",
+        username: "emberjung",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1653635356/new_rxucd4.jpg",
       },
       {
         _id: "79Gk42f9otl",
         firstName: "Guest",
         lastName: "User",
         username: "Guest123",
-        avatarUrl: "",
+        avatarUrl:
+          "https://res.cloudinary.com/check-social/image/upload/v1653635781/guest_ymuaft.jpg",
       },
     ],
     following: [],

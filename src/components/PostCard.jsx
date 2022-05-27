@@ -189,7 +189,7 @@ const PostCard = ({ post, onOpen, setEditedPost }) => {
 
       {/* Post Content */}
       <Box>
-        <Text>{post.content}</Text>
+        <Text pb="2">{post.content}</Text>
         {post?.img &&
         !imageFileFormats.some((format) => post.img.includes(format)) ? (
           <AspectRatio maxW="560px" ratio={4 / 3}>
