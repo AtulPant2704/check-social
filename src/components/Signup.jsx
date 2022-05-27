@@ -1,7 +1,17 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useLocation } from "react-router-dom";
-import { Box, Button, Input, Text, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Input,
+  Text,
+  useToast,
+  InputGroup,
+  InputRightElement,
+  IconButton,
+} from "@chakra-ui/react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { signupUser } from "redux/asyncThunks";
 
 const Signup = ({ setAuthType }) => {
@@ -15,6 +25,7 @@ const Signup = ({ setAuthType }) => {
     firstName: "",
     lastName: "",
   });
+  const [passwordType, setPasswordType] = useState("password");
   const { isLoading } = useSelector((state) => state.auth);
 
   const inputHandler = (e) => {
@@ -94,17 +105,34 @@ const Signup = ({ setAuthType }) => {
           value={newUser.username}
           onChange={inputHandler}
         />
-        <Input
-          type="password"
-          placeholder="Enter Password"
-          mb="4"
-          minLength="8"
-          required
-          name="password"
-          autoComplete="true"
-          value={newUser.password}
-          onChange={inputHandler}
-        />
+        <InputGroup>
+          <Input
+            type={passwordType}
+            placeholder="Enter Password"
+            mb="4"
+            minLength="8"
+            required
+            name="password"
+            autoComplete="true"
+            value={newUser.password}
+            onChange={inputHandler}
+          />
+          <InputRightElement>
+            {passwordType === "password" ? (
+              <IconButton
+                icon={<AiFillEye />}
+                fontSize="2xl"
+                onClick={() => setPasswordType("text")}
+              ></IconButton>
+            ) : (
+              <IconButton
+                icon={<AiFillEyeInvisible />}
+                fontSize="2xl"
+                onClick={() => setPasswordType("password")}
+              ></IconButton>
+            )}
+          </InputRightElement>
+        </InputGroup>
         <Button
           variant="solid"
           display="block"

@@ -3,13 +3,16 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Box,
-  Heading,
   Button,
   Input,
   Checkbox,
   Text,
   useToast,
+  InputGroup,
+  InputRightElement,
+  IconButton,
 } from "@chakra-ui/react";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { loginUser } from "redux/asyncThunks";
 
 const Login = ({ setAuthType }) => {
@@ -19,6 +22,7 @@ const Login = ({ setAuthType }) => {
   const toast = useToast();
   const [newUser, setNewUser] = useState({ username: "", password: "" });
   const [rememberMe, setRememberMe] = useState(false);
+  const [passwordType, setPasswordType] = useState("password");
   const { isLoading } = useSelector((state) => state.auth);
 
   const guestUser = {
@@ -89,15 +93,32 @@ const Login = ({ setAuthType }) => {
           value={newUser.username}
           onChange={inputHandler}
         />
-        <Input
-          type="password"
-          placeholder="Enter Password"
-          mb="4"
-          autoComplete="true"
-          name="password"
-          value={newUser.password}
-          onChange={inputHandler}
-        />
+        <InputGroup>
+          <Input
+            type={passwordType}
+            placeholder="Enter Password"
+            mb="4"
+            autoComplete="true"
+            name="password"
+            value={newUser.password}
+            onChange={inputHandler}
+          />
+          <InputRightElement>
+            {passwordType === "password" ? (
+              <IconButton
+                icon={<AiFillEye />}
+                fontSize="2xl"
+                onClick={() => setPasswordType("text")}
+              ></IconButton>
+            ) : (
+              <IconButton
+                icon={<AiFillEyeInvisible />}
+                fontSize="2xl"
+                onClick={() => setPasswordType("password")}
+              ></IconButton>
+            )}
+          </InputRightElement>
+        </InputGroup>
         <Checkbox
           borderColor="brand.100"
           color="brand.500"
