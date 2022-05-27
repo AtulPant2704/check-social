@@ -69,7 +69,7 @@ export const users = [
     firstName: "Guest",
     lastName: "User",
     username: "Guest123",
-    password: "test123",
+    password: "Guest@123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
     avatarUrl:

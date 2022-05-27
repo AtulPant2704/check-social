@@ -27,7 +27,7 @@ const Login = ({ setAuthType }) => {
 
   const guestUser = {
     username: "Guest123",
-    password: "test123",
+    password: "Guest@123",
   };
 
   const inputHandler = (e) => {
