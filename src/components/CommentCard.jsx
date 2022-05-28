@@ -95,7 +95,7 @@ const CommentCard = ({ comment, postId }) => {
             >
               {comment.firstName} {comment.lastName}
             </Heading>
-            <Text>{comment.commentData}</Text>
+            <Text wordBreak="break-all">{comment.commentData}</Text>
           </Box>
         </Flex>
         {/* Edit Comment */}
