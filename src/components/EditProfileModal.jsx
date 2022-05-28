@@ -130,7 +130,7 @@ const EditProfileModal = ({
       <ModalContent>
         <ModalHeader>Edit Profile</ModalHeader>
         <ModalCloseButton onClick={closeHandler} />
-        <ModalBody>
+        <ModalBody as="form">
           <Flex gap="10" mb="2">
             <Text>Avatar</Text>
             <Box position="relative">
@@ -178,6 +178,7 @@ const EditProfileModal = ({
               borderColor="var(--chakra-colors-gray-300)"
               size="sm"
               borderRadius="8"
+              type="url"
               name="website"
               value={userData?.website}
               onChange={inputHandler}
