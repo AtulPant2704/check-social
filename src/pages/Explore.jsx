@@ -36,12 +36,14 @@ const Explore = () => {
 
   return (
     <>
-      <PostModal
-        isOpen={isOpen}
-        onClose={onClose}
-        editedPost={editedPost}
-        setEditedPost={setEditedPost}
-      />
+      {isOpen ? (
+        <PostModal
+          isOpen={isOpen}
+          onClose={onClose}
+          editedPost={editedPost}
+          setEditedPost={setEditedPost}
+        />
+      ) : null}
       <Box h="100%">
         {status === "pending" ? (
           <CircularProgress

@@ -43,12 +43,14 @@ const Bookmark = () => {
 
   return (
     <>
-      <PostModal
-        isOpen={isOpen}
-        onClose={onClose}
-        editedPost={editedPost}
-        setEditedPost={setEditedPost}
-      />
+      {isOpen ? (
+        <PostModal
+          isOpen={isOpen}
+          onClose={onClose}
+          editedPost={editedPost}
+          setEditedPost={setEditedPost}
+        />
+      ) : null}
       <Box h="100%">
         {bookmarkStatus === "pending" ? (
           <CircularProgress
@@ -77,15 +79,15 @@ const Bookmark = () => {
               {bookmarkedPosts.length !== 0 ? (
                 <Box
                   maxW="40rem"
-                  minW={{ lg: "38rem", md: "70%", base: "100%" }}
+                  minW={{ lg: "36rem", md: "70%", base: "100%" }}
                   h="calc(95.2vh - 90px)"
                 >
                   {bookmarkedPosts.map((post) => (
                     <PostCard
                       key={post._id}
                       post={post}
-                      setEditedPost={setEditedPost}
                       onOpen={onOpen}
+                      setEditedPost={setEditedPost}
                     />
                   ))}
                 </Box>

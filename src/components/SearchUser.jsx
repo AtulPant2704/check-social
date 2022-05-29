@@ -17,11 +17,13 @@ const SearchUser = () => {
   const navigate = useNavigate();
   const [searchedUsers, setSearchedUsers] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [checkDebounce, setCheckDebounce] = useState(false);
   const timerRef = useRef();
   const { users } = useSelector((state) => state.users);
 
   useEffect(() => {
     clearTimeout(timerRef.current);
+    setCheckDebounce(false);
     timerRef.current = setTimeout(() => {
       const foundUsers = users.filter(
         (user) =>
@@ -31,6 +33,7 @@ const SearchUser = () => {
             user.username.includes(searchQuery))
       );
       setSearchedUsers(foundUsers);
+      setCheckDebounce(true);
     }, 300);
   }, [searchQuery, users]);
 
@@ -79,6 +82,25 @@ const SearchUser = () => {
               </Box>
             </Flex>
           ))}
+        </Flex>
+      ) : checkDebounce &&
+        searchedUsers.length === 0 &&
+        searchQuery.length > 0 ? (
+        <Flex
+          flexDirection="column"
+          gap="2"
+          mt="2"
+          position="absolute"
+          bgColor="white"
+          width="100%"
+          zIndex="1"
+          p="1"
+          border="1px solid var(--chakra-colors-gray-200)"
+          borderRadius="8"
+        >
+          <Heading as="h4" size="sm" p="2">
+            No User present
+          </Heading>
         </Flex>
       ) : null}
     </Box>
