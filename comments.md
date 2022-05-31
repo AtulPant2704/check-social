@@ -7,3 +7,4 @@ Refactors:-
 - feat: Form Validation
 - feat: Hide and Show Password
 - fix: Edit Post from Bookmark page and Horizontal scroll bar issue in Bookmark page
+- refactor: display new post at top
