@@ -32,7 +32,7 @@ const EditProfileModal = ({
   const dispatch = useDispatch();
   const toast = useToast();
   const { token, isLoading } = useSelector((state) => state.auth);
-  const initialUserData = { ...userProfile, avatarUrl: "", avatarFile: {} };
+  const initialUserData = { avatarUrl: "", avatarFile: {}, ...userProfile };
   const [userData, setUserData] = useState(initialUserData);
 
   let reader = new FileReader();
