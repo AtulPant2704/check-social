@@ -35,8 +35,6 @@ const PostModal = ({ isOpen, onClose, editedPost, setEditedPost }) => {
   });
   const [post, setPost] = useState({ content: editedPost?.content || "" });
 
-  console.log(editedPost);
-
   let reader = new FileReader();
 
   const addImageHandler = (e) => {

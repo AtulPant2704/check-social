@@ -83,14 +83,25 @@ const Home = () => {
                     filterType={filterType}
                     setFilterType={setFilterType}
                   />
-                  {filteredPosts.map((post) => (
-                    <PostCard
-                      key={post._id}
-                      post={post}
-                      onOpen={onOpen}
-                      setEditedPost={setEditedPost}
-                    />
-                  ))}
+                  {filterType === "noFilter"
+                    ? filteredPosts
+                        .reverse()
+                        .map((post) => (
+                          <PostCard
+                            key={post._id}
+                            post={post}
+                            onOpen={onOpen}
+                            setEditedPost={setEditedPost}
+                          />
+                        ))
+                    : filteredPosts.map((post) => (
+                        <PostCard
+                          key={post._id}
+                          post={post}
+                          onOpen={onOpen}
+                          setEditedPost={setEditedPost}
+                        />
+                      ))}
                 </Box>
               ) : (
                 <Flex

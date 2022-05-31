@@ -76,14 +76,25 @@ const Explore = () => {
                     filterType={filterType}
                     setFilterType={setFilterType}
                   />
-                  {filteredPosts.map((post) => (
-                    <PostCard
-                      key={post._id}
-                      post={post}
-                      setEditedPost={setEditedPost}
-                      onOpen={onOpen}
-                    />
-                  ))}
+                  {filterType === "noFilter"
+                    ? filteredPosts
+                        .reverse()
+                        .map((post) => (
+                          <PostCard
+                            key={post._id}
+                            post={post}
+                            onOpen={onOpen}
+                            setEditedPost={setEditedPost}
+                          />
+                        ))
+                    : filteredPosts.map((post) => (
+                        <PostCard
+                          key={post._id}
+                          post={post}
+                          onOpen={onOpen}
+                          setEditedPost={setEditedPost}
+                        />
+                      ))}
                 </Box>
               ) : (
                 <Flex w="50rem" justifyContent="center" alignItems="center">

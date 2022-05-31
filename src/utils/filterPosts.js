@@ -1,7 +1,7 @@
 const filterPosts = (posts, filterType) => {
   switch (filterType) {
     case "noFilter":
-      return posts;
+      return [...posts];
     case "trending":
       return [...posts].sort((a, b) => {
         const strengthA = a.likes?.likeCount + a.comments?.length;
@@ -17,7 +17,7 @@ const filterPosts = (posts, filterType) => {
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
     default:
-      return posts;
+      return [...posts];
   }
 };
 
