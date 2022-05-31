@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -18,6 +19,7 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user, token } = useSelector((state) => state.auth);
+  const [disableFollowBtn, setDisableFollowBtn] = useState(false);
 
   const logoutHandler = () => {
     dispatch(logoutUser());
@@ -25,12 +27,16 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
   };
 
   const unfollowUserHandler = async (followUserId) => {
+    setDisableFollowBtn(true);
     const response = await dispatch(unfollowUser({ followUserId, token }));
+    setDisableFollowBtn(false);
     dispatch(updateUser(response?.payload.data.user));
   };
 
   const followUserHandler = async (followUserId) => {
+    setDisableFollowBtn(true);
     const response = await dispatch(followUser({ followUserId, token }));
+    setDisableFollowBtn(false);
     dispatch(updateUser(response?.payload.data.user));
   };
 
@@ -75,15 +81,20 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
           variant="outline"
           my="2"
           onClick={() => unfollowUserHandler(userProfile._id)}
+          isLoading={disableFollowBtn}
         >
           Unfollow
         </Button>
       ) : (
-        <Button my="2" onClick={() => followUserHandler(userProfile._id)}>
+        <Button
+          my="2"
+          onClick={() => followUserHandler(userProfile._id)}
+          isLoading={disableFollowBtn}
+        >
           Follow
         </Button>
       )}
-      <Text>{user.bio}</Text>
+      <Text>{userProfile?.bio}</Text>
       <Link href={userProfile?.website} isExternal color="brand.500">
         {userProfile?.website}
       </Link>

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -20,9 +20,12 @@ const UsersSidebar = () => {
   const dispatch = useDispatch();
   const { users } = useSelector((state) => state.users);
   const { user, token } = useSelector((state) => state.auth);
+  const [disableFollowBtn, setDisableFollowBtn] = useState(null);
 
   const followUserHandler = async (followUserId) => {
+    setDisableFollowBtn(followUserId);
     const response = await dispatch(followUser({ followUserId, token }));
+    setDisableFollowBtn(null);
     dispatch(updateUser(response?.payload.data.user));
   };
 
@@ -77,6 +80,7 @@ const UsersSidebar = () => {
                     ml="auto"
                     fontSize="14"
                     onClick={() => followUserHandler(user._id)}
+                    isLoading={disableFollowBtn === user._id}
                   >
                     Follow
                   </Button>
