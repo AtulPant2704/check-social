@@ -25,6 +25,7 @@ const Explore = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [postsLoader, setPostsLoader] = useState(false);
   const [editedPost, setEditedPost] = useState(null);
+  const [pageEnd, setPageEnd] = useState(false);
   const loader = useRef(null);
   const { posts, status } = useSelector((state) => state.posts);
 
@@ -52,15 +53,20 @@ const Explore = () => {
   }, [dispatch, status]);
 
   useEffect(() => {
-    getSlicedPosts(pageNumber, setSlicedPosts, setPostsLoader);
+    if (!pageEnd) {
+      getSlicedPosts(
+        pageNumber,
+        setSlicedPosts,
+        setPostsLoader,
+        setPageEnd,
+        posts
+      );
+    }
   }, [pageNumber]);
 
-  const filteredPosts =
-    slicedPosts.length > 0
-      ? posts.filter((post) =>
-          slicedPosts.some((item) => item._id === post._id)
-        )
-      : [];
+  const filteredPosts = !pageEnd
+    ? posts.filter((post) => slicedPosts.some((item) => item._id === post._id))
+    : posts;
 
   return (
     <>
@@ -102,7 +108,7 @@ const Explore = () => {
                     setEditedPost={setEditedPost}
                   />
                 ))}
-                {postsLoader && posts.length !== filteredPosts.length ? (
+                {postsLoader && !pageEnd ? (
                   <Flex justifyContent="center" mb="40px">
                     <CircularProgress
                       isIndeterminate
@@ -112,8 +118,7 @@ const Explore = () => {
                     />
                   </Flex>
                 ) : null}
-                {filteredPosts.length > 0 &&
-                posts.length === filteredPosts.length ? (
+                {filteredPosts.length > 0 && pageEnd ? (
                   <Flex justifyContent="center">
                     <Heading as="h3" size="md">
                       No more posts to display
