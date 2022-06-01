@@ -10,6 +10,7 @@ import {
   PostModal,
   ProfileCard,
   EditProfileModal,
+  FollowersModal,
 } from "components";
 import { getSingleUser, getUserPosts } from "services";
 
@@ -20,17 +21,27 @@ const Profile = () => {
     onOpen: onOpenProfile,
     onClose: onCloseProfile,
   } = useDisclosure();
+  const {
+    isOpen: isOpenFollower,
+    onOpen: onOpenFollower,
+    onClose: onCloseFollower,
+  } = useDisclosure();
   const { username } = useParams();
   const { posts } = useSelector((state) => state.posts);
   const { users } = useSelector((state) => state.users);
   const [userProfile, setUserProfile] = useState(null);
   const [userPosts, setUserPosts] = useState(null);
   const [editedPost, setEditedPost] = useState(null);
+  const [followModal, setFollowModal] = useState(null);
 
   useEffect(() => {
     getSingleUser(setUserProfile, username);
     getUserPosts(setUserPosts, username);
   }, [username, posts, users]);
+
+  useEffect(() => {
+    onCloseFollower();
+  }, [username, onCloseFollower]);
 
   return (
     <>
@@ -42,14 +53,22 @@ const Profile = () => {
           setEditedPost={setEditedPost}
         />
       ) : null}
-      {isOpenProfile && (
+      {isOpenProfile ? (
         <EditProfileModal
           isOpenProfile={isOpenProfile}
           onCloseProfile={onCloseProfile}
           userProfile={userProfile}
           setUserProfile={setUserProfile}
         />
-      )}
+      ) : null}
+      {isOpenFollower ? (
+        <FollowersModal
+          isOpenFollower={isOpenFollower}
+          onCloseFollower={onCloseFollower}
+          followModal={followModal}
+          userProfile={userProfile}
+        />
+      ) : null}
       <Box>
         <Flex justifyContent="center" bgColor="gray.200">
           <Heading
@@ -71,11 +90,13 @@ const Profile = () => {
           minH="calc(95.8vh - 90px)"
         >
           <SideNav onOpen={onOpen} />
-          <Box maxW="40rem">
+          <Box maxW="40rem" m="auto">
             <ProfileCard
               onOpenProfile={onOpenProfile}
               userProfile={userProfile}
               userpostsLength={userPosts?.length}
+              onOpenFollower={onOpenFollower}
+              setFollowModal={setFollowModal}
             />
             <Heading as="h3" size="md" mb="4">
               Your Posts
@@ -107,6 +128,7 @@ const Profile = () => {
           bottom="0"
           left="0"
           right="0"
+          h="50px"
           bgColor="black"
           display={{ base: "block", md: "none" }}
           zIndex="2"

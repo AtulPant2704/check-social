@@ -80,7 +80,8 @@ const Bookmark = () => {
                 <Box
                   maxW="40rem"
                   minW={{ lg: "36rem", md: "70%", base: "100%" }}
-                  h="calc(95.2vh - 90px)"
+                  minH="calc(100vh - 98px)"
+                  m="auto"
                 >
                   {bookmarkedPosts.map((post) => (
                     <PostCard
@@ -96,7 +97,7 @@ const Bookmark = () => {
                   w="50rem"
                   justifyContent="center"
                   alignItems="center"
-                  h="calc(95.2vh - 90px)"
+                  h="calc(100vh - 98px)"
                 >
                   <Heading as="h3" size="md" textAlign="center">
                     Nothing has been bookmarked.

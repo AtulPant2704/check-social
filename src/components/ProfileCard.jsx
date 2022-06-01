@@ -15,7 +15,13 @@ import { MdLogout } from "react-icons/md";
 import { logoutUser, updateUser } from "redux/slices";
 import { followUser, unfollowUser } from "redux/asyncThunks";
 
-const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
+const ProfileCard = ({
+  onOpenProfile,
+  userProfile,
+  userpostsLength,
+  onOpenFollower,
+  setFollowModal,
+}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user, token } = useSelector((state) => state.auth);
@@ -38,6 +44,11 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
     const response = await dispatch(followUser({ followUserId, token }));
     setDisableFollowBtn(false);
     dispatch(updateUser(response?.payload.data.user));
+  };
+
+  const followerModalHandler = (type) => {
+    setFollowModal(type);
+    onOpenFollower();
   };
 
   return (
@@ -106,7 +117,7 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
         borderRadius="8"
         mt="4"
       >
-        <Box>
+        <Box cursor="pointer" onClick={() => followerModalHandler("Following")}>
           <Heading as="h5" size="md" textAlign="center">
             {userProfile?.following?.length}
           </Heading>
@@ -118,7 +129,7 @@ const ProfileCard = ({ onOpenProfile, userProfile, userpostsLength }) => {
           </Heading>
           <Text>Posts</Text>
         </Box>
-        <Box>
+        <Box cursor="pointer" onClick={() => followerModalHandler("Followers")}>
           <Heading as="h5" size="md" textAlign="center">
             {userProfile?.followers?.length}
           </Heading>

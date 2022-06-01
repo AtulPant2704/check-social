@@ -9,3 +9,4 @@ export { ProfileCard } from "./ProfileCard";
 export { EditProfileModal } from "./EditProfileModal";
 export { Filters } from "./Filters";
 export { SearchUser } from "./SearchUser";
+export { FollowersModal } from "./FollowersModal";

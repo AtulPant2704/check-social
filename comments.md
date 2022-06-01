@@ -9,3 +9,5 @@ Refactors:-
 - fix: Edit Post from Bookmark page and Horizontal scroll bar issue in Bookmark page
 - refactor: display new post at top
 - feat: handle double click on follow/unfollow
+- feat: display following/followers list of user using modal
+- feat: add infinite scroll on Explore page
