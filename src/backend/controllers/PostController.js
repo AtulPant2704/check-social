@@ -47,7 +47,7 @@ export const getSlicedPostHandler = function (schema, request) {
     return new Response(
       200,
       {},
-      { posts: this.db.posts.slice(0, pageNumber * 5) }
+      { posts: this.db.posts.slice(0, pageNumber * 3) }
     );
   } catch (error) {
     return new Response(
