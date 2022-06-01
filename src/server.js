@@ -9,6 +9,7 @@ import {
   createPostHandler,
   getAllpostsHandler,
   getPostHandler,
+  getSlicedPostHandler,
   deletePostHandler,
   editPostHandler,
   likePostHandler,
@@ -76,6 +77,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.get("/posts", getAllpostsHandler.bind(this));
       this.get("/posts/:postId", getPostHandler.bind(this));
       this.get("/posts/user/:username", getAllUserPostsHandler.bind(this));
+      this.get("posts/:pageNumber", getSlicedPostHandler.bind(this));
 
       // post routes (private)
       this.post("/posts", createPostHandler.bind(this));
