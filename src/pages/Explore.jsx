@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   Flex,
   Box,
@@ -14,22 +15,25 @@ import {
   PostModal,
   SearchUser,
 } from "components";
-import { getPosts } from "services";
+import { getPosts } from "redux/asyncThunks";
+import { getSlicedPosts } from "services";
 
 const Explore = () => {
+  const dispatch = useDispatch();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [posts, setPosts] = useState([]);
+  const [slicedPosts, setSlicedPosts] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [postsLoader, setPostsLoader] = useState(false);
   const [editedPost, setEditedPost] = useState(null);
   const loader = useRef(null);
+  const { posts, status } = useSelector((state) => state.posts);
 
   useEffect(() => {
     const elementRef = loader.current;
     const handleObserver = (entries) => {
       const target = entries[0];
       if (target.isIntersecting) {
-        setPageNumber((prev) => ++prev);
+        setPageNumber((prev) => prev + 1);
       }
     };
     const observer = new IntersectionObserver(handleObserver);
@@ -42,8 +46,21 @@ const Explore = () => {
   }, []);
 
   useEffect(() => {
-    getPosts(pageNumber, setPosts, setPostsLoader);
+    if (status === "idle") {
+      dispatch(getPosts());
+    }
+  }, [dispatch, status]);
+
+  useEffect(() => {
+    getSlicedPosts(pageNumber, setSlicedPosts, setPostsLoader);
   }, [pageNumber]);
+
+  const filteredPosts =
+    slicedPosts.length > 0
+      ? posts.filter((post) =>
+          slicedPosts.some((item) => item._id === post._id)
+        )
+      : [];
 
   return (
     <>
@@ -68,32 +85,40 @@ const Explore = () => {
           </Flex>
           <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
             <SideNav onOpen={onOpen} />
-            <Box minW="36rem" maxW="40rem">
+            <Box
+              minH="calc(100vh - 98px)"
+              maxW="40rem"
+              minW={{ base: "auto", md: "36rem" }}
+              m="auto"
+              pb="20"
+            >
               <SearchUser />
-              {posts?.map((post) => (
-                <PostCard
-                  key={post._id}
-                  post={post}
-                  onOpen={onOpen}
-                  setEditedPost={setEditedPost}
-                />
-              ))}
-              <Box ref={loader} w="100%" h="50px"></Box>
-              {postsLoader ? (
-                <Flex justifyContent="center">
-                  <CircularProgress
-                    isIndeterminate
-                    color="brand.500"
-                    size="40px"
-                    thickness="20px"
+              <Box mt="8">
+                {filteredPosts?.map((post) => (
+                  <PostCard
+                    key={post._id}
+                    post={post}
+                    onOpen={onOpen}
+                    setEditedPost={setEditedPost}
                   />
-                </Flex>
-              ) : null}
+                ))}
+                {postsLoader ? (
+                  <Flex justifyContent="center" mb="40px">
+                    <CircularProgress
+                      isIndeterminate
+                      color="brand.500"
+                      size="40px"
+                      thickness="20px"
+                    />
+                  </Flex>
+                ) : null}
+                <Box ref={loader} w="100%" h="10px"></Box>
+              </Box>
             </Box>
             <UsersSidebar />
           </Flex>
           <Box
-            position="sticky"
+            position="fixed"
             bottom="0"
             left="0"
             right="0"
