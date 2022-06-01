@@ -102,7 +102,7 @@ const Explore = () => {
                     setEditedPost={setEditedPost}
                   />
                 ))}
-                {postsLoader ? (
+                {postsLoader && posts.length !== filteredPosts.length ? (
                   <Flex justifyContent="center" mb="40px">
                     <CircularProgress
                       isIndeterminate
@@ -110,6 +110,14 @@ const Explore = () => {
                       size="40px"
                       thickness="20px"
                     />
+                  </Flex>
+                ) : null}
+                {filteredPosts.length > 0 &&
+                posts.length === filteredPosts.length ? (
+                  <Flex justifyContent="center">
+                    <Heading as="h3" size="md">
+                      No more posts to display
+                    </Heading>
                   </Flex>
                 ) : null}
                 <Box ref={loader} w="100%" h="10px"></Box>
