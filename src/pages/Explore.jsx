@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useState, useEffect, useRef } from "react";
 import {
   Flex,
   Box,
@@ -13,26 +12,38 @@ import {
   UsersSidebar,
   MobileNav,
   PostModal,
-  Filters,
   SearchUser,
 } from "components";
-import { getPosts } from "redux/asyncThunks";
-import { filterPosts } from "utils";
+import { getPosts } from "services";
 
 const Explore = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const dispatch = useDispatch();
-  const { posts, status } = useSelector((state) => state.posts);
+  const [posts, setPosts] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [postsLoader, setPostsLoader] = useState(false);
   const [editedPost, setEditedPost] = useState(null);
-  const [filterType, setFilterType] = useState("noFilter");
+  const loader = useRef(null);
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(getPosts());
+    const elementRef = loader.current;
+    const handleObserver = (entries) => {
+      const target = entries[0];
+      if (target.isIntersecting) {
+        setPageNumber((prev) => ++prev);
+      }
+    };
+    const observer = new IntersectionObserver(handleObserver);
+    if (elementRef) {
+      observer.observe(elementRef);
     }
-  }, [dispatch, status]);
+    return () => {
+      observer.unobserve(elementRef);
+    };
+  }, []);
 
-  const filteredPosts = filterPosts(posts, filterType);
+  useEffect(() => {
+    getPosts(pageNumber, setPosts, setPostsLoader);
+  }, [pageNumber]);
 
   return (
     <>
@@ -45,80 +56,55 @@ const Explore = () => {
         />
       ) : null}
       <Box h="100%">
-        {status === "pending" ? (
-          <CircularProgress
-            isIndeterminate
-            color="brand.500"
-            position="fixed"
-            top="50%"
-            left="50%"
-            size="80px"
-            thickness="10px"
-          />
-        ) : null}
-        {status === "resolved" ? (
-          <>
-            <Flex justifyContent="center" bgColor="gray.200">
-              <Heading
-                color="brand.500"
-                display={{ base: "block", md: "none" }}
-                py="1"
-              >
-                CheckSocial
-              </Heading>
-            </Flex>
-            <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
-              <SideNav onOpen={onOpen} />
-              {posts.length !== 0 ? (
-                <Box maxW="40rem">
-                  <SearchUser />
-                  <Filters
-                    filterType={filterType}
-                    setFilterType={setFilterType}
-                  />
-                  {filterType === "noFilter"
-                    ? filteredPosts
-                        .reverse()
-                        .map((post) => (
-                          <PostCard
-                            key={post._id}
-                            post={post}
-                            onOpen={onOpen}
-                            setEditedPost={setEditedPost}
-                          />
-                        ))
-                    : filteredPosts.map((post) => (
-                        <PostCard
-                          key={post._id}
-                          post={post}
-                          onOpen={onOpen}
-                          setEditedPost={setEditedPost}
-                        />
-                      ))}
-                </Box>
-              ) : (
-                <Flex w="50rem" justifyContent="center" alignItems="center">
-                  <Heading as="h3" size="md" textAlign="center">
-                    No posts to display.
-                  </Heading>
-                </Flex>
-              )}
-              <UsersSidebar />
-            </Flex>
-            <Box
-              position="sticky"
-              bottom="0"
-              left="0"
-              right="0"
-              h="50px"
-              bgColor="black"
+        <>
+          <Flex justifyContent="center" bgColor="gray.200">
+            <Heading
+              color="brand.500"
               display={{ base: "block", md: "none" }}
-              zIndex="2"
+              py="1"
             >
-              <MobileNav onOpen={onOpen} />
+              CheckSocial
+            </Heading>
+          </Flex>
+          <Flex backgroundColor="bg" w="90%" mx="auto" my="4" gap="10">
+            <SideNav onOpen={onOpen} />
+            <Box minW="36rem" maxW="40rem">
+              <SearchUser />
+              {posts?.map((post) => (
+                <PostCard
+                  key={post._id}
+                  post={post}
+                  onOpen={onOpen}
+                  setEditedPost={setEditedPost}
+                />
+              ))}
+              <Box ref={loader} w="100%" h="50px"></Box>
+              {postsLoader ? (
+                <Flex justifyContent="center">
+                  <CircularProgress
+                    isIndeterminate
+                    color="brand.500"
+                    size="40px"
+                    thickness="20px"
+                  />
+                </Flex>
+              ) : null}
             </Box>
-          </>
-        ) : null}
+            <UsersSidebar />
+          </Flex>
+          <Box
+            position="sticky"
+            bottom="0"
+            left="0"
+            right="0"
+            h="50px"
+            bgColor="black"
+            display={{ base: "block", md: "none" }}
+            zIndex="2"
+          >
+            <MobileNav onOpen={onOpen} />
+          </Box>
+        </>
       </Box>
     </>
   );
