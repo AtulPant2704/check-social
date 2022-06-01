@@ -62,7 +62,7 @@ const Explore = () => {
         posts
       );
     }
-  }, [pageNumber]);
+  }, [pageNumber, pageEnd]);
 
   const filteredPosts = !pageEnd
     ? posts.filter((post) => slicedPosts.some((item) => item._id === post._id))
