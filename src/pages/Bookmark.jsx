@@ -81,6 +81,7 @@ const Bookmark = () => {
                   maxW="40rem"
                   minW={{ lg: "36rem", md: "70%", base: "100%" }}
                   minH="calc(100vh - 98px)"
+                  m="auto"
                 >
                   {bookmarkedPosts.map((post) => (
                     <PostCard

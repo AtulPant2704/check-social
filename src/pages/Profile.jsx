@@ -89,7 +89,7 @@ const Profile = () => {
           minH="calc(95.8vh - 90px)"
         >
           <SideNav onOpen={onOpen} />
-          <Box maxW="40rem">
+          <Box maxW="40rem" m="auto">
             <ProfileCard
               onOpenProfile={onOpenProfile}
               userProfile={userProfile}
