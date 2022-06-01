@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   Modal,
@@ -16,9 +15,13 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-const FollowersModal = ({ isOpenFollower, onCloseFollower, followModal }) => {
+const FollowersModal = ({
+  isOpenFollower,
+  onCloseFollower,
+  followModal,
+  userProfile,
+}) => {
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.auth);
 
   return (
     <Modal isOpen={isOpenFollower} onClose={onCloseFollower}>
@@ -29,8 +32,8 @@ const FollowersModal = ({ isOpenFollower, onCloseFollower, followModal }) => {
         <ModalBody>
           <UnorderedList listStyleType="none" w="100%">
             {followModal === "Followers" ? (
-              user.followers.length > 0 ? (
-                user.followers.map((item) => (
+              userProfile.followers.length > 0 ? (
+                userProfile.followers.map((item) => (
                   <ListItem
                     key={item._id}
                     mb="4"
@@ -55,13 +58,13 @@ const FollowersModal = ({ isOpenFollower, onCloseFollower, followModal }) => {
               ) : (
                 <ListItem mb="4" pr="4">
                   <Heading as="h4" size="sm" display="inline">
-                    {user.firstName} {user.lastName}
+                    {userProfile.firstName} {userProfile.lastName}
                   </Heading>{" "}
                   does not have any followers
                 </ListItem>
               )
-            ) : user.following.length > 0 ? (
-              user.following.map((item) => (
+            ) : userProfile.following.length > 0 ? (
+              userProfile.following.map((item) => (
                 <ListItem
                   key={item._id}
                   mb="4"
@@ -86,7 +89,7 @@ const FollowersModal = ({ isOpenFollower, onCloseFollower, followModal }) => {
             ) : (
               <ListItem mb="4" pr="4">
                 <Heading as="h4" size="sm" display="inline">
-                  {user.firstName} {user.lastName}
+                  {userProfile.firstName} {userProfile.lastName}
                 </Heading>{" "}
                 does not follows anyone
               </ListItem>

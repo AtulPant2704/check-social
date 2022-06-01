@@ -66,6 +66,7 @@ const Profile = () => {
           isOpenFollower={isOpenFollower}
           onCloseFollower={onCloseFollower}
           followModal={followModal}
+          userProfile={userProfile}
         />
       ) : null}
       <Box>
